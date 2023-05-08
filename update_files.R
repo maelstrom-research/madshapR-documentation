@@ -1,4 +1,4 @@
-library(harmonizR)
+library(madshapR)
 library(fs)
 # usethis::use_pkgdown()
 
@@ -7,7 +7,7 @@ pkgdown::build_site()
 
 fs::dir_copy(
   "docs",
-  "../harmonizR-documentation/docs",
+  "../madshapR-documentation/docs",
   overwrite = TRUE
 )
 
