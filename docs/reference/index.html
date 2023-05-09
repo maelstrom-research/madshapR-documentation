@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.1013</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.1014</span>
       </span>
     </div>
 
@@ -63,7 +63,7 @@
       </tr></tbody><tbody><tr><td>
           <p><code><a href="as_dataset.html">as_dataset()</a></code> </p>
         </td>
-        <td><p>Validate and coerce any object as dataset</p></td>
+        <td><p>Validate and coerce an object to dataset format</p></td>
       </tr><tr><td>
           <p><code><a href="as_data_dict.html">as_data_dict()</a></code> </p>
         </td>
@@ -71,103 +71,107 @@
       </tr><tr><td>
           <p><code><a href="as_data_dict_mlstr.html">as_data_dict_mlstr()</a></code> </p>
         </td>
-        <td><p>Validate and coerce any object as data dictionary in the Maelstrom format</p></td>
+        <td><p>Validate and coerce an object to an Opal data dictionary format</p></td>
       </tr><tr><td>
           <p><code><a href="as_data_dict_shape.html">as_data_dict_shape()</a></code> </p>
         </td>
-        <td><p>Validate and coerce any object as data dictionary</p></td>
+        <td><p>Validate and coerce an object to a workable data dictionary structure</p></td>
       </tr><tr><td>
           <p><code><a href="as_dossier.html">as_dossier()</a></code> </p>
         </td>
-        <td><p>Validate and coerce any object as dossier</p></td>
+        <td><p>Validate and coerce an object to dossier format</p></td>
       </tr><tr><td>
           <p><code><a href="as_taxonomy.html">as_taxonomy()</a></code> </p>
         </td>
-        <td><p>Validate and coerce any object as taxonomy</p></td>
+        <td><p>Validate and coerce an object to taxonomy format</p></td>
       </tr><tr><td>
           <p><code><a href="as_valueType.html">as_valueType()</a></code> </p>
         </td>
-        <td><p>Validate and coerce any object according to a given valueType</p></td>
+        <td><p>Validate and coerce an object according to a given valueType</p></td>
       </tr><tr><td>
           <p><code><a href="check_dataset_categories.html">check_dataset_categories()</a></code> </p>
         </td>
-        <td><p>Return categorical values which differ between dataset and their data dictionary</p></td>
+        <td><p>Assess a data dictionary and associated dataset for category differences</p></td>
       </tr><tr><td>
           <p><code><a href="check_dataset_valueType.html">check_dataset_valueType()</a></code> </p>
         </td>
-        <td><p>Return values which valueType differs between dataset and their data dictionary</p></td>
+        <td><p>Assess a data dictionary and associated dataset for valueType differences</p></td>
       </tr><tr><td>
           <p><code><a href="check_dataset_variables.html">check_dataset_variables()</a></code> </p>
         </td>
-        <td><p>Return undeclared variables across a data dictionary</p></td>
+        <td><p>Assess a data dictionary and associated dataset for undeclared variables</p></td>
       </tr><tr><td>
           <p><code><a href="check_data_dict_categories.html">check_data_dict_categories()</a></code> </p>
         </td>
-        <td><p>Return categorical variables which has issues in a data dictionary</p></td>
+        <td><p>Assess a data dictionary for potential issues in categories</p></td>
       </tr><tr><td>
           <p><code><a href="check_data_dict_missing_categories.html">check_data_dict_missing_categories()</a></code> </p>
         </td>
-        <td><p>Return categorical values which 'missing' column is not a boolean</p></td>
+        <td><p>Assess categorical variables for non-Boolean values in 'missing' column</p></td>
       </tr><tr><td>
           <p><code><a href="check_data_dict_valueType.html">check_data_dict_valueType()</a></code> </p>
         </td>
-        <td><p>Return evaluation of the valueType declared in a data dictionary</p></td>
+        <td><p>Assess a data dictionary for non-valid valueType values</p></td>
       </tr><tr><td>
           <p><code><a href="check_data_dict_variables.html">check_data_dict_variables()</a></code> </p>
         </td>
-        <td><p>Return non unique variables across a data dictionary</p></td>
+        <td><p>Assess a data dictionary for potential issues in variables</p></td>
       </tr><tr><td>
           <p><code><a href="check_name_standards.html">check_name_standards()</a></code> </p>
         </td>
-        <td><p>Return non-standard names across a vector</p></td>
+        <td><p>Assess variable names in a data dictionary for non-standard formats</p></td>
       </tr><tr><td>
           <p><code><a href="dataset_cat_as_labels.html">dataset_cat_as_labels()</a></code> </p>
         </td>
-        <td><p>Apply to categorical column(s) their labels declared in the data dictionary</p></td>
+        <td><p>Apply data dictionary category labels to the associated dataset variables</p></td>
       </tr><tr><td>
           <p><code><a href="dataset_evaluate.html">dataset_evaluate()</a></code> </p>
         </td>
-        <td><p>Generate a report as an Excel spreadsheet of a dataset</p></td>
+        <td><p>Generate a quality assessment report of a dataset</p></td>
+      </tr><tr><td>
+          <p><code><a href="dataset_preprocess.html">dataset_preprocess()</a></code> </p>
+        </td>
+        <td><p>Generate an evaluation of all variable values in a dataset</p></td>
       </tr><tr><td>
           <p><code><a href="dataset_summarize.html">dataset_summarize()</a></code> </p>
         </td>
-        <td><p>Generate a report as an Excel spreadsheet of a dossier (dataset list)</p></td>
+        <td><p>Generate a report and summary of a dataset</p></td>
       </tr><tr><td>
           <p><code><a href="dataset_visualize.html">dataset_visualize()</a></code> </p>
         </td>
-        <td><p>Generate a web application (bookdown) report of list of a datasets</p></td>
+        <td><p>Generate a web-based bookdown visual report of a dataset</p></td>
       </tr><tr><td>
           <p><code><a href="dataset_zap_data_dict.html">dataset_zap_data_dict()</a></code> </p>
         </td>
-        <td><p>Remove value labels of a data-frame, leaving its unlabelled columns</p></td>
+        <td><p>Remove labels (attributes) from a data frame, leaving its unlabelled columns</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_apply.html">data_dict_apply()</a></code> </p>
         </td>
-        <td><p>Apply a data dictionary to any dataset</p></td>
+        <td><p>Apply a data dictionary to a dataset</p></td>
+      </tr><tr><td>
+          <p><code><a href="data_dict_collapse.html">data_dict_collapse()</a></code> </p>
+        </td>
+        <td><p>Transform multi-row category column(s) to single rows and join to "Variables"</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_evaluate.html">data_dict_evaluate()</a></code> </p>
         </td>
-        <td><p>Generate a report as an Excel spreadsheet of a data dictionary</p></td>
+        <td><p>Generate a quality assessment report of a data dictionary</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_expand.html">data_dict_expand()</a></code> </p>
         </td>
-        <td><p>Transform a columns in a data dictionary component to a new component</p></td>
+        <td><p>Transform single-row category information to multiple rows and add as element</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_extract.html">data_dict_extract()</a></code> </p>
         </td>
-        <td><p>Create a data dictionary in the Maelstrom Research format from a dataset</p></td>
+        <td><p>Create a data dictionary from a dataset</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_filter.html">data_dict_filter()</a></code> </p>
         </td>
-        <td><p>Subset data dictionary using column values</p></td>
-      </tr><tr><td>
-          <p><code><a href="data_dict_flatten.html">data_dict_flatten()</a></code> </p>
-        </td>
-        <td><p>Transform a component in a data dictionary in column(s) in another component</p></td>
+        <td><p>Subset data dictionary by row values</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_group_by.html">data_dict_group_by()</a></code> </p>
         </td>
-        <td><p>Group listed data dictionaries using column names</p></td>
+        <td><p>Group listed data dictionaries by specified column names</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_group_split.html">data_dict_group_split()</a></code> </p>
         </td>
@@ -175,27 +179,27 @@
       </tr><tr><td>
           <p><code><a href="data_dict_list_nest.html">data_dict_list_nest()</a></code> </p>
         </td>
-        <td><p>Regroup listed split data dictionaries</p></td>
+        <td><p>Bind listed data dictionaries</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_match_dataset.html">data_dict_match_dataset()</a></code> </p>
         </td>
-        <td><p>Inner join between any dataset and data_dict variables</p></td>
+        <td><p>Inner join between a dataset and its associated data dictionary</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_opalr_fix.html">data_dict_opalr_fix()</a></code> </p>
         </td>
-        <td><p>Transform a data dictionary object from opalr to Opal format</p></td>
+        <td><p>Transform a data dictionary object from 'opalr' format to Opal format</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_pivot_longer.html">data_dict_pivot_longer()</a></code> </p>
         </td>
-        <td><p>Turn column(s) in a data dictionary component into their longer equivalent</p></td>
+        <td><p>Transform column(s) of a data dictionary from wide format to long format</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_pivot_wider.html">data_dict_pivot_wider()</a></code> </p>
         </td>
-        <td><p>Turn column(s) in a data dictionary component into their wider equivalent</p></td>
+        <td><p>Transform column(s) of a data dictionary from long format to wide format</p></td>
       </tr><tr><td>
           <p><code><a href="data_dict_ungroup.html">data_dict_ungroup()</a></code> </p>
         </td>
-        <td><p>Ungroup data dictionaries</p></td>
+        <td><p>Ungroup data dictionary</p></td>
       </tr><tr><td>
           <p><code><a href="data_extract.html">data_extract()</a></code> </p>
         </td>
@@ -203,47 +207,47 @@
       </tr><tr><td>
           <p><code><a href="DEMO_files.html">DEMO_files</a></code> </p>
         </td>
-        <td><p>Built-in material allowing the user to test the package with demo material</p></td>
+        <td><p>Built-in material allowing the user to test the package with demo data</p></td>
       </tr><tr><td>
           <p><code><a href="dossier_create.html">dossier_create()</a></code> </p>
         </td>
-        <td><p>Create a dossier as a list of datasets</p></td>
+        <td><p>Create a dossier object from a list of dataset(s)</p></td>
       </tr><tr><td>
           <p><code><a href="dossier_evaluate.html">dossier_evaluate()</a></code> </p>
         </td>
-        <td><p>Generate an Excel spreadsheet report of a dataset list (called dossier)</p></td>
+        <td><p>Generate a quality assessment report of a dossier (list of datasets)</p></td>
       </tr><tr><td>
           <p><code><a href="dossier_summarize.html">dossier_summarize()</a></code> </p>
         </td>
-        <td><p>Generate an Excel spreadsheet report of a dossier (dataset list)</p></td>
+        <td><p>Generate a report and summary of a dossier (list of datasets)</p></td>
       </tr><tr><td>
           <p><code><a href="is_dataset.html">is_dataset()</a></code> </p>
         </td>
-        <td><p>Evaluate if any object is a dataset or not</p></td>
+        <td><p>Test if an object is a valid dataset</p></td>
       </tr><tr><td>
           <p><code><a href="is_data_dict.html">is_data_dict()</a></code> </p>
         </td>
-        <td><p>Evaluate if any object is a data dictionary or not</p></td>
+        <td><p>Test if an object is a valid data dictionary</p></td>
       </tr><tr><td>
           <p><code><a href="is_data_dict_mlstr.html">is_data_dict_mlstr()</a></code> </p>
         </td>
-        <td><p>Evaluate if any object is a Maelstrom formatted data dictionary or not</p></td>
+        <td><p>Test if an object is a valid Maelstrom data dictionary</p></td>
       </tr><tr><td>
           <p><code><a href="is_data_dict_shape.html">is_data_dict_shape()</a></code> </p>
         </td>
-        <td><p>Evaluate if any object is a potential data dictionary</p></td>
+        <td><p>Test if an object is a workable data dictionary structure</p></td>
       </tr><tr><td>
           <p><code><a href="is_dossier.html">is_dossier()</a></code> </p>
         </td>
-        <td><p>Evaluate if any object is a dossier or not</p></td>
+        <td><p>Test if an object is a valid dossier</p></td>
       </tr><tr><td>
           <p><code><a href="is_taxonomy.html">is_taxonomy()</a></code> </p>
         </td>
-        <td><p>Evaluate if any object is a taxonomy scheme or not</p></td>
+        <td><p>Test if an object is a valid taxonomy</p></td>
       </tr><tr><td>
           <p><code><a href="is_valueType.html">is_valueType()</a></code> </p>
         </td>
-        <td><p>Evaluate if any object is a valid valueType name or not</p></td>
+        <td><p>Test if a character object is one of the valid valueType values</p></td>
       </tr><tr><td>
           <p><code><a href="madshapR_help.html">madshapR_help()</a></code> </p>
         </td>
@@ -273,61 +277,57 @@
         </td>
         <td><p>Open a visual report in a browser</p></td>
       </tr><tr><td>
-          <p><code><a href="resume_variables.html">resume_variables()</a></code> </p>
-        </td>
-        <td><p>Generate a tibble resuming all variables present in a dataset</p></td>
-      </tr><tr><td>
           <p><code><a href="summary_variables.html">summary_variables()</a></code> </p>
         </td>
-        <td><p>Provide statistical description of variables present in a dataset</p></td>
+        <td><p>Provide descriptive statistics for variables in a dataset</p></td>
       </tr><tr><td>
           <p><code><a href="summary_variables_categorical.html">summary_variables_categorical()</a></code> </p>
         </td>
-        <td><p>Provide statistical description of 'categorical' variables of a dataset</p></td>
+        <td><p>Provide descriptive statistics for variables of categorical in a dataset</p></td>
       </tr><tr><td>
           <p><code><a href="summary_variables_date.html">summary_variables_date()</a></code> </p>
         </td>
-        <td><p>Provide statistical description of 'date' variables of a dataset</p></td>
+        <td><p>Provide descriptive statistics for variables of type 'date' in a dataset</p></td>
       </tr><tr><td>
-          <p><code><a href="summary_variables_numerical.html">summary_variables_numerical()</a></code> </p>
+          <p><code><a href="summary_variables_numeric.html">summary_variables_numeric()</a></code> </p>
         </td>
-        <td><p>Provide statistical description of 'numerical' variables of a dataset</p></td>
+        <td><p>Provide descriptive statistics for variables of type 'numeric' in a dataset</p></td>
       </tr><tr><td>
           <p><code><a href="summary_variables_text.html">summary_variables_text()</a></code> </p>
         </td>
-        <td><p>Provide statistical description of 'text' variables of a dataset</p></td>
+        <td><p>Provide descriptive statistics for variables of type 'text' in a dataset</p></td>
       </tr><tr><td>
           <p><code><a href="taxonomy_opal_get.html">taxonomy_opal_get()</a></code> </p>
         </td>
-        <td><p>Get the taxonomy as used by Opal</p></td>
+        <td><p>Get available taxonomies in format used by Opal</p></td>
       </tr><tr><td>
           <p><code><a href="taxonomy_opal_mlstr_get.html">taxonomy_opal_mlstr_get()</a></code> </p>
         </td>
-        <td><p>Get the taxonomy as used by Maelstrom Research</p></td>
+        <td><p>Get available taxonomies in format used by Maelstrom Research</p></td>
       </tr><tr><td>
           <p><code><a href="valueType_adjust.html">valueType_adjust()</a></code> </p>
         </td>
-        <td><p>Replace the valueType from (or to) any data dictionary to (or from) dataset</p></td>
+        <td><p>Attribute the valueType from a data dictionary to a dataset, or vice versa</p></td>
       </tr><tr><td>
           <p><code><a href="valueType_guess.html">valueType_guess()</a></code> </p>
         </td>
-        <td><p>Guess the first possible valueType of any object</p></td>
+        <td><p>Guess the first possible valueType of an object (Can be a vector)</p></td>
       </tr><tr><td>
           <p><code><a href="valueType_list.html">valueType_list</a></code> </p>
         </td>
-        <td><p>Give list of authorized valueType values</p></td>
+        <td><p>Built-in tibble of allowed valueType values</p></td>
       </tr><tr><td>
           <p><code><a href="valueType_of.html">valueType_of()</a></code> </p>
         </td>
-        <td><p>Give the valueType of any object</p></td>
+        <td><p>Return the valueType of an object</p></td>
       </tr><tr><td>
           <p><code><a href="valueType_self_adjust.html">valueType_self_adjust()</a></code> </p>
         </td>
-        <td><p>Search and replace the valueType of any data dictionary or dataset</p></td>
+        <td><p>Guess and attribute the valueType of a data dictionary or dataset variable</p></td>
       </tr><tr><td>
           <p><code><a href="variable_visualize.html">variable_visualize()</a></code> </p>
         </td>
-        <td><p>Generate a combined plot of a variable in a dataset</p></td>
+        <td><p>Generate a list of charts, figures and summary tables of a variable</p></td>
       </tr></tbody></table></div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
