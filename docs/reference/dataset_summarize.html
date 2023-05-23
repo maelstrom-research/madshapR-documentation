@@ -23,7 +23,7 @@ exported as an Excel spredsheet."><!-- mathjax --><script src="https://cdnjs.clo
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.1024</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.1000</span>
       </span>
     </div>
 
@@ -172,7 +172,6 @@ correspondance with R data types are available using
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/GuiFabre/fabR/" class="external-link">fabR</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">###### Example 1 : Combine functions and summarise datasets.</span></span></span>
 <span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_data_dict_mlstr.html">as_data_dict_mlstr</a></span><span class="op">(</span><span class="va">DEMO_files</span><span class="op">$</span><span class="va">dd_TOKYO_format_maelstrom_tagged</span><span class="op">)</span></span></span>
@@ -180,14 +179,13 @@ correspondance with R data types are available using
 <span class="r-in"><span>  <span class="va">DEMO_files</span><span class="op">$</span><span class="va">dataset_TOKYO</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="valueType_adjust.html">valueType_adjust</a></span><span class="op">(</span>from <span class="op">=</span> <span class="va">data_dict</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span><span class="va">data_dict</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span><span class="fu">dataset_summarize</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">dataset_summarize</span><span class="op">(</span><span class="va">dataset</span>,<span class="va">data_dict</span>,valueType_guess <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">#' ###### Example 2 : any data frame (or tibble) can be summarized</span></span></span>
 <span class="r-in"><span><span class="fu">dataset_summarize</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-in"><span> </span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package 'fabR' was built under R version 4.2.3</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness of variable names</span>
@@ -267,22 +265,23 @@ correspondance with R data types are available using
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarise global information (Overview)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Overview</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    `Quality control of dataset`              `(all)`     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>Date<span style="color: #949494;">"</span>                                    <span style="color: #949494;">"</span>2023-05-16<span style="color: #949494;">"</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>Name of the dataset<span style="color: #949494;">"</span>                     <span style="color: #949494;">"</span>iris<span style="color: #949494;">"</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>    Identifier Variable<span style="color: #949494;">"</span>                 <span style="color: #949494;">""</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>    Variables<span style="color: #949494;">"</span>                           <span style="color: #949494;">"</span> <span style="color: #949494;">"</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>        Total number of variables<span style="color: #949494;">"</span>       <span style="color: #949494;">"</span>5<span style="color: #949494;">"</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>    Data type in dictionary (valueType)<span style="color: #949494;">"</span> <span style="color: #949494;">"</span> <span style="color: #949494;">"</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>        Nb. text variables<span style="color: #949494;">"</span>              <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>        Nb. date variables<span style="color: #949494;">"</span>              <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>        Nb. numerical variables<span style="color: #949494;">"</span>         <span style="color: #949494;">"</span>4<span style="color: #949494;">"</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>        Nb. categorical variables<span style="color: #949494;">"</span>       <span style="color: #949494;">"</span>1<span style="color: #949494;">"</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> <span style="color: #949494;">"</span>    Rows<span style="color: #949494;">"</span>                                <span style="color: #949494;">"</span>(all)<span style="color: #949494;">"</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> <span style="color: #949494;">"</span>        Total number of observations<span style="color: #949494;">"</span>    <span style="color: #949494;">"</span>150<span style="color: #949494;">"</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> <span style="color: #949494;">"</span>        Nb. distinct observations<span style="color: #949494;">"</span>       <span style="color: #949494;">"</span>150<span style="color: #949494;">"</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    `Quality control of dataset`                           `(all)`     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>Date<span style="color: #949494;">"</span>                                                 <span style="color: #949494;">"</span>2023-05-23<span style="color: #949494;">"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>Name of the dataset<span style="color: #949494;">"</span>                                  <span style="color: #949494;">"</span>iris<span style="color: #949494;">"</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>    Identifier Variable<span style="color: #949494;">"</span>                              <span style="color: #949494;">""</span>          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>    Variables<span style="color: #949494;">"</span>                                        <span style="color: #949494;">"</span> <span style="color: #949494;">"</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>        Total number of variables (incl. identifier)<span style="color: #949494;">"</span> <span style="color: #949494;">"</span>5<span style="color: #949494;">"</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>        Total number of empty columns<span style="color: #949494;">"</span>                <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>    Data type in dictionary (valueType)<span style="color: #949494;">"</span>              <span style="color: #949494;">"</span> <span style="color: #949494;">"</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>        Nb. text variables<span style="color: #949494;">"</span>                           <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>        Nb. date variables<span style="color: #949494;">"</span>                           <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>        Nb. numerical variables<span style="color: #949494;">"</span>                      <span style="color: #949494;">"</span>4<span style="color: #949494;">"</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> <span style="color: #949494;">"</span>        Nb. categorical variables<span style="color: #949494;">"</span>                    <span style="color: #949494;">"</span>1<span style="color: #949494;">"</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> <span style="color: #949494;">"</span>    Rows<span style="color: #949494;">"</span>                                             <span style="color: #949494;">"</span>(all)<span style="color: #949494;">"</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> <span style="color: #949494;">"</span>        Total number of observations<span style="color: #949494;">"</span>                 <span style="color: #949494;">"</span>150<span style="color: #949494;">"</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> <span style="color: #949494;">"</span>        Nb. distinct observations<span style="color: #949494;">"</span>                    <span style="color: #949494;">"</span>150<span style="color: #949494;">"</span>       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Data dictionary assessment`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 4</span></span>
@@ -297,7 +296,7 @@ correspondance with R data types are available using
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   `index in data dict.` name  `Quality assessment comment`      value suggestion</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>    [INFO] - possible duplicated par… 102 … <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>    [INFO] - possible duplicated row… 102 … <span style="color: #BB0000;">NA</span>        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Variables summary (all)`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 15</span></span>
