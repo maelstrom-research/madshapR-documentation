@@ -112,9 +112,6 @@
     <loc>/reference/data_dict_match_dataset.html</loc>
   </url>
   <url>
-    <loc>/reference/data_dict_opalr_fix.html</loc>
-  </url>
-  <url>
     <loc>/reference/data_dict_pivot_longer.html</loc>
   </url>
   <url>
@@ -128,6 +125,9 @@
   </url>
   <url>
     <loc>/reference/DEMO_files.html</loc>
+  </url>
+  <url>
+    <loc>/reference/deprecated.html</loc>
   </url>
   <url>
     <loc>/reference/dossier_create.html</loc>
@@ -169,22 +169,7 @@
     <loc>/reference/madshapR_help.html</loc>
   </url>
   <url>
-    <loc>/reference/opal_files_pull.html</loc>
-  </url>
-  <url>
-    <loc>/reference/opal_files_push.html</loc>
-  </url>
-  <url>
-    <loc>/reference/opal_project_create.html</loc>
-  </url>
-  <url>
-    <loc>/reference/opal_tables_pull.html</loc>
-  </url>
-  <url>
-    <loc>/reference/opal_tables_push.html</loc>
-  </url>
-  <url>
-    <loc>/reference/open_visual_report.html</loc>
+    <loc>/reference/reexports.html</loc>
   </url>
   <url>
     <loc>/reference/summary_variables.html</loc>
@@ -196,16 +181,13 @@
     <loc>/reference/summary_variables_date.html</loc>
   </url>
   <url>
+    <loc>/reference/summary_variables_datetime.html</loc>
+  </url>
+  <url>
     <loc>/reference/summary_variables_numeric.html</loc>
   </url>
   <url>
     <loc>/reference/summary_variables_text.html</loc>
-  </url>
-  <url>
-    <loc>/reference/taxonomy_opal_get.html</loc>
-  </url>
-  <url>
-    <loc>/reference/taxonomy_opal_mlstr_get.html</loc>
   </url>
   <url>
     <loc>/reference/valueType_adjust.html</loc>

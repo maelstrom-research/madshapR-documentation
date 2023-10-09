@@ -18,7 +18,7 @@ using dplyr::mutate."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -55,7 +55,7 @@ using dplyr::mutate."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Validate and coerce an object according to a given valueType</h1>
-    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/03-catalogue_functions.R" class="external-link"><code>R/03-catalogue_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/04-catalogue_functions.R" class="external-link"><code>R/04-catalogue_functions.R</code></a></small>
     <div class="hidden name"><code>as_valueType.Rd</code></div>
     </div>
 
@@ -87,12 +87,12 @@ using <a href="https://dplyr.tidyverse.org/reference/mutate.html" class="externa
     <div id="details">
     <h2>Details</h2>
     <p>The valueType is a property of a variable and is required in certain
-functions to determine the handling of the variables. The valueType refers to
-the OBiBa-internal type of a variable. It is specified in a data dictionary
-in a column <code>valueType</code> and can be associated with variables as attributes.
-Acceptable valueTypes include 'text', 'integer', 'decimal', 'boolean',
-'datetime', 'date'). The full list of OBiBa valueType possibilities and their
-correspondance with R data types are available using
+functions to determine the handling of the variables. The valueType refers
+to the OBiBa-internal type of a variable. It is specified in a data
+dictionary in a column <code>valueType</code> and can be associated with variables as
+attributes. Acceptable valueTypes include 'text', 'integer', 'decimal',
+'boolean', datetime', 'date'). The full list of OBiBa valueType
+possibilities and their correspondence with R data types are available using
 <a href="valueType_list.html">valueType_list</a>.</p>
     </div>
     <div id="see-also">
@@ -116,7 +116,6 @@ correspondance with R data types are available using
 <span class="r-in"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu">as_valueType</span><span class="op">(</span><span class="va">cyl</span>,<span class="st">'integer'</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package 'dplyr' was built under R version 4.2.3</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: 'dplyr'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from 'package:stats':</span>

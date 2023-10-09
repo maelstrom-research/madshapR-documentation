@@ -1,14 +1,21 @@
+
 library(madshapR)
+library(fabR)
 library(fs)
 # usethis::use_pkgdown()
 
 devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))
+devtools::build_readme()
+devtools::build_rmd('NEWS.Rmd')
+fs::dir_delete("docs")
 pkgdown::build_site()
 
+fs::dir_delete("../Rmonize-documentation/docs")
 fs::dir_copy(
   "docs",
-  "../madshapR-documentation/docs",
-  overwrite = TRUE
-)
+  "../Rmonize-documentation/docs",
+  overwrite = TRUE)
 
-madshapR_help()
+# push to git
+"https://github.com/maelstrom-research/madshapR-documentation/actions/"
+harmonizR_help()

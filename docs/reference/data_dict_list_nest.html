@@ -18,7 +18,7 @@ This is a wrapper function analogous to dplyr::bind_rows()."><!-- mathjax --><sc
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -55,7 +55,7 @@ This is a wrapper function analogous to dplyr::bind_rows()."><!-- mathjax --><sc
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Bind listed data dictionaries</h1>
-    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/01-dictionaries_functions.R" class="external-link"><code>R/01-dictionaries_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/02-dictionaries_functions.R" class="external-link"><code>R/02-dictionaries_functions.R</code></a></small>
     <div class="hidden name"><code>data_dict_list_nest.Rd</code></div>
     </div>
 
@@ -110,8 +110,8 @@ also be unique'.</p>
 <span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
 <span class="r-in"><span><span class="co"># Create a list of data dictionaries where the column 'table' is added to </span></span></span>
 <span class="r-in"><span><span class="co"># refer to the associated dataset. The object created is not a </span></span></span>
-<span class="r-in"><span><span class="co"># data dictionary per say, but can be used as a structure which can be shaped </span></span></span>
-<span class="r-in"><span><span class="co"># into a data dictionary.</span></span></span>
+<span class="r-in"><span><span class="co"># data dictionary per say, but can be used as a structure which can be </span></span></span>
+<span class="r-in"><span><span class="co"># shaped into a data dictionary.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">data_dict_list</span> <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">[</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'dd_MELBOURNE_1_format_maelstrom'</span>,</span></span>
@@ -121,16 +121,16 @@ also be unique'.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   table     index name  `label:en` `description:en` valueType unit  other_format</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> dd_MELBO… 1     id    id         id of the parti… text      <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> dd_MELBO… 2     Gend… Gender     Gender           integer   <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> dd_MELBO… 3     BMI   BMI        Body Mass Index  decimal   kg/m… <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> dd_MELBO… 4     age   age        Age of Particip… integer   years <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> dd_MELBO… 1     id    id         id of the parti… text      <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> dd_MELBO… 2     smo_… smo_curr   Whether the par… integer   <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> dd_MELBO… 3     prg_… prg_curr   Are you current… integer   <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   table                  index name  `label:en` `description:en` valueType unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> dd_MELBOURNE_1_format… 1     id    id         id of the parti… text      <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> dd_MELBOURNE_1_format… 2     Gend… Gender     Gender           integer   <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> dd_MELBOURNE_1_format… 3     BMI   BMI        Body Mass Index  decimal   kg/m…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> dd_MELBOURNE_1_format… 4     age   age        Age of Particip… integer   years</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> dd_MELBOURNE_2_format… 1     id    id         id of the parti… text      <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> dd_MELBOURNE_2_format… 2     smo_… smo_curr   Whether the par… integer   <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> dd_MELBOURNE_2_format… 3     prg_… prg_curr   Are you current… integer   <span style="color: #BB0000;">NA</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Categories</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 5</span></span>

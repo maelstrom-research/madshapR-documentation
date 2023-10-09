@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -57,6 +57,102 @@
       <small>Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.2.1000" id="madshapr-current-development-version-1021000">madshapR (current development version 1.0.2.1000)<a class="anchor" aria-label="anchor" href="#madshapr-current-development-version-1021000"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.2" id="madshapr-102">madshapR 1.0.2<a class="anchor" aria-label="anchor" href="#madshapr-102"></a></h2>
+<div class="section level3">
+<h3 id="creation-of-news-feed--1-0-2">Creation of NEWS feed !!<a class="anchor" aria-label="anchor" href="#creation-of-news-feed--1-0-2"></a></h3>
+<p>Addition of <code>NEWS.md</code> for the development version use “(development version)”.</p>
+</div>
+<div class="section level3">
+<h3 id="bug-fixes-and-improvements-1-0-2">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-1-0-2"></a></h3>
+<ul><li><p>Some improvements in the documentation of the package has been made.</p></li>
+<li><p>internal call of libraries (using <code>::</code>) has been replaced by proper import in the declaration function.</p></li>
+<li><p>get functions in <a href="https://guifabre.github.io/fabR-documentation/" class="external-link">fabR</a> have been changed in its last release. the functions using them as dependencies ( <code>check_xxx()</code>) have been updated accordingly.</p></li>
+<li><p>DEMO files no longer include harmonization files that are now in the package <a href="https://maelstrom-research.github.io/harmonizR-documentation/" class="external-link">harmonizR</a></p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="dependency-changes-1-0-2">Dependency changes<a class="anchor" aria-label="anchor" href="#dependency-changes-1-0-2"></a></h3>
+<p><strong>New Imports:</strong> haven, lifecycle</p>
+<p><strong>No longer in Imports:</strong> xfun</p>
+</div>
+<div class="section level3">
+<h3 id="new-functions-1-0-2">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-0-2"></a></h3>
+<p>These functions are imported from <a href="https://guifabre.github.io/fabR-documentation/" class="external-link">fabR</a></p>
+<ul><li><p><code><a href="https://rdrr.io/pkg/fabR/man/bookdown_template.html" class="external-link">bookdown_template()</a></code> replaces the deprecated function <code><a href="https://rdrr.io/pkg/fabR/man/bookdown_template.html" class="external-link">bookdown_template()</a></code>.</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/fabR/man/bookdown_render.html" class="external-link">bookdown_render()</a></code> which renders a Rmd collection of files into a docs/index.html website.</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/fabR/man/bookdown_open.html" class="external-link">bookdown_open()</a></code> Which allows to open a docs/index.html document when the bookdown is rendered</p></li>
+</ul><p>This separation into 3 functions will allow future developments, such as render as a ppt or pdf.</p>
+</div>
+<div class="section level3">
+<h3 id="deprecated-functions-1-0-2">deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions-1-0-2"></a></h3>
+<p>Due to another package development (see <a href="https://guifabre.github.io/fabR-documentation/" class="external-link">fabR</a>), The function <code><a href="../reference/deprecated.html">open_visual_report()</a></code> has been deprecated in favor of <code><a href="https://rdrr.io/pkg/fabR/man/bookdown_open.html" class="external-link">bookdown_open()</a></code> imported from fabR package.</p>
+</div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.0" id="madshapr-100">madshapR 1.0.0<small>2023-06-20</small><a class="anchor" aria-label="anchor" href="#madshapr-100"></a></h2>
+<p>This package is a collection of wrapper functions used in data pipelines.</p>
+<p>This is still a work in progress, so please let us know if you used a function before and is not working any longer.</p>
+<div class="section level3">
+<h3 id="helper-functions-1-0-0">Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions-1-0-0"></a></h3>
+<ul><li>
+<code><a href="../reference/madshapR_help.html">madshapR_help()</a></code> Call the help center for full documentation</li>
+</ul></div>
+<div class="section level3">
+<h3 id="functions-to-generate-shape-and-format-meta-data-1-0-0">functions to generate, shape and format meta data.<a class="anchor" aria-label="anchor" href="#functions-to-generate-shape-and-format-meta-data-1-0-0"></a></h3>
+<p>These functions allows to create, extract transform and apply meta data to a dataset.</p>
+<ul><li>Transform and shape:</li>
+</ul><p><code><a href="../reference/data_dict_collapse.html">data_dict_collapse()</a></code>,<code><a href="../reference/data_dict_expand.html">data_dict_expand()</a></code>,<code><a href="../reference/data_dict_filter.html">data_dict_filter()</a></code>, <code><a href="../reference/data_dict_group_by.html">data_dict_group_by()</a></code>,<code><a href="../reference/data_dict_group_split.html">data_dict_group_split()</a></code>,<code><a href="../reference/data_dict_list_nest.html">data_dict_list_nest()</a></code>, <code><a href="../reference/data_dict_pivot_longer.html">data_dict_pivot_longer()</a></code>,<code><a href="../reference/data_dict_pivot_wider.html">data_dict_pivot_wider()</a></code>,<code><a href="../reference/data_dict_ungroup.html">data_dict_ungroup()</a></code></p>
+<ul><li>extract/apply meta data:</li>
+</ul><p><code><a href="../reference/data_dict_match_dataset.html">data_dict_match_dataset()</a></code>,<code><a href="../reference/data_dict_apply.html">data_dict_apply()</a></code>, <code><a href="../reference/data_dict_extract.html">data_dict_extract()</a></code></p>
+<ul><li>evaluate and apply attributes:</li>
+</ul><p><code><a href="../reference/as_data_dict.html">as_data_dict()</a></code>, <code><a href="../reference/as_data_dict_mlstr.html">as_data_dict_mlstr()</a></code>,<code><a href="../reference/as_data_dict_shape.html">as_data_dict_shape()</a></code>, <code><a href="../reference/is_data_dict.html">is_data_dict()</a></code>, <code><a href="../reference/is_data_dict_mlstr.html">is_data_dict_mlstr()</a></code>, <code><a href="../reference/is_data_dict_shape.html">is_data_dict_shape()</a></code> <code><a href="../reference/as_taxonomy.html">as_taxonomy()</a></code>, <code><a href="../reference/is_taxonomy.html">is_taxonomy()</a></code></p>
+</div>
+<div class="section level3">
+<h3 id="functions-to-generate-shape-and-format-data-1-0-0">functions to generate, shape and format data.<a class="anchor" aria-label="anchor" href="#functions-to-generate-shape-and-format-data-1-0-0"></a></h3>
+<p>These functions allows to create, extract transform data/meta data from a dataset. A dossier is a list of datasets.</p>
+<ul><li>evaluate and apply attributes:</li>
+</ul><p><code><a href="../reference/as_dataset.html">as_dataset()</a></code>, <code><a href="../reference/as_dossier.html">as_dossier()</a></code> <code><a href="../reference/is_dataset.html">is_dataset()</a></code>, <code><a href="../reference/is_dossier.html">is_dossier()</a></code></p>
+<ul><li>Extract/transform meta data: <code><a href="../reference/data_extract.html">data_extract()</a></code>, <code><a href="../reference/dossier_create.html">dossier_create()</a></code>, <code><a href="../reference/dataset_zap_data_dict.html">dataset_zap_data_dict()</a></code>, <code><a href="../reference/dataset_cat_as_labels.html">dataset_cat_as_labels()</a></code>
+</li>
+</ul></div>
+<div class="section level3">
+<h3 id="functions-to-work-with-data-types-1-0-0">Functions to work with data types<a class="anchor" aria-label="anchor" href="#functions-to-work-with-data-types-1-0-0"></a></h3>
+<p>These functions allow user to work with, extract or assign data type (valueType) to values and/or dataset.</p>
+<p><code><a href="../reference/as_valueType.html">as_valueType()</a></code>, <code><a href="../reference/is_valueType.html">is_valueType()</a></code>, <code><a href="../reference/valueType_adjust.html">valueType_adjust()</a></code>, <code><a href="../reference/valueType_guess.html">valueType_guess()</a></code>, <code><a href="../reference/valueType_self_adjust.html">valueType_self_adjust()</a></code>, <code><a href="../reference/valueType_of.html">valueType_of()</a></code></p>
+</div>
+<div class="section level3">
+<h3 id="unit-tests-and-qa-for-datasets-and-data-dictionaries-1-0-0">Unit tests and QA for datasets and data dictionaries<a class="anchor" aria-label="anchor" href="#unit-tests-and-qa-for-datasets-and-data-dictionaries-1-0-0"></a></h3>
+<p>These helper functions evaluate content of a dataset and/or data dictionary to extract from them irregularities or potential errors. These informations are stored in a tibble that can be use to assess inputs.</p>
+<p><code><a href="../reference/check_data_dict_categories.html">check_data_dict_categories()</a></code>, <code><a href="../reference/check_data_dict_missing_categories.html">check_data_dict_missing_categories()</a></code>, <code>check_data_dict_taxonomy()</code>, <code><a href="../reference/check_data_dict_variables.html">check_data_dict_variables()</a></code>, <code><a href="../reference/check_data_dict_valueType.html">check_data_dict_valueType()</a></code>, <code><a href="../reference/check_dataset_categories.html">check_dataset_categories()</a></code>, <code><a href="../reference/check_dataset_valueType.html">check_dataset_valueType()</a></code>, <code><a href="../reference/check_dataset_variables.html">check_dataset_variables()</a></code>, <code><a href="../reference/check_name_standards.html">check_name_standards()</a></code></p>
+</div>
+<div class="section level3">
+<h3 id="summarise-information-in-dataset-and-data-dictionaries-1-0-0">Summarise information in dataset and data dictionaries<a class="anchor" aria-label="anchor" href="#summarise-information-in-dataset-and-data-dictionaries-1-0-0"></a></h3>
+<p>These helper functions evaluate content of a dataset and/or data dictionary to extract from them summary statistics and elements such as missing values, NA, category names, etc. These informations are stored in a tibble that can be use to summary inputs.</p>
+<p><code><a href="../reference/dataset_preprocess.html">dataset_preprocess()</a></code>, <code><a href="../reference/summary_variables.html">summary_variables()</a></code>, <code><a href="../reference/summary_variables_categorical.html">summary_variables_categorical()</a></code>,<code><a href="../reference/summary_variables_date.html">summary_variables_date()</a></code>, <code><a href="../reference/summary_variables_numeric.html">summary_variables_numeric()</a></code>,<code><a href="../reference/summary_variables_text.html">summary_variables_text()</a></code></p>
+</div>
+<div class="section level3">
+<h3 id="write-and-read-excel-and-csv-1-0-0">Write and read excel and csv<a class="anchor" aria-label="anchor" href="#write-and-read-excel-and-csv-1-0-0"></a></h3>
+<ul><li><p><code><a href="https://rdrr.io/pkg/fabR/man/read_csv_any_formats.html" class="external-link">read_csv_any_formats()</a></code> The csv file is read twice to detect the number of lines to use in attributing the column type (<code>guess_max</code> parameter of read_csv). This avoids common errors when reading csv files.</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/fabR/man/read_excel_allsheets.html" class="external-link">read_excel_allsheets()</a></code> The Excel file is read and the values are placed in a list of tibbles, with each sheet in a separate element in the list. If the Excel file has only one sheet, the output is a single tibble.</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/fabR/man/write_excel_allsheets.html" class="external-link">write_excel_allsheets()</a></code> Write all Excel sheets using <code>xlsx::write.xlsx()</code> recursively.</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="plot-and-summary-functions-used-in-a-visual-report-1-0-0">Plot and summary functions used in a visual report<a class="anchor" aria-label="anchor" href="#plot-and-summary-functions-used-in-a-visual-report-1-0-0"></a></h3>
+<p><code>plot_bar()</code>, <code>plot_box()</code>, <code>plot_date()</code>, <code>plot_density()</code>, <code>plot_histogram()</code>, <code>plot_main_word()</code>, <code>plot_pie_valid_value()</code>, <code>summary_category()</code>, <code>summary_numerical()</code>,<code>summary_text()</code></p>
+</div>
+<div class="section level3">
+<h3 id="aggregate-information-and-generate-reports-1-0-0">aggregate information and generate reports<a class="anchor" aria-label="anchor" href="#aggregate-information-and-generate-reports-1-0-0"></a></h3>
+<ul><li>assess data</li>
+</ul><p><code><a href="../reference/data_dict_evaluate.html">data_dict_evaluate()</a></code> <code><a href="../reference/dataset_evaluate.html">dataset_evaluate()</a></code> <code><a href="../reference/dossier_evaluate.html">dossier_evaluate()</a></code></p>
+<ul><li>summarize data</li>
+</ul><p><code><a href="../reference/dataset_summarize.html">dataset_summarize()</a></code> <code><a href="../reference/dossier_summarize.html">dossier_summarize()</a></code></p>
+<ul><li>visualize data</li>
+</ul><p><code><a href="../reference/dataset_visualize.html">dataset_visualize()</a></code> <code><a href="../reference/variable_visualize.html">variable_visualize()</a></code> <code><a href="../reference/deprecated.html">open_visual_report()</a></code></p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

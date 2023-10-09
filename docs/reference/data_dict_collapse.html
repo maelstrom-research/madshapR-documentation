@@ -27,7 +27,7 @@ This function is the reversed operation of data_dict_expand()"><!-- mathjax --><
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -64,7 +64,7 @@ This function is the reversed operation of data_dict_expand()"><!-- mathjax --><
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Transform multi-row category column(s) to single rows and join to "Variables"</h1>
-    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/01-dictionaries_functions.R" class="external-link"><code>R/01-dictionaries_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/02-dictionaries_functions.R" class="external-link"><code>R/02-dictionaries_functions.R</code></a></small>
     <div class="hidden name"><code>data_dict_collapse.Rd</code></div>
     </div>
 
@@ -148,14 +148,14 @@ also be unique'.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   index name   `label:en` `description:en`      valueType unit   other_format</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 id     id         id of the participant text      <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 Gender Gender     Gender                integer   <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 BMI    BMI        Body Mass Index       decimal   kg/m^2 <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 age    age        Age of Participant    integer   years  <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: `Categories::label:en` &lt;chr&gt;, `Categories::missing` &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   index name  `label:en` `description:en` valueType unit  `Categories::label:en`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 id    id         id of the parti… text      <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 Gend… Gender     Gender           integer   <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>1 = Male ; \n2 = Fem…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 BMI   BMI        Body Mass Index  decimal   kg/m…  <span style="color: #BB0000;">NA</span>                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 age   age        Age of Particip… integer   years <span style="color: #949494;">"</span>-888 = don't want to…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: `Categories::missing` &lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"madshapR::class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "data_dict_structure"</span>

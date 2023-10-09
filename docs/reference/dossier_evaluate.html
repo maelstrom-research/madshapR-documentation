@@ -4,7 +4,7 @@ datasets) and reports possible issues in the datasets and data dictionaries
 to facilitate assessment of input data.
 The report can be used to help assess data structure, presence of fields,
 coherence across elements, and taxonomy or data dictionary formats.This
-report is compatible with Excel and can be exported as an Excel spredsheet."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+report is compatible with Excel and can be exported as an Excel spreadsheet."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
@@ -22,7 +22,7 @@ report is compatible with Excel and can be exported as an Excel spredsheet."><!-
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -69,7 +69,7 @@ datasets) and reports possible issues in the datasets and data dictionaries
 to facilitate assessment of input data.
 The report can be used to help assess data structure, presence of fields,
 coherence across elements, and taxonomy or data dictionary formats.This
-report is compatible with Excel and can be exported as an Excel spredsheet.</p>
+report is compatible with Excel and can be exported as an Excel spreadsheet.</p>
     </div>
 
     <div id="ref-usage">
@@ -123,30 +123,26 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">###### Example : a dataset list is a dossier by definition.</span></span></span>
-<span class="r-in"><span><span class="va">dossier_evaluation</span> <span class="op">&lt;-</span> <span class="fu">dossier_evaluate</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="va">DEMO_files</span><span class="op">[</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">DEMO_files</span><span class="op">)</span>,<span class="st">"dataset_MELBOURNE"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">dossier_evaluation</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   </span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="as_dataset.html">as_dataset</a></span><span class="op">(</span><span class="va">DEMO_files</span><span class="op">$</span><span class="va">`dataset_TOKYO - ERROR WITH DATA`</span>,col_id <span class="op">=</span> <span class="st">'part_id'</span><span class="op">)</span></span></span>
+<span class="r-in"><span> </span></span>
+<span class="r-in"><span> <span class="fu">dossier_evaluate</span><span class="op">(</span><span class="fu"><a href="as_dossier.html">as_dossier</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ds <span class="op">=</span> <span class="va">dataset</span><span class="op">)</span><span class="op">)</span>,as_data_dict_mlstr <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">- DOSSIER ASSESSMENT: ----------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness of variable names</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated columns</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty columns in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label(:xx)` column in 'Variables'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">dataset_MELBOURNE_1</span> --------------------------</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">ds</span> --------------------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of variable names both in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated variable in the dataset</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated participants in the dataset</span>
@@ -154,46 +150,46 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all NA(s) of columns in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` comparison in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness of variable names</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated columns</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty columns in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label(:xx)` column in 'Variables'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">dataset_MELBOURNE_2</span> --------------------------</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of variable names both in dataset and data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated variable in the dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated participants in the dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of unique value columns in dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all NA(s) of columns in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` comparison in dataset and data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ dataset_MELBOURNE_1:List of 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary summary   : tibble [4 × 4] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary assessment: tibble [2 × 4] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Dataset assessment        : tibble [3 × 5] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ dataset_MELBOURNE_2:List of 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary summary   : tibble [3 × 4] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary assessment: tibble [2 × 4] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Dataset assessment        : tibble [3 × 5] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ds$`Data dictionary summary`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    index name         label        typeof   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1 part_id      part_id      character</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     2 gndr         gndr         character</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     3 height       height       double   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     4 weight_ms    weight_ms    double   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     5 weight_dc    weight_dc    double   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     6 dob          dob          character</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     7 collect_date collect_date character</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     8 prg_ever     prg_ever     double   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     9 empty        empty        logical  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>    10 opentext     opentext     character</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ds$`Data dictionary assessment`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sheet     col_name name_var `Quality assessment comment`         value       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Variables label    <span style="color: #BB0000;">NA</span>       [INFO] - Possible duplicated columns name ; label</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Variables name     <span style="color: #BB0000;">NA</span>       [INFO] - Possible duplicated columns name ; label</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ds$`Dataset assessment`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   `index in data dict.` name      `Quality assessment comment`             value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>                     1 part_id   [INFO] - possible duplicated row values  ID00…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>                     3 height    Unique value in the column               191  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>                     4 weight_ms [INFO] - Possible duplicated columns     weig…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>                     8 prg_ever  [INFO] - Possible duplicated columns     weig…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>                     9 empty     Empty column                             <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>        [INFO] - Empty participant(s) (Except p… ID008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>        [INFO] - Empty participant(s) (Except p… ID016</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -8,7 +8,7 @@ variable). This function can be used to personalize report parameters and is
 internally used in the function dataset_visualize(). Up to seven objects
 are generated which include : One datatable of the key elements of the
 data dictionary, one datatable summarizing statistics (such as mean,
-quartiles, most seen value, most recent date, ... , depending on the
+quartile, most seen value, most recent date, ... , depending on the
 data type of the variable), two graphs showing the distribution of the
 variable, One bar chart for categorical values (if any), One bar chart for
 missing values (if any), One pie chart for the proportion of valid and
@@ -36,7 +36,7 @@ parameters to operate."><!-- mathjax --><script src="https://cdnjs.cloudflare.co
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@ variable). This function can be used to personalize report parameters and is
 internally used in the function <code><a href="dataset_visualize.html">dataset_visualize()</a></code>. Up to seven objects
 are generated which include : One datatable of the key elements of the
 data dictionary, one datatable summarizing statistics (such as mean,
-quartiles, most seen value, most recent date, ... , depending on the
+quartile, most seen value, most recent date, ... , depending on the
 data type of the variable), two graphs showing the distribution of the
 variable, One bar chart for categorical values (if any), One bar chart for
 missing values (if any), One pie chart for the proportion of valid and
@@ -106,6 +106,7 @@ parameters to operate.</p>
 <span>  <span class="va">col</span>,</span>
 <span>  data_dict <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  group_by <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  valueType_guess <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  .summary_var <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -113,8 +114,8 @@ parameters to operate.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
-<dd><p>A tibble identifying the input dataset observations associated
-to its data dictionary.</p></dd>
+<dd><p>A tibble identifying the input dataset observations
+associated to its data dictionary.</p></dd>
 
 
 <dt>col</dt>
@@ -130,6 +131,11 @@ associated dataset. Automatically generated if not provided.</p></dd>
 <dd><p>A character string of one column in the dataset that can be
 taken as a grouping column. The visual element will be grouped and displayed
 by this column.</p></dd>
+
+
+<dt>valueType_guess</dt>
+<dd><p>Whether the output should include a more accurate
+valueType that could be applied to the dataset. FALSE by default.</p></dd>
 
 
 <dt>.summary_var</dt>
@@ -161,6 +167,14 @@ columns. To be considered as a minimum workable data dictionary, in
 'Variables' the 'name' column must also have unique and non-null entries,
 and in 'Categories' the combination of 'variable' and 'name' columns must
 also be unique'.</p>
+<p>The valueType is a property of a variable and is required in certain
+functions to determine the handling of the variables. The valueType refers
+to the OBiBa-internal type of a variable. It is specified in a data
+dictionary in a column <code>valueType</code> and can be associated with variables as
+attributes. Acceptable valueTypes include 'text', 'integer', 'decimal',
+'boolean', datetime', 'date'). The full list of OBiBa valueType
+possibilities and their correspondence with R data types are available using
+<a href="valueType_list.html">valueType_list</a>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -173,13 +187,13 @@ also be unique'.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span> <span class="va">summary_variable</span> <span class="op">&lt;-</span></span></span>
-<span class="r-in"><span>   <span class="fu"><a href="dataset_summarize.html">dataset_summarize</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">iris</span>, group_by <span class="op">=</span> <span class="va">Species</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="st">'Sepal.Width'</span><span class="op">]</span></span></span>
+<span class="r-in"><span> <span class="va">summary_variable</span> <span class="op">&lt;-</span> <span class="fu"><a href="dataset_summarize.html">dataset_summarize</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span> <span class="va">variable_viz</span> <span class="op">&lt;-</span></span></span>
-<span class="r-in"><span>   <span class="fu">variable_visualize</span><span class="op">(</span></span></span>
-<span class="r-in"><span>   dataset <span class="op">=</span> <span class="va">iris</span>, col <span class="op">=</span> <span class="va">Petal.Length</span>, group_by <span class="op">=</span> <span class="va">Species</span>,</span></span>
-<span class="r-in"><span>   .summary_var <span class="op">=</span>  <span class="va">summary_variable</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu">variable_visualize</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">dataset</span>, col <span class="op">=</span> <span class="st">'Sepal.Width'</span>,</span></span>
+<span class="r-in"><span>    .summary_var <span class="op">=</span>  <span class="va">summary_variable</span><span class="op">)</span></span></span>
 <span class="r-in"><span> </span></span>
 <span class="r-in"><span> <span class="va">variable_viz</span><span class="op">$</span><span class="va">summary_table</span></span></span>
 <span class="r-in"><span> <span class="va">variable_viz</span><span class="op">$</span><span class="va">main_values_1</span></span></span>
@@ -192,11 +206,8 @@ also be unique'.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated columns</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty columns in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label(:xx)` column in 'Variables'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess presence and completion of `label(:xx)` column in 'Categories'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the logical values of missing column in Categories</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
@@ -206,25 +217,10 @@ also be unique'.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of variable names both in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated variable in the dataset</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated participants in the dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of unique value columns in dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all NA(s) of columns in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` comparison in dataset and data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET SUMMARIZE: <span style="font-weight: bold;">iris</span> --------------------------</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize the data type of each variable across the dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarise information for all variables</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarise information for numerical variables</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarise information for text variables</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarise information for date variables</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarise information for categorical variables</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarise global information (Overview)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
-<span class="r-plt img"><img src="variable_visualize-1.png" alt="" width="700" height="433"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in df_append(out, united, after = after):</span> `after` must be a whole number, not an integer `NA`.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> This is an internal error that was detected in the <span style="color: #0000BB;">tidyr</span> package.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   Please report it at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/tidyverse/tidyr/issues&gt;</span> with a reprex</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   (<span style="color: #0000BB; font-style: italic;">&lt;https://tidyverse.org/help/&gt;</span>) and the full backtrace.</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

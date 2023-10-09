@@ -18,7 +18,7 @@ material."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -55,7 +55,7 @@ material."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/m
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Built-in material allowing the user to test the package with demo data</h1>
-    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/00-utils.R" class="external-link"><code>R/00-utils.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/01-utils.R" class="external-link"><code>R/01-utils.R</code></a></small>
     <div class="hidden name"><code>DEMO_files.Rd</code></div>
     </div>
 
@@ -75,24 +75,9 @@ material.</p>
 <h3 id="list"><code>list</code><a class="anchor" aria-label="anchor" href="#list"></a></h3>
 
 
-<p>A list with 22 elements used for testing the package (data frames and lists):</p>
-<dl><dt>DEMO_data_processing_elements - final</dt>
-<dd><p>Data processing element
-without error</p></dd>
-
-<dt>DEMO_data_processing_elements - with error</dt>
-<dd><p>Data processing element
-containing errors</p></dd>
-
-<dt>DEMO_data_processing_elements - work in progress</dt>
-<dd><p>Data processing
-element in construction</p></dd>
-
-<dt>DEMO_dataschema</dt>
-<dd><p>DataSchema used, combined with data processing
-elements and study-specific material</p></dd>
-
-<dt>dd_MELBOURNE_1_format_maelstrom</dt>
+<p>A list with 20 elements used for testing the package
+(data frames and lists):</p>
+<dl><dt>dd_MELBOURNE_1_format_maelstrom</dt>
 <dd><p>Data dictionary (1) of Melbourne
 dataset</p></dd>
 
@@ -100,35 +85,39 @@ dataset</p></dd>
 <dd><p>Data dictionary (2) of Melbourne
 dataset</p></dd>
 
+<dt>dd_PARIS_format_flatten - ERROR</dt>
+<dd><p>Data dictionary of Paris dataset
+containing errors for testing purpose</p></dd>
+
+<dt>dd_PARIS_format_flatten</dt>
+<dd><p>Data dictionary of Paris in preprocessed
+format</p></dd>
+
 <dt>dd_PARIS_format_maelstrom</dt>
 <dd><p>Data dictionary of Paris dataset</p></dd>
 
-<dt>dd_PARIS_format_preprocessed - ERROR</dt>
-<dd><p>Data dictionary of Paris
-dataset containing errors</p></dd>
-
-<dt>dd_PARIS_format_preprocessed</dt>
-<dd><p>Data dictionary of Paris in
-preprocessed format</p></dd>
-
-<dt>dd_TOKYO_format_maelstrom_tagged - ERROR WITH DATA</dt>
-<dd><p>Data dictionary
-of Tokyo dataset containing errors</p></dd>
-
-<dt>dd_TOKYO_format_maelstrom_tagged - ERROR</dt>
-<dd><p>Data dictionary of Tokyo
-dataset containing errors</p></dd>
-
-<dt>dd_TOKYO_format_maelstrom_tagged</dt>
+<dt>dd_TOKYO_format_maelstrom</dt>
 <dd><p>Data dictionary of Tokyo dataset</p></dd>
 
+<dt>dd_TOKYO_format_maelstrom_tagged - ERROR WITH DATA</dt>
+<dd><p>Tagged
+data dictionary of Tokyo dataset containing errors for testing purpose</p></dd>
+
+<dt>dd_TOKYO_format_maelstrom_tagged - ERROR</dt>
+<dd><p>Tagged data dictionary of
+Tokyo dataset containing errors for testing purpose</p></dd>
+
+<dt>dd_TOKYO_format_maelstrom_tagged</dt>
+<dd><p>Tagged data dictionary of Tokyo
+dataset</p></dd>
+
 <dt>dd_TOKYO_format_opal_tagged - ERROR WITH TAXO</dt>
-<dd><p>Data dictionary of
-Tokyo dataset containing errors</p></dd>
+<dd><p>Tagged
+data dictionary of Tokyo dataset containing errors for testing purpose</p></dd>
 
 <dt>dd_TOKYO_format_opal_tagged</dt>
-<dd><p>Data dictionary of Tokyo dataset opal
-format</p></dd>
+<dd><p>Tagged data dictionary of Tokyo dataset
+opal format</p></dd>
 
 <dt>dataset_MELBOURNE_1</dt>
 <dd><p>Dataset of Melbourne (1)</p></dd>
@@ -140,19 +129,23 @@ format</p></dd>
 <dd><p>Dataset of Paris</p></dd>
 
 <dt>dataset_TOKYO - ERROR WITH DATA</dt>
-<dd><p>Dataset of Tokyo containing errors</p></dd>
+<dd><p>Dataset of Tokyo containing errors
+for testing purpose</p></dd>
 
 <dt>dataset_TOKYO</dt>
 <dd><p>Dataset of Tokyo</p></dd>
 
-<dt>PARIS_taxonomy</dt>
+<dt>taxonomy_PARIS</dt>
 <dd><p>Taxonomy specific to Paris dataset</p></dd>
-
-<dt>taxonomy_mlstr</dt>
-<dd><p>Maelstrom Taxonomy</p></dd>
 
 <dt>taxonomy_opal</dt>
 <dd><p>Opal Taxonomy</p></dd>
+
+<dt>taxonomy_opal_mlstr</dt>
+<dd><p>Maelstrom Taxonomy</p></dd>
+
+<dt>summary_var</dt>
+<dd><p>Variables summary for testing purpose</p></dd>
 
 ...
 
@@ -167,20 +160,21 @@ format</p></dd>
 <span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">DEMO_files</span><span class="op">$</span><span class="va">dataset_TOKYO</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 50 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    part_id gndr   height weight_ms weight_dc dob        prg_ever empty opentext </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ID001   Male      191        63        <span style="color: #BB0000;">NA</span> 3/22/1990        -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    All chil…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ID002   Female    176        <span style="color: #BB0000;">NA</span>        65 8/15/2001         0 <span style="color: #BB0000;">NA</span>    grow up,…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ID003   Female    154        <span style="color: #BB0000;">NA</span>       121 12/17/1996        2 <span style="color: #BB0000;">NA</span>    years ol…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ID004   Female    167       -<span style="color: #BB0000;">88</span>        <span style="color: #BB0000;">NA</span> 6/13/1990         1 <span style="color: #BB0000;">NA</span>    flower a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ID005   Female    185        <span style="color: #BB0000;">NA</span>        45 12/17/1996        8 <span style="color: #BB0000;">NA</span>    rather d…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ID006   -77       171        57        <span style="color: #BB0000;">NA</span> 3/31/1981        -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    cried, O…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ID007   Female    185        <span style="color: #BB0000;">NA</span>        58 4/19/1988         9 <span style="color: #BB0000;">NA</span>    that pas…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ID008   Female    171        <span style="color: #BB0000;">NA</span>        59 <span style="color: #BB0000;">NA</span>                2 <span style="color: #BB0000;">NA</span>    that she…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ID009   -77       169        52        <span style="color: #BB0000;">NA</span> 3/14/1976        -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    beginnin…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ID010   Male      179        <span style="color: #BB0000;">NA</span>        62 10/19/1993       -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    All chil…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 50 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    part_id gndr   height weight_ms weight_dc dob     collect_date prg_ever empty</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ID001   Male      191        63        <span style="color: #BB0000;">NA</span> 3/22/1… 2020-06-01 …       -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ID002   Female    176        <span style="color: #BB0000;">NA</span>        65 8/15/2… 2022-01-24 …        0 <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ID003   Female    154        <span style="color: #BB0000;">NA</span>       121 12/17/… 2020-08-04 …        2 <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ID004   Female    167       -<span style="color: #BB0000;">88</span>        <span style="color: #BB0000;">NA</span> 6/13/1… 2022-03-20 …        1 <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ID005   Female    185        <span style="color: #BB0000;">NA</span>        45 12/17/… 2020-05-04 …        8 <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ID006   -77       171        57        <span style="color: #BB0000;">NA</span> 3/31/1… 2021-11-01 …       -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ID007   Female    185        <span style="color: #BB0000;">NA</span>        58 4/19/1… 2022-04-19 …        9 <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ID008   Female    171        <span style="color: #BB0000;">NA</span>        59 <span style="color: #BB0000;">NA</span>      2021-11-15 …        2 <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ID009   -77       169        52        <span style="color: #BB0000;">NA</span> 3/14/1… 2022-03-29 …       -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ID010   Male      179        <span style="color: #BB0000;">NA</span>        62 10/19/… 2022-03-28 …       -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 40 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: opentext &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>
   </div>

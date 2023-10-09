@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -106,26 +106,13 @@ visual summary reports.</p>
 <div class="section level3">
 <h3 id="install-the-package">Install the package<a class="anchor" aria-label="anchor" href="#install-the-package"></a>
 </h3>
-<p>To download the package, you need to have an account on
-<a href="https://github.com/" target="_blank" class="external-link">GitHub</a> and create a
-<a href="https://github.com/settings/tokens" target="_blank" class="external-link">personal
-access token</a> (in the format “ghp_xxx”). To use the package, you will
-need to be added to the list of authorized users. To request access,
-contact us and send us your Github username.</p>
-<p>You can send us your Github name using the
-<a href="https://www.maelstrom-research.org/contact" target="_blank" class="external-link">following
-link</a> so we can add you to our authorized list of users.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># To update the R package in your R environment you may first need to remove it, </span></span>
-<span><span class="co"># and use the exit command quit() to terminate the current R session.</span></span>
+<code class="sourceCode R"><span><span class="co"># To update the R package in your R environment you may first need to remove </span></span>
+<span><span class="co"># it, and use the exit command quit() to terminate the current R session.</span></span>
 <span></span>
 <span><span class="co"># To install the R package:</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span></span>
-<span>  repo <span class="op">=</span> <span class="st">"https://github.com/maelstrom-research/madshapR@testing"</span>,</span>
-<span>  auth_token <span class="op">=</span> <span class="st">"ghp_YouNeedaValidGithubTOKEN!!!"</span>,</span>
-<span>  force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maelstrom-research/madshapR/" class="external-link">madshapR</a></span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'madshapR'</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maelstrom-research/madshapR" class="external-link">madshapR</a></span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co">#if you need help with the package, please use:</span></span>
 <span><span class="fu"><a href="../reference/madshapR_help.html">madshapR_help</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>

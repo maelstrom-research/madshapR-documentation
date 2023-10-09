@@ -20,7 +20,7 @@ coherence across elements, and taxonomy or data dictionary formats."><!-- mathja
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -113,12 +113,12 @@ specified, the <code>id</code> values must be non-missing and will be used in fu
 that require it. If no identifier column is specified, indexing is handled
 automatically by the function.</p>
 <p>The valueType is a property of a variable and is required in certain
-functions to determine the handling of the variables. The valueType refers to
-the OBiBa-internal type of a variable. It is specified in a data dictionary
-in a column <code>valueType</code> and can be associated with variables as attributes.
-Acceptable valueTypes include 'text', 'integer', 'decimal', 'boolean',
-'datetime', 'date'). The full list of OBiBa valueType possibilities and their
-correspondance with R data types are available using
+functions to determine the handling of the variables. The valueType refers
+to the OBiBa-internal type of a variable. It is specified in a data
+dictionary in a column <code>valueType</code> and can be associated with variables as
+attributes. Acceptable valueTypes include 'text', 'integer', 'decimal',
+'boolean', datetime', 'date'). The full list of OBiBa valueType
+possibilities and their correspondence with R data types are available using
 <a href="valueType_list.html">valueType_list</a>.</p>
     </div>
 
@@ -135,14 +135,14 @@ correspondance with R data types are available using
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   name_var  value   condition                             suggestion</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> gndr      boolean [ERR] - valueType conflict in dataset text      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> height    decimal [INFO] - refined valueType proposed   integer   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> weight_dc integer [ERR] - valueType conflict in dataset decimal   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> dob       text    [INFO] - refined valueType proposed   date      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> empty     integer [INFO] - refined valueType proposed   boolean   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> opentext  boolean [ERR] - valueType conflict in dataset text      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   name_var  value   condition                             suggestion            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> gndr      boolean [ERR] - valueType conflict in dataset text                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> height    decimal [INFO] - refined valueType proposed   integer               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> weight_dc integer [ERR] - valueType conflict in dataset decimal               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> dob       text    [INFO] - refined valueType proposed   date                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> empty     integer [INFO] - refined valueType proposed   boolean|integer|decim…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> opentext  boolean [ERR] - valueType conflict in dataset text                  </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
