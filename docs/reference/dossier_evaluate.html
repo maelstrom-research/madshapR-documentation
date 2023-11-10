@@ -22,7 +22,7 @@ report is compatible with Excel and can be exported as an Excel spreadsheet."><!
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -121,13 +121,13 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">###### Example : a dataset list is a dossier by definition.</span></span></span>
 <span class="r-in"><span>   </span></span>
 <span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span></span></span>
-<span class="r-in"><span> <span class="fu"><a href="as_dataset.html">as_dataset</a></span><span class="op">(</span><span class="va">DEMO_files</span><span class="op">$</span><span class="va">`dataset_TOKYO - ERROR WITH DATA`</span>,col_id <span class="op">=</span> <span class="st">'part_id'</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="as_dataset.html">as_dataset</a></span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`dataset_TOKYO - with errors in data`</span>,col_id <span class="op">=</span> <span class="st">'part_id'</span><span class="op">)</span></span></span>
 <span class="r-in"><span> </span></span>
 <span class="r-in"><span> <span class="fu">dossier_evaluate</span><span class="op">(</span><span class="fu"><a href="as_dossier.html">as_dossier</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ds <span class="op">=</span> <span class="va">dataset</span><span class="op">)</span><span class="op">)</span>,as_data_dict_mlstr <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -156,19 +156,18 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ds</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ds$`Data dictionary summary`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    index name         label        typeof   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1 part_id      part_id      character</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     2 gndr         gndr         character</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     3 height       height       double   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     4 weight_ms    weight_ms    double   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     5 weight_dc    weight_dc    double   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     6 dob          dob          character</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     7 collect_date collect_date character</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     8 prg_ever     prg_ever     double   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     9 empty        empty        logical  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>    10 opentext     opentext     character</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   index name      label     typeof   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 part_id   part_id   character</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 gndr      gndr      character</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 height    height    double   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 weight_ms weight_ms double   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 weight_dc weight_dc double   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     6 dob       dob       character</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>     7 prg_ever  prg_ever  double   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span>     8 empty     empty     logical  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span>     9 opentext  opentext  character</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ds$`Data dictionary assessment`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 5</span></span>
@@ -178,16 +177,18 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Variables name     <span style="color: #BB0000;">NA</span>       [INFO] - Possible duplicated columns name ; label</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ds$`Dataset assessment`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   `index in data dict.` name      `Quality assessment comment`             value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>                     1 part_id   [INFO] - possible duplicated row values  ID00…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>                     3 height    Unique value in the column               191  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>                     4 weight_ms [INFO] - Possible duplicated columns     weig…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>                     8 prg_ever  [INFO] - Possible duplicated columns     weig…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>                     9 empty     Empty column                             <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>        [INFO] - Empty participant(s) (Except p… ID008</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>        [INFO] - Empty participant(s) (Except p… ID016</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>                     1 part_id   [INFO] - possible duplicated row values  ID00…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>                     1 part_id   [INFO] - possible duplicated row values  ID02…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>                     3 height    Unique value in the column               191  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>                     4 weight_ms [INFO] - Possible duplicated columns     weig…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>                     7 prg_ever  [INFO] - Possible duplicated columns     weig…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>                     8 empty     Empty column                             <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>        [INFO] - Empty participant(s) (Except p… ID008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>        [INFO] - Empty participant(s) (Except p… ID016</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>

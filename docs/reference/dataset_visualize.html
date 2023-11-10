@@ -30,7 +30,7 @@ must have the same parameters to operate."><!-- mathjax --><script src="https://
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -96,7 +96,6 @@ must have the same parameters to operate.</p>
 <span>  group_by <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  taxonomy <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  valueType_guess <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  render <span class="op">=</span> <span class="st">"html"</span>,</span>
 <span>  .summary_var <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  .dataset_name <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -136,10 +135,6 @@ classification.</p></dd>
 valueType that could be applied to the dataset. FALSE by default.</p></dd>
 
 
-<dt>overwrite</dt>
-<dd><p>whether to overwrite existing files. FALSE by default.</p></dd>
-
-
 <dt>render</dt>
 <dd><p>Output format of the visual report. To date, the format can
 only be 'html', but will be expand to other formats in the future.</p></dd>
@@ -160,7 +155,7 @@ only be 'html', but will be expand to other formats in the future.</p></dd>
 
 <p>A bookdown folder containing files in the specified output folder. To
 open the file in browser, open 'docs/index.html'. Or use
-<code><a href="https://rdrr.io/pkg/fabR/man/bookdown_open.html" class="external-link">bookdown_open()</a></code></p>
+<code><a href="bookdown_open.html">bookdown_open()</a></code></p>
 
 
     </div>
@@ -203,32 +198,64 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/fabR/man/bookdown_open.html" class="external-link">bookdown_open()</a></code></p></div>
+    <div class="dont-index"><p><code><a href="bookdown_open.html">bookdown_open()</a></code></p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">dataset_TOKYO</span><span class="op">[</span><span class="st">'height'</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_TOKYO</span><span class="op">[</span><span class="st">'height'</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="data_dict_filter.html">data_dict_filter</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="va">DEMO_files</span><span class="op">$</span><span class="va">dd_TOKYO_format_maelstrom</span>,</span></span>
+<span class="r-in"><span>    <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_TOKYO</span>,</span></span>
 <span class="r-in"><span>    filter_var <span class="op">=</span> <span class="st">"name == 'height'"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>      </span></span>
-<span class="r-in"><span><span class="va">.summary_var</span> <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">summary_var</span></span></span>
-<span class="r-in"><span>  </span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">.summary_var</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">summary_var</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_access.html" class="external-link">dir_exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://fs.r-lib.org/reference/delete.html" class="external-link">dir_delete</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bookdown_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
 <span class="r-in"><span><span class="fu">dataset_visualize</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="va">dataset</span>, <span class="va">data_dict</span>,</span></span>
-<span class="r-in"><span>  .summary_var <span class="op">=</span><span class="va">.summary_var</span>, </span></span>
-<span class="r-in"><span>  bookdown_path <span class="op">=</span> <span class="va">bookdown_path</span>,</span></span>
-<span class="r-in"><span>  overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  .summary_var <span class="op">=</span><span class="va">.summary_var</span>,</span></span>
+<span class="r-in"><span>  bookdown_path <span class="op">=</span> <span class="va">bookdown_path</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span><span class="co"># To open the file in browser, open 'bookdown_path/docs/index.html'. </span></span></span>
-<span class="r-in"><span><span class="co"># Or use bookdown_open(bookdown_path) function</span></span></span>
+<span class="r-in"><span><span class="co"># Or use bookdown_open(bookdown_path) function.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness of variable names</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty columns in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label(:xx)` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">dataset</span> (empty dataset) --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of variable names both in dataset and data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated variable in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated participants in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all NA(s) of columns in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` comparison in dataset and data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET SUMMARIZE: <span style="font-weight: bold;">dataset</span> (empty dataset) --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize the data type of each variable across the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarise global information (Overview)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1/15                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2/15 [unnamed-chunk-1] </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3/15                   </span>
@@ -244,10 +271,10 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-out co"><span class="r-pr">#&gt;</span> 13/15                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 14/15 [figures-plot12-1]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15/15                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\RtmpA7GRuj\file63ac7d87592d" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\RtmpA7GRuj\rmarkdown-str63ac73861255.html" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\RtmpW2DulV\file45e81b2e65ea" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\RtmpW2DulV\rmarkdown-str45e817cf3ccd.html" </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\RtmpA7GRuj')`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\RtmpW2DulV')`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (Compatibility tested on Chrome, Edge and Mozilla)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>

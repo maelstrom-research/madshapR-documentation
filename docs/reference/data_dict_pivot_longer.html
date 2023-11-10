@@ -22,7 +22,7 @@ the data dictionary must be unique."><!-- mathjax --><script src="https://cdnjs.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -125,45 +125,26 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">taxonomy</span> <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">taxonomy_opal_mlstr</span></span></span>
-<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">dd_TOKYO_format_opal_tagged</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`data_dict_PARIS - flatten`</span></span></span>
+<span class="r-in"><span><span class="va">taxonomy</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">taxonomy_PARIS</span></span></span>
 <span class="r-in"><span><span class="fu">data_dict_pivot_longer</span><span class="op">(</span><span class="va">data_dict</span>,<span class="va">taxonomy</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name         `label:en`         `description:en` valueType unit  other_format</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> part_id      id of the partici… id of the parti… text      <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> gndr         gndr               gender of the p… text      <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> height       height             height of the p… integer   cm    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> weight_ms    weight_ms          weight of the p… integer   kg    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> weight_dc    weight_dc          weight of the p… decimal   kg    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> dob          dob                date of birth o… date      years <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> collect_date collect_date       date of collect… datetime  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> prg_ever     prg_ever           whether the par… integer   <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> empty        empty              empty column     integer   <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> opentext     opentext           open text        text      <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: `Mlstr_additional::Source` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_additional::Target` &lt;chr&gt;, `Mlstr_area::1` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_area::1.term` &lt;chr&gt;, `Mlstr_area::2` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_area::2.term` &lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Categories</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   variable name   `label:en`            missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> gndr     Male   Male                        0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> gndr     Female Female                      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> gndr     -77    Don’t want to answer        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> prg_ever 0      never pregnant              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> prg_ever 1      pregnant once or more       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> prg_ever 2      currently pregnant          0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> prg_ever 8      Don’t want to answer        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> prg_ever 9      Don’t know                  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> prg_ever -7     not applicable              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   index name  `label:fr` `description:fr` valueType unit  `Categories::label:fr`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 ID    id         id du participa… text      <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 SEX   Sexe       Sexe du partici… integer   <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>0 = Homme ; 1 = Femm…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 BMI   IMC        Indice de Masse… decimal   kg/m…  <span style="color: #BB0000;">NA</span>                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 AGE   Age        Age du Particip… integer   years  <span style="color: #BB0000;">NA</span>                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 SMO   Fumeur     Fumeur regulier  integer   <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>0 = Non-fumeur _; 1 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     6 SMO_… fum_qte_s… nombre de cigar… integer   ciga… <span style="color: #949494;">"</span>-8 = SKIP PATTERN<span style="color: #949494;">"</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>     7 PRG_… enceinte_… Si la personne … integer   <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>0   _= Jamais encein…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4 more variables: `description::1` &lt;chr&gt;, `description::1.term` &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `description::2` &lt;chr&gt;, `description::2.term` &lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

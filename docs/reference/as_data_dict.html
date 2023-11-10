@@ -20,7 +20,7 @@ check if an object is valid for use in a function."><!-- mathjax --><script src=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -105,9 +105,9 @@ also be unique'.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">dd_PARIS_format_maelstrom</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_PARIS</span></span></span>
 <span class="r-in"><span><span class="fu">as_data_dict</span><span class="op">(</span><span class="va">data_dict</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
@@ -125,17 +125,17 @@ also be unique'.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Categories</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   variable name  labels `label:fr`                 missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> SEX      0     0      Homme                      FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> SEX      1     1      Femme                      FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> SMO      0     0      Non-Fumeur                 FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> SMO      1     1      Fumeur                     FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> SMO_QTY  -8    -8     SKIP PATTERN               FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> PRG_EVER -8    -8     SKIP PATTERN               TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> PRG_EVER 0     0      Jamais enceinte            FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> PRG_EVER 1     1      Enceinte au moins une fois FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> PRG_EVER 9     9      NSP                        TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   variable name  labels `label:fr`                                     missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> SEX      0     0      Homme                                          FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> SEX      1     1      Femme                                          FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> SMO      0     0      Non-Fumeur                                     FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> SMO      1     1      Fumeur (cigarette ; cigare)                    FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> SMO_QTY  -8    -8     SKIP PATTERN                                   FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> PRG_EVER -8    -8     SKIP PATTERN                                   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> PRG_EVER 0     0      Jamais enceinte (nb grossesse = 0)             FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> PRG_EVER 1     1      Enceinte au moins une fois (nb grossesse =&gt; 1) FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> PRG_EVER 9     9      NSP                                            TRUE   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"madshapR::class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "data_dict"</span>

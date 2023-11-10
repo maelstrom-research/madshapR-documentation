@@ -27,7 +27,7 @@ This function is the reversed operation of data_dict_collapse()"><!-- mathjax --
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -141,44 +141,38 @@ also be unique'.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">`dd_PARIS_format_flatten`</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`data_dict_PARIS - flatten`</span></span></span>
 <span class="r-in"><span><span class="fu">data_dict_expand</span><span class="op">(</span><span class="va">data_dict</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 18</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   name     `label:fr`    `description:fr` valueType unit  Mlstr_additional::So…¹</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ID       id            id du participa… text      <span style="color: #BB0000;">NA</span>    Questionnaire         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> SEX      Sexe          Sexe du partici… integer   <span style="color: #BB0000;">NA</span>    Questionnaire         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> BMI      IMC           Indice de Masse… decimal   kg/m… Physical_measure      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> AGE      Age           Age du Particip… integer   years Physical_measure      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> SMO      Fumeur        Fumeur regulier  integer   <span style="color: #BB0000;">NA</span>    Physical_measure      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> SMO_QTY  fum_qte_sema… nombre de cigar… integer   ciga… Questionnaire         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> PRG_EVER enceinte_occ… Si la personne … integer   <span style="color: #BB0000;">NA</span>    Questionnaire         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​`Mlstr_additional::Source`</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 12 more variables: `Mlstr_additional::Target` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_area::Administrative_information` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_area::Sociodemographic_economic_characteristics` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_area::Physical_measures` &lt;chr&gt;, `Mlstr_area::Reproduction` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_area::Lifestyle_behaviours` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_cogscale::Cog_scale` &lt;chr&gt;, `Mlstr_habits::Tobacco` &lt;chr&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   index name     `label:fr` `description:fr` valueType unit  `description::type`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 ID       id         id du participa… text      <span style="color: #BB0000;">NA</span>    other              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 SEX      Sexe       Sexe du partici… integer   <span style="color: #BB0000;">NA</span>    natural            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 BMI      IMC        Indice de Masse… decimal   kg/m… real               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 AGE      Age        Age du Particip… integer   years natural            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 SMO      Fumeur     Fumeur regulier  integer   <span style="color: #BB0000;">NA</span>    natural            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     6 SMO_QTY  fum_qte_s… nombre de cigar… integer   ciga… natural            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>     7 PRG_EVER enceinte_… Si la personne … integer   <span style="color: #BB0000;">NA</span>    natural            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: `description::level` &lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Categories</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   name  variable label                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 0     SEX      Homme                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 1     SEX      Femme                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 0     SMO      Non-fumeur                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 1     SMO      Fumeur (cigarette ; cigare)                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> -8    SMO_QTY  SKIP PATTERN                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 0     PRG_EVER Jamais enceinte                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> 1     PRG_EVER Enceinte au moins une fois (nb grossesse = 0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> 9     PRG_EVER NSP                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> -8    PRG_EVER SKIP PATTERN                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   name  variable `label:fr`                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 0     SEX      Homme                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 1     SEX      Femme                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 0     SMO      Non-fumeur                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 1     SMO      Fumeur (cigarette ; cigare)                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> -8    SMO_QTY  SKIP PATTERN                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 0     PRG_EVER Jamais enceinte (nb grossesse = 0)            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> 1     PRG_EVER Enceinte au moins une fois (nb grossesse =&gt; 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> 9     PRG_EVER NSP                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> -8    PRG_EVER SKIP PATTERN                                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"madshapR::class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "data_dict_structure"</span>

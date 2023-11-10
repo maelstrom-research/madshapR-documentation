@@ -22,7 +22,7 @@ coherence across elements, and taxonomy or data dictionary formats."><!-- mathja
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -117,10 +117,10 @@ automatically by the function.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">`dd_TOKYO_format_maelstrom_tagged - ERROR WITH DATA`</span></span></span>
-<span class="r-in"><span><span class="va">dataset</span>      <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">`dataset_TOKYO - ERROR WITH DATA`</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`data_dict_TOKYO - with errors in data`</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span>      <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`dataset_TOKYO - with errors in data`</span></span></span>
 <span class="r-in"><span><span class="fu">check_dataset_categories</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">data_dict</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>

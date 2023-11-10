@@ -19,7 +19,7 @@ used to check if a taxonomy is valid."><!-- mathjax --><script src="https://cdnj
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -100,14 +100,12 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">is_taxonomy</span><span class="op">(</span><span class="va">DEMO_files</span><span class="op">$</span><span class="va">taxonomy_PARIS</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">is_taxonomy</span><span class="op">(</span><span class="va">DEMO_files</span><span class="op">$</span><span class="va">taxonomy_opal_mlstr</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">is_taxonomy</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">is_taxonomy</span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">taxonomy_PARIS</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

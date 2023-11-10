@@ -40,6 +40,15 @@
     <loc>/reference/as_valueType.html</loc>
   </url>
   <url>
+    <loc>/reference/bookdown_open.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bookdown_render.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bookdown_template.html</loc>
+  </url>
+  <url>
     <loc>/reference/check_dataset_categories.html</loc>
   </url>
   <url>
@@ -62,6 +71,9 @@
   </url>
   <url>
     <loc>/reference/check_name_standards.html</loc>
+  </url>
+  <url>
+    <loc>/reference/col_id.html</loc>
   </url>
   <url>
     <loc>/reference/dataset_cat_as_labels.html</loc>
@@ -124,9 +136,6 @@
     <loc>/reference/data_extract.html</loc>
   </url>
   <url>
-    <loc>/reference/DEMO_files.html</loc>
-  </url>
-  <url>
     <loc>/reference/deprecated.html</loc>
   </url>
   <url>
@@ -166,10 +175,10 @@
     <loc>/reference/madshapR-package.html</loc>
   </url>
   <url>
-    <loc>/reference/madshapR_help.html</loc>
+    <loc>/reference/madshapR_DEMO.html</loc>
   </url>
   <url>
-    <loc>/reference/reexports.html</loc>
+    <loc>/reference/madshapR_help.html</loc>
   </url>
   <url>
     <loc>/reference/summary_variables.html</loc>

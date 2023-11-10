@@ -20,7 +20,7 @@ coherence across elements, and taxonomy or data dictionary formats."><!-- mathja
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -126,23 +126,11 @@ possibilities and their correspondence with R data types are available using
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">`dataset_TOKYO - ERROR WITH DATA`</span></span></span>
-<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">`dd_TOKYO_format_maelstrom_tagged - ERROR WITH DATA`</span></span></span>
-<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span><span class="va">dataset</span>, <span class="va">data_dict</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">check_dataset_valueType</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">data_dict</span>,valueType_guess <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">check_dataset_valueType</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, valueType_guess <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   name_var  value   condition                             suggestion            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> gndr      boolean [ERR] - valueType conflict in dataset text                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> height    decimal [INFO] - refined valueType proposed   integer               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> weight_dc integer [ERR] - valueType conflict in dataset decimal               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> dob       text    [INFO] - refined valueType proposed   date                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> empty     integer [INFO] - refined valueType proposed   boolean|integer|decim…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> opentext  boolean [ERR] - valueType conflict in dataset text                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4 variables: name_var &lt;chr&gt;, value &lt;chr&gt;, condition &lt;chr&gt;, suggestion &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

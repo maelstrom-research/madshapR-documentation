@@ -19,7 +19,7 @@ of the package."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -104,14 +104,14 @@ automatically by the function.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use DEMO_files provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">###### Example 1: datasets can be gathered into a dossier which is a list.</span></span></span>
 <span class="r-in"><span><span class="va">dossier</span> <span class="op">&lt;-</span> <span class="fu">dossier_create</span><span class="op">(</span></span></span>
 <span class="r-in"><span> dataset_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>   dataset_MELBOURNE_1 <span class="op">=</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">dataset_MELBOURNE_1</span>,</span></span>
-<span class="r-in"><span>   dataset_MELBOURNE_2 <span class="op">=</span> <span class="va">DEMO_files</span><span class="op">$</span><span class="va">dataset_MELBOURNE_2</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span>   </span></span>
+<span class="r-in"><span>   dataset_MELBOURNE <span class="op">=</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_MELBOURNE</span>,</span></span>
+<span class="r-in"><span>   dataset_PARIS <span class="op">=</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_PARIS</span> <span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    </span></span>
 <span class="r-in"><span><span class="co">###### Example 2: any data frame (or tibble) can be gathered into a dossier</span></span></span>
 <span class="r-in"><span><span class="fu">dossier_create</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span>   </span></span>
