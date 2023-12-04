@@ -19,7 +19,7 @@ to check if a dataset is valid."><!-- mathjax --><script src="https://cdnjs.clou
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0002</span>
       </span>
     </div>
 
@@ -84,13 +84,14 @@ to check if a dataset is valid.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>A dataset must be a data frame-like object and can be associated with a
-data dictionary. If no data dictionary is provided, a minimum workable
-data dictionary will be generated as needed by relevant functions.
-An identifier <code>id</code> column for sorting can be specified by the user. If
-specified, the <code>id</code> values must be non-missing and will be used in functions
-that require it. If no identifier column is specified, indexing is handled
-automatically by the function.</p>
+    <p>A dataset is a data table containing variables. A dataset object is a
+data frame and can be associated with a data dictionary. If no
+data dictionary is provided with a dataset, a minimum workable
+data dictionary will be generated as needed within relevant functions. An
+identifier variable(s) for indexing can be specified by the user.
+The id values must be non-missing and will be used in functions that
+require it. If no identifier variable is specified, indexing is
+handled automatically by the function.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -102,7 +103,7 @@ automatically by the function.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
-<span class="r-in"><span><span class="co"># any data frame (or tibble) can be a dataset by definition.</span></span></span>
+<span class="r-in"><span><span class="co"># any data frame can be a dataset by definition.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">is_dataset</span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_MELBOURNE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">is_dataset</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>

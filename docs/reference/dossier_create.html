@@ -19,7 +19,7 @@ of the package."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0002</span>
       </span>
     </div>
 
@@ -73,31 +73,32 @@ of the package.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset_list</dt>
-<dd><p>A list of tibble(s), identifying the input data
+<dd><p>A list of data frame(s), identifying the input data
 observations.</p></dd>
 
 
 <dt>data_dict_apply</dt>
 <dd><p>whether to apply the data dictionary to its dataset.
-The resulting tibble will have for each column its associated meta data as
-attributes. The factors will be preserved. FALSE by default.</p></dd>
+The resulting data frame will have for each column its associated meta data
+as attributes. FALSE by default.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     
 
-<p>A list of tibble(s), each of them identifying datasets in a dossier.</p>
+<p>A list of data frame(s), each of them identifying datasets in a dossier.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>A dataset must be a data frame-like object and can be associated with a
-data dictionary. If no data dictionary is provided, a minimum workable
-data dictionary will be generated as needed by relevant functions.
-An identifier <code>id</code> column for sorting can be specified by the user. If
-specified, the <code>id</code> values must be non-missing and will be used in functions
-that require it. If no identifier column is specified, indexing is handled
-automatically by the function.</p>
+    <p>A dataset is a data table containing variables. A dataset object is a
+data frame and can be associated with a data dictionary. If no
+data dictionary is provided with a dataset, a minimum workable
+data dictionary will be generated as needed within relevant functions. An
+identifier variable(s) for indexing can be specified by the user.
+The id values must be non-missing and will be used in functions that
+require it. If no identifier variable is specified, indexing is
+handled automatically by the function.</p>
     </div>
 
     <div id="ref-examples">
@@ -112,7 +113,7 @@ automatically by the function.</p>
 <span class="r-in"><span>   dataset_MELBOURNE <span class="op">=</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_MELBOURNE</span>,</span></span>
 <span class="r-in"><span>   dataset_PARIS <span class="op">=</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_PARIS</span> <span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span>    </span></span>
-<span class="r-in"><span><span class="co">###### Example 2: any data frame (or tibble) can be gathered into a dossier</span></span></span>
+<span class="r-in"><span><span class="co">###### Example 2: any data frame can be gathered into a dossier</span></span></span>
 <span class="r-in"><span><span class="fu">dossier_create</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span>   </span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>

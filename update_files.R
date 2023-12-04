@@ -14,6 +14,7 @@ fs::dir_copy(
   "../madshapR-documentation/docs",
   overwrite = TRUE)
 
+# switch to madshapR-documentation
 # push to git
 
 'update documentation following latest version of the package'

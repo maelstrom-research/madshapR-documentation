@@ -22,7 +22,7 @@ report is compatible with Excel and can be exported as an Excel spreadsheet."><!
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0002</span>
       </span>
     </div>
 
@@ -79,12 +79,12 @@ report is compatible with Excel and can be exported as an Excel spreadsheet.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dossier</dt>
-<dd><p>List of tibble, each of them being datasets.</p></dd>
+<dd><p>List of data frame, each of them being datasets.</p></dd>
 
 
 <dt>taxonomy</dt>
-<dd><p>A tibble identifying the scheme used for variables
-classification.</p></dd>
+<dd><p>An optional data frame identifying a variable
+classification schema.</p></dd>
 
 
 <dt>as_data_dict_mlstr</dt>
@@ -98,23 +98,23 @@ TRUE by default.</p></dd>
     <h2>Value</h2>
     
 
-<p>A list of tibbles of report for each dataset.</p>
+<p>A list of data frames of report for each dataset.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>A dossier must be a named list containing at least one data frame or
-data frame extension (e.g. a tibble), each of them being datasets.
-The name of each tibble will be use as the reference name of the dataset.</p>
-<p>A taxonomy is classification scheme that can be defined for variable
-attributes. If defined, a taxonomy must be a data frame-like object. It must
-be compatible with (and is generally extracted from) an Opal environment. To
-work with certain functions, a valid taxonomy must contain at least the
-columns 'taxonomy', 'vocabulary', and 'terms'. In addition, the taxonomy
-may follow Maelstrom research taxonomy, and its content can be evaluated
-accordingly, such as naming convention restriction, tagging elements,
-or scales, which are specific to Maelstrom Research. In this particular
-case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
-'vocabulary_scale' and 'term_scale' to work with some specific functions.</p>
+    <p>A dossier is a named list containing at least one data frame or more,
+each of them being datasets. The name of each tibble will be use as the
+reference name of the dataset.</p>
+<p>A taxonomy is a classification schema that can be defined for variable
+attributes. A taxonomy is usually extracted from an
+<a href="https://www.obiba.org/pages/products/opal/" class="external-link">Opal environment</a>, and a
+taxonomy object is a data frame that must contain at least the columns
+<code>taxonomy</code>, <code>vocabulary</code>, and <code>terms</code>. Additional details about Opal
+taxonomies are
+<a href="https://opaldoc.obiba.org/en/latest/web-user-guide/administration/taxonomies.html" class="external-link">available online</a>.</p>
+<p>The object may be specifically formatted to be compatible with additional
+<a href="https://maelstrom-research.org/page/software" class="external-link">Maelstrom Research software</a>,
+in particular <a href="https://www.obiba.org/pages/products/opal" class="external-link">Opal environments</a>.</p>
     </div>
 
     <div id="ref-examples">
@@ -127,7 +127,7 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-in"><span><span class="co">###### Example : a dataset list is a dossier by definition.</span></span></span>
 <span class="r-in"><span>   </span></span>
 <span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span></span></span>
-<span class="r-in"><span> <span class="fu"><a href="as_dataset.html">as_dataset</a></span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`dataset_TOKYO - with errors in data`</span>,col_id <span class="op">=</span> <span class="st">'part_id'</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="as_dataset.html">as_dataset</a></span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`dataset_TOKYO - errors with data`</span>,col_id <span class="op">=</span> <span class="st">'part_id'</span><span class="op">)</span></span></span>
 <span class="r-in"><span> </span></span>
 <span class="r-in"><span> <span class="fu">dossier_evaluate</span><span class="op">(</span><span class="fu"><a href="as_dossier.html">as_dossier</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ds <span class="op">=</span> <span class="va">dataset</span><span class="op">)</span><span class="op">)</span>,as_data_dict_mlstr <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -177,18 +177,15 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Variables name     <span style="color: #BB0000;">NA</span>       [INFO] - Possible duplicated columns name ; label</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ds$`Dataset assessment`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   `index in data dict.` name      `Quality assessment comment`             value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>                     1 part_id   [INFO] - possible duplicated row values  ID00…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>                     1 part_id   [INFO] - possible duplicated row values  ID00…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>                     1 part_id   [INFO] - possible duplicated row values  ID02…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>                     3 height    Unique value in the column               191  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>                     4 weight_ms [INFO] - Possible duplicated columns     weig…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>                     7 prg_ever  [INFO] - Possible duplicated columns     weig…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>                     8 empty     Empty column                             <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>        [INFO] - Empty participant(s) (Except p… ID008</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>        [INFO] - Empty participant(s) (Except p… ID016</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>                     3 height    Unique value in the column               191  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>                     4 weight_ms [INFO] - Possible duplicated columns     weig…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>                     7 prg_ever  [INFO] - Possible duplicated columns     weig…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>                     8 empty     Empty column                             <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>        [INFO] - Empty participant(s) (Except p… ID008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>                    <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>        [INFO] - Empty participant(s) (Except p… ID016</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>

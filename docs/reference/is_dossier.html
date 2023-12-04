@@ -19,7 +19,7 @@ check if a dossier is valid."><!-- mathjax --><script src="https://cdnjs.cloudfl
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0002</span>
       </span>
     </div>
 
@@ -84,9 +84,9 @@ check if a dossier is valid.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>A dossier must be a named list containing at least one data frame or
-data frame extension (e.g. a tibble), each of them being datasets.
-The name of each tibble will be use as the reference name of the dataset.</p>
+    <p>A dossier is a named list containing at least one data frame or more,
+each of them being datasets. The name of each tibble will be use as the
+reference name of the dataset.</p>
     </div>
 
     <div id="ref-examples">
@@ -94,7 +94,7 @@ The name of each tibble will be use as the reference name of the dataset.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
-<span class="r-in"><span><span class="co"># Any list of data frame (or tibble) can be a dossier by definition.</span></span></span>
+<span class="r-in"><span><span class="co"># Any list of data frame can be a dossier by definition.</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">is_dossier</span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">[</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">)</span>,<span class="st">"dataset"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></span>

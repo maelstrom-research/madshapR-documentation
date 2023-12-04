@@ -23,7 +23,7 @@ with Excel and can be exported as an Excel spreadsheet."><!-- mathjax --><script
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0002</span>
       </span>
     </div>
 
@@ -86,56 +86,53 @@ with Excel and can be exported as an Excel spreadsheet.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dossier</dt>
-<dd><p>List of tibble, each of them being datasets.</p></dd>
+<dd><p>List of data frame(s), each of them being datasets.</p></dd>
 
 
 <dt>group_by</dt>
-<dd><p>A character string of one column in the dataset that can be
-taken as a grouping column. The visual element will be grouped and displayed
-by this column.</p></dd>
+<dd><p>A character string identifying the column in the datasets
+to use as a grouping variable. Visual elements will be grouped by this
+column.</p></dd>
 
 
 <dt>taxonomy</dt>
-<dd><p>A tibble identifying the scheme used for variables
-classification.</p></dd>
+<dd><p>An optional data frame identifying a variable
+classification schema.</p></dd>
 
 
 <dt>valueType_guess</dt>
-<dd><p>Whether the output should include a more accurate
-valueType that could be applied to the dataset. TRUE by default.</p></dd>
+<dd><p>Whether the output should be generated based on more
+precise valueType inferred from the data. FALSE by default
+(will use the valueType declared).</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     
 
-<p>A list of tibbles of report for each listed dataset.</p>
+<p>A list of data frames of report for each listed dataset.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>A dossier must be a named list containing at least one data frame or
-data frame extension (e.g. a tibble), each of them being datasets.
-The name of each tibble will be use as the reference name of the dataset.
-This report is compatible with Excel and can be exported as an Excel
-spreadsheet.</p>
-<p>A taxonomy is classification scheme that can be defined for variable
-attributes. If defined, a taxonomy must be a data frame-like object. It must
-be compatible with (and is generally extracted from) an Opal environment. To
-work with certain functions, a valid taxonomy must contain at least the
-columns 'taxonomy', 'vocabulary', and 'terms'. In addition, the taxonomy
-may follow Maelstrom research taxonomy, and its content can be evaluated
-accordingly, such as naming convention restriction, tagging elements,
-or scales, which are specific to Maelstrom Research. In this particular
-case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
-'vocabulary_scale' and 'term_scale' to work with some specific functions.</p>
-<p>The valueType is a property of a variable and is required in certain
-functions to determine the handling of the variables. The valueType refers
-to the OBiBa-internal type of a variable. It is specified in a data
-dictionary in a column <code>valueType</code> and can be associated with variables as
-attributes. Acceptable valueTypes include 'text', 'integer', 'decimal',
-'boolean', datetime', 'date'). The full list of OBiBa valueType
-possibilities and their correspondence with R data types are available using
-<a href="valueType_list.html">valueType_list</a>.</p>
+    <p>A dossier is a named list containing at least one data frame or more,
+each of them being datasets. The name of each tibble will be use as the
+reference name of the dataset.</p>
+<p>A taxonomy is a classification schema that can be defined for variable
+attributes. A taxonomy is usually extracted from an
+<a href="https://www.obiba.org/pages/products/opal/" class="external-link">Opal environment</a>, and a
+taxonomy object is a data frame that must contain at least the columns
+<code>taxonomy</code>, <code>vocabulary</code>, and <code>terms</code>. Additional details about Opal
+taxonomies are
+<a href="https://opaldoc.obiba.org/en/latest/web-user-guide/administration/taxonomies.html" class="external-link">available online</a>.</p>
+<p>The valueType is a declared property of a variable that is required in
+certain functions to determine handling of the variables. Specifically,
+valueType refers to the
+<a href="https://opaldoc.obiba.org/en/variables-data.html#value-types" class="external-link">OBiBa data type of a variable</a>.
+The valueType is specified in a data dictionary in a column 'valueType' and
+can be associated with variables as attributes. Acceptable valueTypes
+include 'text', 'integer', 'decimal', 'boolean', datetime', 'date'. The full
+list of OBiBa valueType possibilities and their correspondence with R data
+types are available using <a href="valueType_list.html">valueType_list</a>.</p>
     </div>
 
     <div id="ref-examples">
@@ -145,7 +142,7 @@ possibilities and their correspondence with R data types are available using
 <span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">###### Example 1: Combine functions and summarise datasets.</span></span></span>
+<span class="r-in"><span><span class="co">###### Example 1: Combine functions and summarize datasets.</span></span></span>
 <span class="r-in"><span><span class="va">dossier</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>iris <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">dossier_summary</span> <span class="op">&lt;-</span> <span class="fu">dossier_summarize</span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span></span></span>
@@ -184,7 +181,7 @@ possibilities and their correspondence with R data types are available using
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET SUMMARIZE: <span style="font-weight: bold;">iris</span> (empty dataset) --------------------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize the data type of each variable across the dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarise global information (Overview)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize global information (Overview)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ iris:List of 1</span>

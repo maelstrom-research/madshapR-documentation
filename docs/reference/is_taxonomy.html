@@ -19,7 +19,7 @@ used to check if a taxonomy is valid."><!-- mathjax --><script src="https://cdnj
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0002</span>
       </span>
     </div>
 
@@ -84,16 +84,13 @@ used to check if a taxonomy is valid.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>A taxonomy is classification scheme that can be defined for variable
-attributes. If defined, a taxonomy must be a data frame-like object. It must
-be compatible with (and is generally extracted from) an Opal environment. To
-work with certain functions, a valid taxonomy must contain at least the
-columns 'taxonomy', 'vocabulary', and 'terms'. In addition, the taxonomy
-may follow Maelstrom research taxonomy, and its content can be evaluated
-accordingly, such as naming convention restriction, tagging elements,
-or scales, which are specific to Maelstrom Research. In this particular
-case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
-'vocabulary_scale' and 'term_scale' to work with some specific functions.</p>
+    <p>A taxonomy is a classification schema that can be defined for variable
+attributes. A taxonomy is usually extracted from an
+<a href="https://www.obiba.org/pages/products/opal/" class="external-link">Opal environment</a>, and a
+taxonomy object is a data frame that must contain at least the columns
+<code>taxonomy</code>, <code>vocabulary</code>, and <code>terms</code>. Additional details about Opal
+taxonomies are
+<a href="https://opaldoc.obiba.org/en/latest/web-user-guide/administration/taxonomies.html" class="external-link">available online</a>.</p>
     </div>
 
     <div id="ref-examples">

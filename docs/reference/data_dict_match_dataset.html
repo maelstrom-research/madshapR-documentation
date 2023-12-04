@@ -19,7 +19,7 @@ dataset rows, the matched data dictionary rows, or both, in a list."><!-- mathja
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0002</span>
       </span>
     </div>
 
@@ -78,17 +78,18 @@ dataset rows, the matched data dictionary rows, or both, in a list.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
-<dd><p>A tibble identifying the input dataset observations.</p></dd>
+<dd><p>A data frame identifying the input dataset observations.</p></dd>
 
 
 <dt>data_dict</dt>
-<dd><p>A list of tibble(s) representing meta data.</p></dd>
+<dd><p>A list of data frame(s) representing meta data
+associated to a dataset.</p></dd>
 
 
 <dt>data_dict_apply</dt>
 <dd><p>whether to apply the data dictionary to its dataset.
-The resulting tibble will have for each column its associated meta data as
-attributes. The factors will be preserved. FALSE by default.</p></dd>
+The resulting data frame will have for each column its associated meta data
+as attributes. FALSE by default.</p></dd>
 
 
 <dt>output</dt>
@@ -101,27 +102,27 @@ Default is c('dataset','data_dict').</p></dd>
     <h2>Value</h2>
     
 
-<p>Either a tibble, identifying the dataset, or a list of tibble(s)
+<p>Either a data frame, identifying the dataset, or a list of data frame(s)
 identifying a data dictionary. Returns both in a list by default.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>A dataset must be a data frame-like object and can be associated with a
-data dictionary. If no data dictionary is provided, a minimum workable
-data dictionary will be generated as needed by relevant functions.
-An identifier <code>id</code> column for sorting can be specified by the user. If
-specified, the <code>id</code> values must be non-missing and will be used in functions
-that require it. If no identifier column is specified, indexing is handled
-automatically by the function.</p>
-<p>A data dictionary contains metadata about variables and can be associated
-with a dataset. It must be a list of data frame-like objects with elements
-named 'Variables' (required) and 'Categories' (if any). To be usable in any
-function, the 'Variables' element must contain at least the 'name' column,
-and the 'Categories' element must contain at least the 'variable' and 'name'
-columns. To be considered as a minimum workable data dictionary, in
-'Variables' the 'name' column must also have unique and non-null entries,
-and in 'Categories' the combination of 'variable' and 'name' columns must
-also be unique'.</p>
+    <p>A dataset is a data table containing variables. A dataset object is a
+data frame and can be associated with a data dictionary. If no
+data dictionary is provided with a dataset, a minimum workable
+data dictionary will be generated as needed within relevant functions. An
+identifier variable(s) for indexing can be specified by the user.
+The id values must be non-missing and will be used in functions that
+require it. If no identifier variable is specified, indexing is
+handled automatically by the function.</p>
+<p>A data dictionary contains the list of variables in a dataset and metadata
+about the variables and can be associated with a dataset. A data dictionary
+object is a list of data frame(s) named 'Variables' (required) and
+'Categories' (if any). To be usable in any function, the data frame
+'Variables' must contain at least the <code>name</code> column, with all unique and
+non-missing entries, and the data frame 'Categories' must contain at least
+the <code>variable</code> and <code>name</code> columns, with unique combination of
+<code>variable</code> and <code>name</code>.</p>
     </div>
 
     <div id="ref-examples">
