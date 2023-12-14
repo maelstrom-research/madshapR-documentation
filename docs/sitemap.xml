@@ -19,6 +19,9 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
+    <loc>/reference/as_category.html</loc>
+  </url>
+  <url>
     <loc>/reference/as_dataset.html</loc>
   </url>
   <url>
@@ -148,7 +151,13 @@
     <loc>/reference/dossier_summarize.html</loc>
   </url>
   <url>
+    <loc>/reference/drop_category.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_category.html</loc>
   </url>
   <url>
     <loc>/reference/is_dataset.html</loc>

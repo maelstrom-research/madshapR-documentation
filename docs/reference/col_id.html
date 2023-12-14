@@ -18,7 +18,7 @@ returns a NULL object."><!-- mathjax --><script src="https://cdnjs.cloudflare.co
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -71,7 +71,7 @@ returns a NULL object.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
-<dd><p>A data frame identifying the input dataset observations.</p></dd>
+<dd><p>A data frame object.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -85,8 +85,8 @@ returns a NULL object.</p>
     <p>A dataset is a data table containing variables. A dataset object is a
 data frame and can be associated with a data dictionary. If no
 data dictionary is provided with a dataset, a minimum workable
-data dictionary will be generated as needed within relevant functions. An
-identifier variable(s) for indexing can be specified by the user.
+data dictionary will be generated as needed within relevant functions.
+Identifier variable(s) for indexing can be specified by the user.
 The id values must be non-missing and will be used in functions that
 require it. If no identifier variable is specified, indexing is
 handled automatically by the function.</p>
@@ -97,10 +97,14 @@ handled automatically by the function.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">col_id</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">col_id</span><span class="op">(</span><span class="fu"><a href="as_dataset.html">as_dataset</a></span><span class="op">(</span><span class="va">iris</span>,<span class="st">'Species'</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/GuiFabre/fabR" class="external-link">fabR</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fabR/man/add_index.html" class="external-link">add_index</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_dataset.html">as_dataset</a></span><span class="op">(</span><span class="va">iris</span>, col_id <span class="op">=</span> <span class="st">'index'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">col_id</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Species"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "index"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

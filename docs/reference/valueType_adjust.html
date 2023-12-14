@@ -23,7 +23,7 @@ instead. The possible values returned are 'date', 'boolean', 'integer',
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -110,20 +110,21 @@ the <code>variable</code> and <code>name</code> columns, with unique combination
 <p>A dataset is a data table containing variables. A dataset object is a
 data frame and can be associated with a data dictionary. If no
 data dictionary is provided with a dataset, a minimum workable
-data dictionary will be generated as needed within relevant functions. An
-identifier variable(s) for indexing can be specified by the user.
+data dictionary will be generated as needed within relevant functions.
+Identifier variable(s) for indexing can be specified by the user.
 The id values must be non-missing and will be used in functions that
 require it. If no identifier variable is specified, indexing is
 handled automatically by the function.</p>
 <p>The valueType is a declared property of a variable that is required in
 certain functions to determine handling of the variables. Specifically,
 valueType refers to the
-<a href="https://opaldoc.obiba.org/en/variables-data.html#value-types" class="external-link">OBiBa data type of a variable</a>.
+<a href="https://opaldoc.obiba.org/en/dev/variables-data.html#value-types" class="external-link">OBiBa data type of a variable</a>.
 The valueType is specified in a data dictionary in a column 'valueType' and
 can be associated with variables as attributes. Acceptable valueTypes
 include 'text', 'integer', 'decimal', 'boolean', datetime', 'date'. The full
 list of OBiBa valueType possibilities and their correspondence with R data
-types are available using <a href="valueType_list.html">valueType_list</a>.</p>
+types are available using <a href="valueType_list.html">valueType_list</a>. The valueType can be used to
+coerce the variable to the corresponding data type.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -142,28 +143,17 @@ types are available using <a href="valueType_list.html">valueType_list</a>.</p>
 <span class="r-in"><span>  <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_TOKYO</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="data_dict_filter.html">data_dict_filter</a></span><span class="op">(</span>filter_var <span class="op">=</span> <span class="st">'name == "prg_ever"'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="as_data_dict_mlstr.html">as_data_dict_mlstr</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">valueType_adjust</span><span class="op">(</span>from <span class="op">=</span> <span class="va">dataset</span>,to <span class="op">=</span> <span class="va">data_dict</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">valueType_adjust</span><span class="op">(</span>from <span class="op">=</span> <span class="va">data_dict</span>,to <span class="op">=</span> <span class="va">dataset</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   name     `label:en` valueType index `description:en`                    typeof</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> prg_ever prg_ever   decimal   7     whether the participant has ever b… double</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Categories</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   variable name  `label:en`            missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> prg_ever 0     never pregnant        FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> prg_ever 1     pregnant once or more FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> prg_ever 2     currently pregnant    FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> prg_ever 8     Don’t want to answer  TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> prg_ever 9     Don’t know            TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> prg_ever -7    not applicable        TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"madshapR::class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "data_dict_mlstr"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   prg_ever</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       -<span style="color: #BB0000;">7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>        1</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

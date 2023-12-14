@@ -18,7 +18,7 @@ columns (variables) in the dataset."><!-- mathjax --><script src="https://cdnjs.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -71,13 +71,12 @@ columns (variables) in the dataset.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
-<dd><p>A data frame identifying the input dataset observations
-associated to its data dictionary.</p></dd>
+<dd><p>A dataset object.</p></dd>
 
 
 <dt>data_dict</dt>
-<dd><p>A list of data frame(s) representing meta data of an
-associated dataset (to be generated).</p></dd>
+<dd><p>A list of data frame(s) representing metadata of the input
+dataset. Automatically generated if not provided.</p></dd>
 
 
 <dt>col_names</dt>
@@ -97,8 +96,8 @@ or indicated by position.</p></dd>
     <p>A dataset is a data table containing variables. A dataset object is a
 data frame and can be associated with a data dictionary. If no
 data dictionary is provided with a dataset, a minimum workable
-data dictionary will be generated as needed within relevant functions. An
-identifier variable(s) for indexing can be specified by the user.
+data dictionary will be generated as needed within relevant functions.
+Identifier variable(s) for indexing can be specified by the user.
 The id values must be non-missing and will be used in functions that
 require it. If no identifier variable is specified, indexing is
 handled automatically by the function.</p>
@@ -116,160 +115,26 @@ the <code>variable</code> and <code>name</code> columns, with unique combination
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">dataset_cat_as_labels</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span><span class="st">'Sepal.Length'</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">=</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_PARIS</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">=</span> <span class="fu"><a href="as_data_dict_mlstr.html">as_data_dict_mlstr</a></span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_PARIS</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dataset_cat_as_labels</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">data_dict</span>, col_names <span class="op">=</span> <span class="st">'SEX'</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Sepal.Length</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            5.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            4.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            4.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            4.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5            5.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7            4.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8            5.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9            4.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10           4.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11           5.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12           4.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13           4.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14           4.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15           5.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16           5.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17           5.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18           5.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19           5.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20           5.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21           5.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22           5.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23           4.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24           5.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25           4.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26           5.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27           5.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28           5.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29           5.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30           4.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31           4.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32           5.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33           5.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34           5.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35           4.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36           5.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37           5.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38           4.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39           4.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40           5.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41           5.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42           4.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43           4.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44           5.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45           5.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46           4.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47           5.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48           4.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49           5.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50           5.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51           7.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52           6.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53           6.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54           5.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55           6.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56           5.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57           6.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58           4.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59           6.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60           5.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61           5.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 62           5.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63           6.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 64           6.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 65           5.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 66           6.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 67           5.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 68           5.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 69           6.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 70           5.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 71           5.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72           6.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 73           6.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 74           6.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 75           6.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 76           6.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 77           6.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 78           6.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 79           6.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 80           5.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 81           5.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 82           5.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 83           5.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 84           6.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 85           5.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 86           6.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 87           6.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 88           6.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 89           5.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 90           5.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 91           5.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 92           6.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 93           5.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 94           5.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 95           5.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 96           5.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 97           5.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 98           6.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 99           5.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 100          5.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 101          6.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 102          5.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 103          7.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 104          6.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 105          6.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 106          7.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 107          4.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 108          7.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 109          6.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 110          7.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 111          6.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 112          6.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 113          6.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 114          5.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 115          5.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 116          6.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 117          6.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 118          7.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 119          7.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 120          6.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 121          6.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122          5.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 123          7.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 124          6.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 125          6.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 126          7.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 127          6.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 128          6.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 129          6.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 130          7.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 131          7.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 132          7.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 133          6.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 134          6.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 135          6.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 136          7.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 137          6.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 138          6.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 139          6.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 140          6.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 141          6.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 142          6.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 143          5.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 144          6.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 145          6.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 146          6.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 147          6.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 148          6.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 149          6.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 150          5.9</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Processing of : SEX</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 24 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ID           SEX              BMI   AGE   SMO SMO_QTY PRG_EVER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr+lbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Paris_687393 Femme<span style="color: #949494;"> [1]</span> <span style="text-decoration: underline;">2</span>224<span style="text-decoration: underline;">298</span>583    52     1      32        0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Paris_585666 Homme<span style="color: #949494;"> [0]</span> <span style="text-decoration: underline;">1</span>523<span style="text-decoration: underline;">935</span>376    49     1       8       -<span style="color: #BB0000;">8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Paris_75802  Homme<span style="color: #949494;"> [0]</span> <span style="text-decoration: underline;">2</span>266<span style="text-decoration: underline;">888</span>359    43     1      48       -<span style="color: #BB0000;">8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Paris_412072 Femme<span style="color: #949494;"> [1]</span>         <span style="color: #BB0000;">NA</span>    59     1      11        0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Paris_404333 Femme<span style="color: #949494;"> [1]</span> <span style="text-decoration: underline;">2</span>618<span style="text-decoration: underline;">221</span>463    40     1      18        1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Paris_554985 Homme<span style="color: #949494;"> [0]</span> <span style="text-decoration: underline;">1</span>598<span style="text-decoration: underline;">702</span>068    47     1       7       -<span style="color: #BB0000;">8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Paris_714168 Femme<span style="color: #949494;"> [1]</span> <span style="text-decoration: underline;">1</span>904<span style="text-decoration: underline;">634</span>522    46     1      18       <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Paris_145477 Femme<span style="color: #949494;"> [1]</span>  168<span style="text-decoration: underline;">600</span>545    53     0      -<span style="color: #BB0000;">8</span>        1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Paris_202076 Femme<span style="color: #949494;"> [1]</span> <span style="text-decoration: underline;">2</span>992<span style="text-decoration: underline;">421</span>287    35     1      36        1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Paris_847235 Homme<span style="color: #949494;"> [0]</span> <span style="text-decoration: underline;">2</span>064<span style="text-decoration: underline;">553</span>154    <span style="color: #BB0000;">NA</span>     0      -<span style="color: #BB0000;">8</span>       -<span style="color: #BB0000;">8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

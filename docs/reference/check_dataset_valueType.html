@@ -20,7 +20,7 @@ coherence across elements, and taxonomy or data dictionary formats."><!-- mathja
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -75,17 +75,16 @@ coherence across elements, and taxonomy or data dictionary formats.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
-<dd><p>A data frame identifying the input dataset observations.</p></dd>
+<dd><p>A dataset object.</p></dd>
 
 
 <dt>data_dict</dt>
-<dd><p>A list of data frame(s) representing meta data to be evaluated.</p></dd>
+<dd><p>A list of data frame(s) representing metadata to be evaluated.</p></dd>
 
 
 <dt>valueType_guess</dt>
-<dd><p>Whether the output should be generated based on more
-precise valueType inferred from the data. FALSE by default
-(will use the valueType declared).</p></dd>
+<dd><p>Whether the output should include a more accurate
+valueType that could be applied to the dataset. FALSE by default.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -108,31 +107,34 @@ the <code>variable</code> and <code>name</code> columns, with unique combination
 <p>A dataset is a data table containing variables. A dataset object is a
 data frame and can be associated with a data dictionary. If no
 data dictionary is provided with a dataset, a minimum workable
-data dictionary will be generated as needed within relevant functions. An
-identifier variable(s) for indexing can be specified by the user.
+data dictionary will be generated as needed within relevant functions.
+Identifier variable(s) for indexing can be specified by the user.
 The id values must be non-missing and will be used in functions that
 require it. If no identifier variable is specified, indexing is
 handled automatically by the function.</p>
 <p>The valueType is a declared property of a variable that is required in
 certain functions to determine handling of the variables. Specifically,
 valueType refers to the
-<a href="https://opaldoc.obiba.org/en/variables-data.html#value-types" class="external-link">OBiBa data type of a variable</a>.
+<a href="https://opaldoc.obiba.org/en/dev/variables-data.html#value-types" class="external-link">OBiBa data type of a variable</a>.
 The valueType is specified in a data dictionary in a column 'valueType' and
 can be associated with variables as attributes. Acceptable valueTypes
 include 'text', 'integer', 'decimal', 'boolean', datetime', 'date'. The full
 list of OBiBa valueType possibilities and their correspondence with R data
-types are available using <a href="valueType_list.html">valueType_list</a>.</p>
+types are available using <a href="valueType_list.html">valueType_list</a>. The valueType can be used to
+coerce the variable to the corresponding data type.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">check_dataset_valueType</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, valueType_guess <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">check_dataset_valueType</span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, valueType_guess <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4 variables: name_var &lt;chr&gt;, value &lt;chr&gt;, condition &lt;chr&gt;, suggestion &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   name_var value   condition                           suggestion</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> cyl      decimal [INFO] - refined valueType proposed integer   </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

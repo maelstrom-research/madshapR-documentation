@@ -19,7 +19,7 @@ dataset rows, the matched data dictionary rows, or both, in a list."><!-- mathja
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -78,18 +78,18 @@ dataset rows, the matched data dictionary rows, or both, in a list.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
-<dd><p>A data frame identifying the input dataset observations.</p></dd>
+<dd><p>A dataset object.</p></dd>
 
 
 <dt>data_dict</dt>
-<dd><p>A list of data frame(s) representing meta data
-associated to a dataset.</p></dd>
+<dd><p>A list of data frame(s) representing metadata of the input
+dataset.</p></dd>
 
 
 <dt>data_dict_apply</dt>
-<dd><p>whether to apply the data dictionary to its dataset.
-The resulting data frame will have for each column its associated meta data
-as attributes. FALSE by default.</p></dd>
+<dd><p>Whether data dictionary(ies) should be applied to
+associated dataset(s), creating labelled dataset(s) with variable attributes.
+Any previous attributes will be preserved. FALSE by default.</p></dd>
 
 
 <dt>output</dt>
@@ -110,8 +110,8 @@ identifying a data dictionary. Returns both in a list by default.</p>
     <p>A dataset is a data table containing variables. A dataset object is a
 data frame and can be associated with a data dictionary. If no
 data dictionary is provided with a dataset, a minimum workable
-data dictionary will be generated as needed within relevant functions. An
-identifier variable(s) for indexing can be specified by the user.
+data dictionary will be generated as needed within relevant functions.
+Identifier variable(s) for indexing can be specified by the user.
 The id values must be non-missing and will be used in functions that
 require it. If no identifier variable is specified, indexing is
 handled automatically by the function.</p>
@@ -131,64 +131,26 @@ the <code>variable</code> and <code>name</code> columns, with unique combination
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_MELBOURNE</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_MELBOURNE</span></span></span>
-<span class="r-in"><span><span class="fu">data_dict_match_dataset</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">data_dict</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">data_dict_match_dataset</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">data_dict</span>, out <span class="op">=</span> <span class="st">'dataset'</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">data_dict_match_dataset</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">data_dict</span>, out <span class="op">=</span> <span class="st">'data_dict'</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 19 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Gender        BMI   age smo_status prg_curr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      2        221    52          1        0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>      1 <span style="text-decoration: underline;">1</span>850<span style="text-decoration: underline;">655</span>594    49          2      -<span style="color: #BB0000;">77</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>      1 <span style="text-decoration: underline;">2</span>457<span style="text-decoration: underline;">679</span>588    43          3      -<span style="color: #BB0000;">77</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>      2 <span style="text-decoration: underline;">1</span>571<span style="text-decoration: underline;">539</span>833    59        -<span style="color: #BB0000;">77</span>        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>      2 <span style="text-decoration: underline;">1</span>855<span style="text-decoration: underline;">378</span>065    40         <span style="color: #BB0000;">NA</span>        0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>      1 <span style="text-decoration: underline;">1</span>593<span style="text-decoration: underline;">177</span>939    47          2      -<span style="color: #BB0000;">77</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>      2 <span style="text-decoration: underline;">2</span>865<span style="text-decoration: underline;">839</span>945  -<span style="color: #BB0000;">888</span>        -<span style="color: #BB0000;">77</span>        8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      2 <span style="text-decoration: underline;">1</span>973<span style="text-decoration: underline;">602</span>923    53          2        0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      2         <span style="color: #BB0000;">NA</span>    35          1        0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      1 <span style="text-decoration: underline;">2</span>126<span style="text-decoration: underline;">602</span>756    40          1      -<span style="color: #BB0000;">77</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span>      1 <span style="text-decoration: underline;">1</span>719<span style="text-decoration: underline;">871</span>484    41         <span style="color: #BB0000;">NA</span>      -<span style="color: #BB0000;">77</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span>      2 <span style="text-decoration: underline;">2</span>169<span style="text-decoration: underline;">671</span>091    34          3        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span>      2 <span style="text-decoration: underline;">1</span>474<span style="text-decoration: underline;">286</span>366    48          2        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span>      2 <span style="text-decoration: underline;">2</span>437<span style="text-decoration: underline;">040</span>385    43          1        9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span>      1         <span style="color: #BB0000;">NA</span>  -<span style="color: #BB0000;">888</span>          2      -<span style="color: #BB0000;">77</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span>      1 <span style="text-decoration: underline;">2</span>420<span style="text-decoration: underline;">491</span>247    41          1      -<span style="color: #BB0000;">77</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span>      2 <span style="text-decoration: underline;">1</span>773<span style="text-decoration: underline;">788</span>018    33         <span style="color: #BB0000;">NA</span>        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span>      2 <span style="text-decoration: underline;">1</span>915<span style="text-decoration: underline;">254</span>927    57          1        9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span>      2 <span style="text-decoration: underline;">1</span>876<span style="text-decoration: underline;">765</span>116    50          2        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $data_dict</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $data_dict$Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   index name       `label:en` `description:en`                   valueType unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     2 Gender     Gender     Gender                             integer   <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     3 BMI        BMI        Body Mass Index                    decimal   kg/m…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     4 age        age        Age of Participant                 integer   years</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     5 smo_status smo_curr   Whether the participant is a curr… integer   <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     6 prg_curr   prg_curr   Are you currently pregnant ?       integer   <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $data_dict$Categories</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    variable    name `label:en`             missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> age         -<span style="color: #BB0000;">888</span> don't want to answer   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Gender         1 Male                   FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Gender         2 Female                 FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> prg_curr       0 not currently pregnant FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> prg_curr       1 currently pregnant     FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> prg_curr       8 Don’t want to answer   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> prg_curr       9 Don’t know             TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> prg_curr     -<span style="color: #BB0000;">77</span> not applicable         TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> smo_status     1 never smoked           FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> smo_status     2 current smoker         FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> smo_status     3 former smoker          FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> smo_status   -<span style="color: #BB0000;">77</span> don't want to answer   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [5 × 6] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index         : num [1:5] 2 3 4 5 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name          : chr [1:5] "Gender" "BMI" "age" "smo_status" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en      : chr [1:5] "Gender" "BMI" "age" "smo_curr" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ description:en: chr [1:5] "Gender" "Body Mass Index" "Age of Participant" "Whether the participant is a current smoker or not" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType     : chr [1:5] "integer" "decimal" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit          : chr [1:5] NA "kg/m^2" "years" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [12 × 4] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:12] "age" "Gender" "Gender" "prg_curr" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : num [1:12] -888 1 2 0 1 8 9 -77 1 2 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:12] "don't want to answer" "Male" "Female" "not currently pregnant" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : logi [1:12] TRUE FALSE FALSE FALSE FALSE TRUE ...</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

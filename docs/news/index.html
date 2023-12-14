@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -61,13 +61,13 @@
 <h2 class="page-header" data-toc-text="1.0.3" id="madshapr-103">madshapR 1.0.3<a class="anchor" aria-label="anchor" href="#madshapr-103"></a></h2>
 <div class="section level3">
 <h3 id="bug-fixes-and-improvements-1-0-3">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-1-0-3"></a></h3>
-<p>Some of the tests were made with another package (Rmonize) which as ‘madshapR’ as a dependence.</p>
+<p>Some of the tests were made with another package (Rmonize) which as “madshapR” as a dependence.</p>
 <div class="section level4">
 <h4 id="enhance-reports-1-0-3">Enhance reports<a class="anchor" aria-label="anchor" href="#enhance-reports-1-0-3"></a></h4>
 <ul><li><p>in visual reports, void confusing changes in color scheme in visual reports.</p></li>
 <li><p>Histograms for date variables display valid ranges.</p></li>
 <li><p>in reports, change % NA as proportion in reports.</p></li>
-<li><p><code>harmonized_dossier_visualize()</code> report shows variable labels in the same lang.</p></li>
+<li><p><code>dossier_visualize()</code> report shows variable labels in the same lang.</p></li>
 <li><p>in visual reports, the bar plot only appears when there are multiple missing value types, otherwise only the pie chart is shown.</p></li>
 <li><p>in reports, all of the percentages are now included under “Other values (non categorical)”, which gives a single value.</p></li>
 <li><p><a href="https://github.com/maelstrom-research/madshapR/issues/51" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/51</a></p></li>
@@ -87,7 +87,8 @@
 </div>
 <div class="section level3">
 <h3 id="new-functions-1-0-3">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-0-3"></a></h3>
-<ul><li>creation of <code><a href="../reference/col_id.html">col_id()</a></code> function which is a short cut for calling the attribute <code><a href="../reference/col_id.html">madshapR::col_id</a></code> of a dataset.</li>
+<ul><li><p><code><a href="../reference/col_id.html">col_id()</a></code> function which is a short cut for calling the attribute <code><a href="../reference/col_id.html">madshapR::col_id</a></code> of a dataset.</p></li>
+<li><p><code><a href="../reference/as_category.html">as_category()</a></code>,<code><a href="../reference/is_category.html">is_category()</a></code>,<code><a href="../reference/drop_category.html">drop_category()</a></code> function which coerces a vector as a categorical object. Typically a column in a dataset that needs to be coerced into a categorical variable (The data dictionary is updated accordingly).</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="deprecated-functions-1-0-3">Deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions-1-0-3"></a></h3>
@@ -163,7 +164,7 @@
 <p><code><a href="../reference/check_data_dict_categories.html">check_data_dict_categories()</a></code>, <code><a href="../reference/check_data_dict_missing_categories.html">check_data_dict_missing_categories()</a></code>, <code>check_data_dict_taxonomy()</code>, <code><a href="../reference/check_data_dict_variables.html">check_data_dict_variables()</a></code>, <code><a href="../reference/check_data_dict_valueType.html">check_data_dict_valueType()</a></code>, <code><a href="../reference/check_dataset_categories.html">check_dataset_categories()</a></code>, <code><a href="../reference/check_dataset_valueType.html">check_dataset_valueType()</a></code>, <code><a href="../reference/check_dataset_variables.html">check_dataset_variables()</a></code>, <code><a href="../reference/check_name_standards.html">check_name_standards()</a></code></p>
 </div>
 <div class="section level3">
-<h3 id="summarise-information-in-dataset-and-data-dictionaries-1-0-0">Summarise information in dataset and data dictionaries<a class="anchor" aria-label="anchor" href="#summarise-information-in-dataset-and-data-dictionaries-1-0-0"></a></h3>
+<h3 id="summarize-information-in-dataset-and-data-dictionaries-1-0-0">Summarize information in dataset and data dictionaries<a class="anchor" aria-label="anchor" href="#summarize-information-in-dataset-and-data-dictionaries-1-0-0"></a></h3>
 <p>These helper functions evaluate content of a dataset and/or data dictionary to extract from them summary statistics and elements such as missing values, NA, category names, etc. These informations are stored in a tibble that can be use to summary inputs.</p>
 <p><code><a href="../reference/dataset_preprocess.html">dataset_preprocess()</a></code>, <code><a href="../reference/summary_variables.html">summary_variables()</a></code>, <code><a href="../reference/summary_variables_categorical.html">summary_variables_categorical()</a></code>,<code><a href="../reference/summary_variables_date.html">summary_variables_date()</a></code>, <code><a href="../reference/summary_variables_numeric.html">summary_variables_numeric()</a></code>,<code><a href="../reference/summary_variables_text.html">summary_variables_text()</a></code></p>
 </div>

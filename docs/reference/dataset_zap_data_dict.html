@@ -19,7 +19,7 @@ preserve information."><!-- mathjax --><script src="https://cdnjs.cloudflare.com
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -73,8 +73,7 @@ preserve information.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
-<dd><p>A data frame identifying the input dataset observations
-associated to its data dictionary.</p></dd>
+<dd><p>A dataset object.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -88,8 +87,8 @@ associated to its data dictionary.</p></dd>
     <p>A dataset is a data table containing variables. A dataset object is a
 data frame and can be associated with a data dictionary. If no
 data dictionary is provided with a dataset, a minimum workable
-data dictionary will be generated as needed within relevant functions. An
-identifier variable(s) for indexing can be specified by the user.
+data dictionary will be generated as needed within relevant functions.
+Identifier variable(s) for indexing can be specified by the user.
 The id values must be non-missing and will be used in functions that
 require it. If no identifier variable is specified, indexing is
 handled automatically by the function.</p>
@@ -108,23 +107,18 @@ handled automatically by the function.</p>
 <span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_TOKYO</span></span></span>
 <span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_data_dict_mlstr.html">as_data_dict_mlstr</a></span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_TOKYO</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span><span class="va">dataset</span>,<span class="va">data_dict</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">dataset_zap_data_dict</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">dataset_zap_data_dict</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 50 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    part_id gndr   height weight_ms weight_dc dob        prg_ever empty opentext </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ID001   Male      191        63        <span style="color: #BB0000;">NA</span> 3/22/1990        -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    All chil…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ID002   Female    176        <span style="color: #BB0000;">NA</span>        65 8/15/2001         0 <span style="color: #BB0000;">NA</span>    grow up,…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ID003   Female    154        <span style="color: #BB0000;">NA</span>       121 12/17/1996        2 <span style="color: #BB0000;">NA</span>    years ol…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ID004   Female    167       -<span style="color: #BB0000;">88</span>        <span style="color: #BB0000;">NA</span> 6/13/1990         1 <span style="color: #BB0000;">NA</span>    flower a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ID005   Female    185        <span style="color: #BB0000;">NA</span>        45 12/17/1996        8 <span style="color: #BB0000;">NA</span>    rather d…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ID006   -77       171        57        <span style="color: #BB0000;">NA</span> 3/31/1981        -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    cried, O…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ID007   Female    185        <span style="color: #BB0000;">NA</span>        58 4/19/1988         9 <span style="color: #BB0000;">NA</span>    that pas…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ID008   Female    171        <span style="color: #BB0000;">NA</span>        59 <span style="color: #BB0000;">NA</span>                2 <span style="color: #BB0000;">NA</span>    that she…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ID009   -77       169        52        <span style="color: #BB0000;">NA</span> 3/14/1976        -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    beginnin…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ID010   Male      179        <span style="color: #BB0000;">NA</span>        62 10/19/1993       -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    All chil…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 40 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   part_id gndr   height weight_ms weight_dc dob        prg_ever empty opentext  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ID001   Male      191        63        <span style="color: #BB0000;">NA</span> 3/22/1990        -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    All child…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ID002   Female    176        <span style="color: #BB0000;">NA</span>        65 8/15/2001         0 <span style="color: #BB0000;">NA</span>    grow up, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ID003   Female    154        <span style="color: #BB0000;">NA</span>       121 12/17/1996        2 <span style="color: #BB0000;">NA</span>    years old…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> ID004   Female    167       -<span style="color: #BB0000;">88</span>        <span style="color: #BB0000;">NA</span> 6/13/1990         1 <span style="color: #BB0000;">NA</span>    flower an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> ID005   Female    185        <span style="color: #BB0000;">NA</span>        45 12/17/1996        8 <span style="color: #BB0000;">NA</span>    rather de…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> ID006   -77       171        57        <span style="color: #BB0000;">NA</span> 3/31/1981        -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    cried, Oh…</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
