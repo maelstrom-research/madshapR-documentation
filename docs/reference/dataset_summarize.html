@@ -21,7 +21,7 @@ and descriptive statistics."><!-- mathjax --><script src="https://cdnjs.cloudfla
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
       </span>
     </div>
 
@@ -58,7 +58,7 @@ and descriptive statistics."><!-- mathjax --><script src="https://cdnjs.cloudfla
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Generate an assessment report and summary of a dataset</h1>
-    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/07-data_summarise.R" class="external-link"><code>R/07-data_summarise.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/07-data_summarize.R" class="external-link"><code>R/07-data_summarize.R</code></a></small>
     <div class="hidden name"><code>dataset_summarize.Rd</code></div>
     </div>
 
@@ -133,7 +133,8 @@ object is a list of data frame(s) named 'Variables' (required) and
 'Variables' must contain at least the <code>name</code> column, with all unique and
 non-missing entries, and the data frame 'Categories' must contain at least
 the <code>variable</code> and <code>name</code> columns, with unique combination of
-<code>variable</code> and <code>name</code>.</p>
+<code>variable</code> and <code>name</code>. The function truncates each cell to a maximum of
+10000 characters, to be readable and compatible with Excel.</p>
 <p>A dataset is a data table containing variables. A dataset object is a
 data frame and can be associated with a data dictionary. If no
 data dictionary is provided with a dataset, a minimum workable
@@ -187,6 +188,8 @@ coerce the variable to the corresponding data type.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     The data dictionary contains no error/warning.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">dataset</span> --------------------------</span>
@@ -198,10 +201,7 @@ coerce the variable to the corresponding data type.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all NA(s) of columns in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` comparison in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     The dataset contains no error/warning.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
@@ -218,15 +218,14 @@ coerce the variable to the corresponding data type.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ Overview                  : tibble [15 × 2] (S3: tbl_df/tbl/data.frame)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Quality control of dataset: chr [1:15] "Date" "Name of the dataset" "    Identifier Variable" "    Variables" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ (all)                     : chr [1:15] "2023-12-19" "dataset" "" " " ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary assessment: tibble [2 × 5] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ sheet                     : chr [1:2] "Variables" "Variables"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ col_name                  : chr [1:2] "label" "name"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name_var                  : chr [1:2] NA NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Quality assessment comment: chr [1:2] "[INFO] - Possible duplicated columns" "[INFO] - Possible duplicated columns"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ value                     : chr [1:2] "name ; label" "name ; label"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ (all)                     : chr [1:15] "2024-04-23" "dataset" "" " " ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Dataset assessment        : tibble [18 × 4] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index in data dict.       : chr [1:18] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                      : chr [1:18] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Quality assessment comment: chr [1:18] "[INFO] - possible duplicated row values" "[INFO] - possible duplicated row values" "[INFO] - possible duplicated row values" "[INFO] - possible duplicated row values" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ value                     : chr [1:18] "63 ; 69 ; 120" "42 ; 54 ; 88 ; 94" "58 ; 81 ; 82" "70 ; 73 ; 90 ; 99 ; 107 ; [...]" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables summary (all)   : tibble [1 × 13] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index in data dict.          : int 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index in data dict.          : chr "1"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                         : chr "Sepal.Width"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Quality assessment comment   : chr NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label                        : chr "Sepal.Width"</span>
@@ -235,12 +234,12 @@ coerce the variable to the corresponding data type.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Actual dataset valueType     : chr "decimal"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categorical variable         : chr "no"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories in data dictionary: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Total number of observations : num 150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Nb. distinct values          : int 23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % total Valid values         : num 100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % NA                         : num 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Total number of observations : chr "150"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Nb. distinct values          : chr "23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % total Valid values         : chr "100"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % NA                         : chr "0"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ Numerical variable summary: tibble [1 × 22] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index in data dict.                         : int 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index in data dict.                         : chr "1"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                                        : chr "Sepal.Width"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Quality assessment comment                  : chr NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label                                       : chr "Sepal.Width"</span>
@@ -249,19 +248,19 @@ coerce the variable to the corresponding data type.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Actual dataset valueType                    : chr "decimal"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categorical variable                        : chr "no"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories in data dictionary               : chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Total number of observations                : num 150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Nb. distinct values                         : int 23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % total Valid values                        : num 100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % NA                                        : num 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Valid categorical values (if applicable)  : num NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Missing categorical values (if applicable): num NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ MIN                                         : num 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Q1                                          : num 2.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ MEDIAN                                      : num 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Q3                                          : num 3.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ MAX                                         : num 4.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ MEAN                                        : num 3.06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ STDEV                                       : num 0.436</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Total number of observations                : chr "150"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Nb. distinct values                         : chr "23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % total Valid values                        : chr "100"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % NA                                        : chr "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Valid categorical values (if applicable)  : chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Missing categorical values (if applicable): chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ MIN                                         : chr "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Q1                                          : chr "2.8"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ MEDIAN                                      : chr "3"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Q3                                          : chr "3.3"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ MAX                                         : chr "4.4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ MEAN                                        : chr "3.05733333333333"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ STDEV                                       : chr "0.435866284936698"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

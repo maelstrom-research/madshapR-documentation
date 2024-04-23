@@ -28,7 +28,7 @@ This internal function is mainly used inside summary functions."><!-- mathjax --
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
       </span>
     </div>
 
@@ -65,7 +65,7 @@ This internal function is mainly used inside summary functions."><!-- mathjax --
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Generate an evaluation of all variable values in a dataset</h1>
-    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/07-data_summarise.R" class="external-link"><code>R/07-data_summarise.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/maelstrom-research/madshapR/blob/HEAD/R/07-data_summarize.R" class="external-link"><code>R/07-data_summarize.R</code></a></small>
     <div class="hidden name"><code>dataset_preprocess.Rd</code></div>
     </div>
 
@@ -135,7 +135,7 @@ handled automatically by the function.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span> </span></span>
 <span class="r-in"><span><span class="co">###### Example : Any data frame can be a dataset by definition.</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">dataset_preprocess</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">dataset_preprocess</span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 10</span></span>

@@ -19,7 +19,7 @@ outputs can be grouped by a categorical variable."><!-- mathjax --><script src="
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
       </span>
     </div>
 
@@ -72,8 +72,8 @@ outputs can be grouped by a categorical variable.</p>
 <span>  <span class="va">bookdown_path</span>,</span>
 <span>  data_dict <span class="op">=</span> <span class="fu"><a href="data_dict_extract.html">data_dict_extract</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,</span>
 <span>  group_by <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  taxonomy <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  valueType_guess <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  taxonomy <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  dataset_name <span class="op">=</span> <span class="va">.dataset_name</span>,</span>
 <span>  dataset_summary <span class="op">=</span> <span class="va">.summary_var</span>,</span>
 <span>  .summary_var <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -103,14 +103,14 @@ to use as a grouping variable. Elements will be grouped by this
 column.</p></dd>
 
 
-<dt>taxonomy</dt>
-<dd><p>An optional data frame identifying a variable classification
-schema.</p></dd>
-
-
 <dt>valueType_guess</dt>
 <dd><p>Whether the output should include a more accurate
 valueType that could be applied to the dataset. FALSE by default.</p></dd>
+
+
+<dt>taxonomy</dt>
+<dd><p>An optional data frame identifying a variable classification
+schema.</p></dd>
 
 
 <dt>dataset_name</dt>
@@ -221,10 +221,10 @@ taxonomies are
 <span class="r-out co"><span class="r-pr">#&gt;</span> 13/15                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 14/15 [figures-plot12-1]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15/15                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\RtmpmqUXYz\file101c3647bb1" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\RtmpmqUXYz\rmarkdown-str101c5b621e57.html" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\RtmpWq2gWl\file2d98542f1782" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\RtmpWq2gWl\rmarkdown-str2d9812417652.html" </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\RtmpmqUXYz')`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\RtmpWq2gWl')`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (Compatibility tested on Chrome, Edge and Mozilla)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>

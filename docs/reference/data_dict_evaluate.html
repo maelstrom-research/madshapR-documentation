@@ -20,7 +20,7 @@ or data dictionary formats."><!-- mathjax --><script src="https://cdnjs.cloudfla
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
       </span>
     </div>
 
@@ -104,7 +104,8 @@ object is a list of data frame(s) named 'Variables' (required) and
 'Variables' must contain at least the <code>name</code> column, with all unique and
 non-missing entries, and the data frame 'Categories' must contain at least
 the <code>variable</code> and <code>name</code> columns, with unique combination of
-<code>variable</code> and <code>name</code>.</p>
+<code>variable</code> and <code>name</code>. The function truncates each cell to a maximum of
+10000 characters, to be readable and compatible with Excel.</p>
 <p>A taxonomy is a classification schema that can be defined for variable
 attributes. A taxonomy is usually extracted from an
 <a href="https://www.obiba.org/pages/products/opal/" class="external-link">Opal environment</a>, and a
@@ -145,7 +146,7 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary summary   : tibble [14 × 11] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index               : int [1:14] 1 2 3 4 5 6 7 8 9 10 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index               : chr [1:14] "1" "2" "3" "4" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                : chr [1:14] "part_id" "gndr" "height" "weight_ms" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en            : chr [1:14] "id of the participant" "gndr" "height" "weight_ms" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType           : chr [1:14] "text" "boolean" "decimal" NA ...</span>
