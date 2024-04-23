@@ -88,5 +88,5 @@ fs::dir_copy(
 # push to git
 'update documentation following latest version of the package'
 
-"https://github.com/maelstrom-research/madshapR-documentation/actions/"
+browseURL("https://github.com/maelstrom-research/madshapR-documentation/actions/")
 madshapR_website()
