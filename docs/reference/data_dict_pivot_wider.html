@@ -22,7 +22,7 @@ data dictionary must be unique."><!-- mathjax --><script src="https://cdnjs.clou
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -121,26 +121,32 @@ taxonomies are
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`data_dict_PARIS - collapsed`</span></span></span>
-<span class="r-in"><span><span class="va">taxonomy</span>  <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">taxonomy_PARIS</span></span></span>
-<span class="r-in"><span><span class="fu">data_dict_pivot_wider</span><span class="op">(</span><span class="va">data_dict</span>, <span class="va">taxonomy</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_examples provided by the package</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example`</span></span></span>
+<span class="r-in"><span><span class="va">taxonomy</span>  <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`taxonomy_example`</span></span></span>
+<span class="r-in"><span><span class="va">data_dict_longer</span> <span class="op">&lt;-</span> <span class="fu"><a href="data_dict_pivot_longer.html">data_dict_pivot_longer</a></span><span class="op">(</span><span class="va">data_dict</span>, <span class="va">taxonomy</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data_dict_wider</span> <span class="op">&lt;-</span> <span class="fu">data_dict_pivot_wider</span><span class="op">(</span><span class="va">data_dict_longer</span>, <span class="va">taxonomy</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data_dict_wider</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   index name     `label:fr` `description:fr` valueType unit  `description::type`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1     ID       id         id du participa… text      <span style="color: #BB0000;">NA</span>    other              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 2     SEX      Sexe       Sexe du partici… integer   <span style="color: #BB0000;">NA</span>    natural            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 3     BMI      IMC        Indice de Masse… decimal   kg/m… real               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 4     AGE      Age        Age du Particip… integer   years natural            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 5     SMO      Fumeur     Fumeur regulier  integer   <span style="color: #BB0000;">NA</span>    natural            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 6     SMO_QTY  fum_qte_s… nombre de cigar… integer   ciga… natural            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> 7     PRG_EVER enceinte_… Si la personne … integer   <span style="color: #BB0000;">NA</span>    natural            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: `description::level` &lt;chr&gt;, `Categories::label:fr` &lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [9 × 8] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                : chr [1:9] "1" "2" "3" "4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                 : chr [1:9] "part_id" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en             : chr [1:9] "id of the participant" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ description:en       : chr [1:9] "id of the participant" "gender of the participant" "height of the participant" "weight of the participant - measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType            : chr [1:9] "text" "integer" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit                 : chr [1:9] NA NA "cm" "kg" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::type : chr [1:9] "automatic" "declared" "declared" "measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::level: chr [1:9] "high" "high" "moderate" "moderate" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [11 × 4] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:11] "gndr" "gndr" "gndr" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:11] "1" "2" "-77" "-88" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:11] "Male" "Female" "Don’t want to answer" "Don’t want to answer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : logi [1:11] FALSE FALSE TRUE TRUE TRUE FALSE ...</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -152,7 +158,7 @@ taxonomies are
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -100,38 +100,43 @@ handled automatically by the function.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_examples provided by the package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">###### Example 1: datasets can be gathered into a dossier which is a list.</span></span></span>
-<span class="r-in"><span><span class="va">dossier</span> <span class="op">&lt;-</span> <span class="fu">dossier_create</span><span class="op">(</span></span></span>
-<span class="r-in"><span> dataset_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>   dataset_MELBOURNE <span class="op">=</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_MELBOURNE</span>,</span></span>
-<span class="r-in"><span>   dataset_PARIS <span class="op">=</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_PARIS</span> <span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataset_example1</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`dataset_example`</span></span></span>
+<span class="r-in"><span><span class="va">dataset_example2</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`dataset_example - errors with data`</span></span></span>
+<span class="r-in"><span><span class="va">dossier</span> <span class="op">&lt;-</span> <span class="fu">dossier_create</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">dataset_example1</span>,<span class="va">dataset_example2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span></span></span>
 <span class="r-in"><span>    </span></span>
 <span class="r-in"><span><span class="co">###### Example 2: Any data frame can be gathered into a dossier</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">dossier_create</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">mtcars</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dossier</span> <span class="op">&lt;-</span> <span class="fu">dossier_create</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>,<span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span></span></span>
 <span class="r-in"><span>   </span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ dataset_MELBOURNE: tibble [19 × 6] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id        : num [1:19] 377943 497013 927676 995667 21829 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Gender    : num [1:19] 2 1 1 2 2 1 2 2 2 1 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BMI       : num [1:19] 22.1 18.5 24.6 15.7 18.6 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ age       : num [1:19] 52 49 43 59 40 47 -888 53 35 40 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ smo_status: num [1:19] 1 2 3 -77 NA 2 -77 2 1 1 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ prg_curr  : num [1:19] 0 -77 -77 1 0 -77 8 0 0 -77 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ dataset_example1: tibble [50 × 9] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ part_id  : chr [1:50] "ID001" "ID002" "ID003" "ID004" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ gndr     : num [1:50] 1 2 2 2 2 -77 2 2 -77 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ height   : num [1:50] 191 176 154 167 185 171 185 171 169 179 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ weight_ms: num [1:50] 63 NA NA -88 NA 57 NA NA 52 NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ weight_dc: num [1:50] NA 65 121 NA 45 NA 58 59 NA 62 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ dob      : chr [1:50] "3/22/1990" "8/15/2001" "12/17/1996" "6/13/1990" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ prg_ever : num [1:50] -7 0 2 1 8 -7 9 2 -7 -7 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ empty    : logi [1:50] NA NA NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ opentext : chr [1:50] "All children, except one, grow up. They soon know that they will" "grow up, and the way Wendy knew was this. One day when she was two" "years old she was playing in a garden, and she plucked another" "flower and ran with it to her mother. I suppose she must have looked" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "madshapR::class")= chr "dataset"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ dataset_PARIS    : tibble [24 × 7] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ID      : chr [1:24] "Paris_687393" "Paris_585666" "Paris_75802" "Paris_412072" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ SEX     : num [1:24] 1 0 0 1 1 0 1 1 1 0 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BMI     : num [1:24] 22.2 15.2 22.7 NA 26.2 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ AGE     : num [1:24] 52 49 43 59 40 47 46 53 35 NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ SMO     : num [1:24] 1 1 1 1 1 1 1 0 1 0 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ SMO_QTY : num [1:24] 32 8 48 11 18 7 18 -8 36 -8 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ PRG_EVER: num [1:24] 0 -8 -8 0 1 -8 NA 1 1 -8 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ dataset_example2: tibble [50 × 9] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ part_id  : chr [1:50] "ID001" "ID002" "ID003" "ID004" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ gndr     : chr [1:50] "Male" "Female" "Female" "Female" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ height   : num [1:50] 191 191 191 191 191 191 191 NA 191 191 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ weight_ms: num [1:50] -7 0 8 1 8 -8 9 NA -7 -7 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ weight_dc: num [1:50] NA 65.3 45 NA 45 NA 58 NA NA 65.3 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ dob      : chr [1:50] "3/22/1990" "8/15/2001" "12/17/1996" "6/13/1990" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ prg_ever : num [1:50] -7 0 8 1 8 -8 9 NA -7 -7 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ empty    : logi [1:50] NA NA NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ opentext : chr [1:50] "All children, except one, grow up. They soon know that they will" "grow up, and the way Wendy knew was this. One day when she was two" "rather delightful, for Mrs. Darling put her hand to her heart and" "flower and ran with it to her mother. I suppose she must have looked" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "madshapR::class")= chr "dataset"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "madshapR::class")= chr "dossier"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
@@ -167,7 +172,7 @@ handled automatically by the function.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

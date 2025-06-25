@@ -21,7 +21,7 @@ check if an object is valid for use in a function."><!-- mathjax --><script src=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -71,19 +71,13 @@ check if an object is valid for use in a function.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_data_dict_mlstr</span><span class="op">(</span><span class="va">object</span>, as_data_dict <span class="op">=</span> <span class="cn">FALSE</span>, name_standard <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_data_dict_mlstr</span><span class="op">(</span><span class="va">object</span>, name_standard <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object</dt>
 <dd><p>A potential valid data dictionary to be coerced.</p></dd>
-
-
-<dt>as_data_dict</dt>
-<dd><p>Whether the input data dictionary should not be coerced
-with specific format restrictions for compatibility with other
-Maelstrom Research software. FALSE by default.</p></dd>
 
 
 <dt>name_standard</dt>
@@ -121,42 +115,57 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_MELBOURNE</span></span></span>
-<span class="r-in"><span><span class="fu">as_data_dict_mlstr</span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_MELBOURNE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">###### Example 1 : use the function to apply the attribute "data_dict" to the </span></span></span>
+<span class="r-in"><span><span class="co"># object. </span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> </span></span>
+<span class="r-in"><span>  <span class="fu">as_data_dict_mlstr</span><span class="op">(</span><span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example`</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data_dict</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">###### Example 2 : use the function to shape the data dictionary formatted as</span></span></span>
+<span class="r-in"><span><span class="co"># data_dict_mlstr to data_dict object. The function mainly converts valueType </span></span></span>
+<span class="r-in"><span><span class="co"># column into corresponding typeof/class columns in 'Variables', and converts</span></span></span>
+<span class="r-in"><span><span class="co"># missing column into "na_values" column. </span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> </span></span>
+<span class="r-in"><span>  <span class="fu">as_data_dict_mlstr</span><span class="op">(</span><span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example - as_data_dict`</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data_dict</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   name       `label:en` valueType index `description:en`                   unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> id         id         text      1     id of the participant              <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Gender     Gender     integer   2     Gender                             <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> BMI        BMI        decimal   3     Body Mass Index                    kg/m…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> age        age        integer   4     Age of Participant                 years</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> smo_status smo_status integer   5     Whether the participant is a curr… <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> prg_curr   prg_curr   integer   6     Are you currently pregnant ?       <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Categories</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    variable   name  `label:en`             missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Gender     1     Male                   FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Gender     2     Female                 FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> age        -888  don't want to answer   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> smo_status 1     never smoked           FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> smo_status 2     current smoker         FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> smo_status 3     former smoker          FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> smo_status -77   don't want to answer   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> prg_curr   0     not currently pregnant FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> prg_curr   1     currently pregnant     FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> prg_curr   8     Don’t want to answer   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> prg_curr   9     Don’t know             TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> prg_curr   -77   not applicable         TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"madshapR::class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "data_dict_mlstr"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [9 × 8] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                : int [1:9] 1 2 3 4 5 6 7 8 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                 : chr [1:9] "part_id" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en             : chr [1:9] "id of the participant" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ description:en       : chr [1:9] "id of the participant" "gender of the participant" "height of the participant" "weight of the participant - measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType            : chr [1:9] "text" "integer" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit                 : chr [1:9] NA NA "cm" "kg" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::type : chr [1:9] "automatic" "declared" "declared" "measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::level: chr [1:9] "high" "high" "moderate" "moderate" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [11 × 4] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:11] "gndr" "gndr" "gndr" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:11] "1" "2" "-77" "-99" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:11] "Male" "Female" "Don’t want to answer" "Don’t know" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : logi [1:11] FALSE FALSE TRUE TRUE TRUE FALSE ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "madshapR::class")= chr "data_dict_mlstr"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [9 × 8] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                : int [1:9] 1 2 3 4 5 6 7 8 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                 : chr [1:9] "part_id" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en             : chr [1:9] "id of the participant" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ description:en       : chr [1:9] "id of the participant" "gender of the participant" "height of the participant" "weight of the participant - measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType            : chr [1:9] "text" "integer" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit                 : chr [1:9] NA NA "cm" "kg" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::type : chr [1:9] "automatic" "declared" "declared" "measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::level: chr [1:9] "high" "high" "moderate" "moderate" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [11 × 4] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:11] "gndr" "gndr" "gndr" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:11] "1" "2" "-77" "-99" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:11] "Male" "Female" "Don’t want to answer" "Don’t know" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : logi [1:11] FALSE FALSE TRUE TRUE TRUE FALSE ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "madshapR::class")= chr "data_dict_mlstr"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -168,7 +177,7 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

@@ -20,7 +20,7 @@ if a dataset is valid."><!-- mathjax --><script src="https://cdnjs.cloudflare.co
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -105,32 +105,34 @@ handled automatically by the function.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_examples provided by the package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/GuiFabre/fabR" class="external-link">fabR</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">###### Example 1: A dataset can have an id column specified as an attribute. </span></span></span>
-<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu">as_dataset</span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_MELBOURNE</span>, col_id <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu">as_dataset</span><span class="op">(</span><span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`dataset_example`</span>, col_id <span class="op">=</span> <span class="st">"part_id"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">$</span><span class="va">`madshapR::col_id`</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">###### Example 2: Any data frame can be a dataset by definition.</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">as_dataset</span><span class="op">(</span><span class="va">iris</span>, col_id <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/pkg/fabR/man/add_index.html" class="external-link">add_index</a></span><span class="op">(</span><span class="st">"my_index"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu">as_dataset</span><span class="op">(</span><span class="va">dataset</span>, <span class="st">"my_index"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">$</span><span class="va">`madshapR::col_id`</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ id         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 377943, 497013, 927676, 995667, 21829, 209432, 272983, 5806…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Gender     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2, 1, 1, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 1, 2, 2, 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ BMI        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 22.10000, 18.50656, 24.57680, 15.71540, 18.55378, 15.93178,…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ age        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 52, 49, 43, 59, 40, 47, -888, 53, 35, 40, 41, 34, 48, 43, -…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ smo_status <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 2, 3, -77, NA, 2, -77, 2, 1, 1, NA, 3, 2, 1, 2, 1, NA, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ prg_curr   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0, -77, -77, 1, 0, -77, 8, 0, 0, -77, -77, 1, 1, 9, -77, -7…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Species      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> setosa, setosa, setosa, setosa, setosa, setosa, setosa, s…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Sepal.Length <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Sepal.Width  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Petal.Length <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Petal.Width  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "part_id"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ part_id   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ID001", "ID002", "ID003", "ID004", "ID005", "ID006", "ID007…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ gndr      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 2, 2, 2, 2, -77, 2, 2, -77, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ height    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 191, 176, 154, 167, 185, 171, 185, 171, 169, 179, 175, 150, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ weight_ms <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 63, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, -88, <span style="color: #BB0000;">NA</span>, 57, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, 52, <span style="color: #BB0000;">NA</span>, 67, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, 59, 95,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ weight_dc <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #BB0000;">NA</span>, 65, 121, <span style="color: #BB0000;">NA</span>, 45, <span style="color: #BB0000;">NA</span>, 58, 59, <span style="color: #BB0000;">NA</span>, 62, <span style="color: #BB0000;">NA</span>, 84, 82, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ dob       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "3/22/1990", "8/15/2001", "12/17/1996", "6/13/1990", "12/17/…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ prg_ever  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -7, 0, 2, 1, 8, -7, 9, 2, -7, -7, 1, -7, -7, -7, 0, -7, 0, -…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ empty     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ opentext  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "All children, except one, grow up. They soon know that they…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "my_index"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -142,7 +144,7 @@ handled automatically by the function.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

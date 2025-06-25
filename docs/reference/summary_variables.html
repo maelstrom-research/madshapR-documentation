@@ -20,7 +20,7 @@ valueType."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -73,6 +73,7 @@ valueType.</p>
 <span>  dataset_preprocess <span class="op">=</span> <span class="va">.dataset_preprocess</span>,</span>
 <span>  dataset <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  data_dict <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  group_by <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  .dataset_preprocess <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -91,6 +92,12 @@ variables (used for internal processes and programming).</p></dd>
 <dt>data_dict</dt>
 <dd><p>A list of data frame(s) representing metadata of the input
 dataset. Automatically generated if not provided.</p></dd>
+
+
+<dt>group_by</dt>
+<dd><p>A character string identifying the column in the dataset
+to use as a grouping variable. Elements will be grouped by this
+column.</p></dd>
 
 
 <dt>.dataset_preprocess</dt>
@@ -128,24 +135,32 @@ handled automatically by the function.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">###### Example : Any data frame can be a dataset by definition.</span></span></span>
-<span class="r-in"><span><span class="va">dataset_preprocess</span> <span class="op">&lt;-</span> <span class="fu"><a href="dataset_preprocess.html">dataset_preprocess</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">summary_variables</span><span class="op">(</span>dataset_preprocess <span class="op">=</span> <span class="va">dataset_preprocess</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_examples provided by the package</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`dataset_example`</span></span></span>
+<span class="r-in"><span><span class="va">dataset_preprocess</span> <span class="op">&lt;-</span> <span class="fu"><a href="dataset_preprocess.html">dataset_preprocess</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">summary_prep</span> <span class="op">&lt;-</span> <span class="fu">summary_variables</span><span class="op">(</span>dataset_preprocess <span class="op">=</span> <span class="va">dataset_preprocess</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">summary_prep</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ name                                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Sepal.Length", "Sepal.…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Quality assessment comment`                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Categorical variable`                         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "no", "no", "no", "no",…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Total number of observations`                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 150, 150, 150, 150, 150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Nb. distinct values`                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 35, 23, 43, 22, 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `% total Valid values`                         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 100, 100, 100, 100, 100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `% NA`                                         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0, 0, 0, 0, 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `% Valid categorical values (if applicable)`   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, NA, NA, 100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `% Missing categorical values (if applicable)` <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, NA, NA, 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`(all)`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   `Variable name` Quality assessment c…¹ `Categorical variable` `Variable class`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> part_id         [INFO] - All rows are… no                     no              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> gndr            <span style="color: #BB0000;">NA</span>                     no                     no              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> height          <span style="color: #BB0000;">NA</span>                     no                     no              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> weight_ms       <span style="color: #BB0000;">NA</span>                     no                     no              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> weight_dc       <span style="color: #BB0000;">NA</span>                     no                     no              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> dob             <span style="color: #BB0000;">NA</span>                     no                     no              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> prg_ever        <span style="color: #BB0000;">NA</span>                     no                     no              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> empty           [INFO] - Empty variab… no                     no              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> opentext        <span style="color: #BB0000;">NA</span>                     no                     no              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​`Quality assessment comment`</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: `Number of rows` &lt;dbl&gt;, `Number of valid values` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Number of non-valid values` &lt;dbl&gt;, `Number of empty values` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `% Valid values` &lt;dbl&gt;, `% Non-valid values` &lt;dbl&gt;, `% Empty values` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Number of distinct values` &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -157,7 +172,7 @@ handled automatically by the function.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

@@ -19,7 +19,7 @@ outputs can be grouped by a categorical variable."><!-- mathjax --><script src="
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -71,13 +71,11 @@ outputs can be grouped by a categorical variable.</p>
 <span>  dataset <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  <span class="va">bookdown_path</span>,</span>
 <span>  data_dict <span class="op">=</span> <span class="fu"><a href="data_dict_extract.html">data_dict_extract</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,</span>
-<span>  group_by <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  group_by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dataset_summary</span><span class="op">)</span><span class="op">[[</span><span class="st">"madshapR_group::group_by"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>  valueType_guess <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  taxonomy <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  dataset_name <span class="op">=</span> <span class="va">.dataset_name</span>,</span>
-<span>  dataset_summary <span class="op">=</span> <span class="va">.summary_var</span>,</span>
-<span>  .summary_var <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  .dataset_name <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  dataset_summary <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  dataset_name <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -113,23 +111,15 @@ valueType that could be applied to the dataset. FALSE by default.</p></dd>
 schema.</p></dd>
 
 
-<dt>dataset_name</dt>
-<dd><p>A character string specifying the name of the dataset
-(used internally in the function <code><a href="dossier_evaluate.html">dossier_evaluate()</a></code>).</p></dd>
-
-
 <dt>dataset_summary</dt>
 <dd><p>A list which identifies an existing
 summary produced by <code><a href="dataset_summarize.html">dataset_summarize()</a></code> of the dataset.
 Using this parameter can save time in generating the visual report.</p></dd>
 
 
-<dt>.summary_var</dt>
-<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a></p></dd>
-
-
-<dt>.dataset_name</dt>
-<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a></p></dd>
+<dt>dataset_name</dt>
+<dd><p>A character string specifying the name of the dataset
+(used internally in the function <code><a href="dossier_evaluate.html">dossier_evaluate()</a></code>).</p></dd>
 
 </dl></div>
     <div id="value">
@@ -186,47 +176,74 @@ taxonomies are
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># You can use our demonstration files to run examples</span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_TOKYO</span><span class="op">[</span><span class="st">'height'</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">dataset_summary</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`dataset_summary`</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span> </span></span>
+<span class="r-in"><span><span class="co"># use madshapR_examples provided by the package </span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`dataset_example`</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">gndr</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="as_dataset.html">as_dataset</a></span><span class="op">(</span>col_id <span class="op">=</span> <span class="st">"part_id"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_data_dict_mlstr.html">as_data_dict_mlstr</a></span><span class="op">(</span><span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example`</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span><span class="va">dataset</span>,<span class="va">data_dict</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataset_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="dataset_summarize.html">dataset_summarize</a></span><span class="op">(</span><span class="va">dataset</span>,<span class="va">data_dict</span><span class="op">)</span></span></span>
+<span class="r-in"><span> </span></span>
 <span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_access.html" class="external-link">dir_exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://fs.r-lib.org/reference/delete.html" class="external-link">dir_delete</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bookdown_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span> </span></span>
 <span class="r-in"><span><span class="fu">dataset_visualize</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="va">dataset</span>,</span></span>
-<span class="r-in"><span>  dataset_summary <span class="op">=</span> <span class="va">dataset_summary</span>,</span></span>
-<span class="r-in"><span>  bookdown_path <span class="op">=</span> <span class="va">bookdown_path</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">dataset</span>,</span></span>
+<span class="r-in"><span> <span class="va">data_dict</span>,</span></span>
+<span class="r-in"><span> dataset_summary <span class="op">=</span> <span class="va">dataset_summary</span>,</span></span>
+<span class="r-in"><span> bookdown_path <span class="op">=</span> <span class="va">bookdown_path</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span><span class="co"># To open the file in browser, open 'bookdown_path/docs/index.html'. </span></span></span>
 <span class="r-in"><span><span class="co"># Or use bookdown_open(bookdown_path) function.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1/15                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2/15 [unnamed-chunk-1] </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3/15                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4/15 [unnamed-chunk-2] </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5/15                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6/15 [unnamed-chunk-3] </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7/15                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8/15 [unnamed-chunk-4] </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9/15                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10/15 [unnamed-chunk-5] </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11/15                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12/15 [unnamed-chunk-6] </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13/15                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14/15 [figures-plot12-1]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15/15                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\RtmpWq2gWl\file2d98542f1782" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\RtmpWq2gWl\rmarkdown-str2d9812417652.html" </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness and presence of variable names</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated rows</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty column in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label:en` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess presence and completion of `label:en` column in 'Categories'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the logical values of missing column in Categories</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     The data dictionary contains no errors/warnings.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\RtmpWq2gWl')`</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> (Compatibility tested on Chrome, Edge and Mozilla)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">dataset</span> --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of variable names both in dataset and data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated variable in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated participants</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of unique value columns in dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all empty variable in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the Categories comparison in dataset and data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` comparison in dataset and data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET SUMMARIZE: <span style="font-weight: bold;">dataset</span> --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize the data type of each variable across the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize information for all variables</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize information for numerical variables</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize information for text variables</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize information for date variables</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize information for categorical variables</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize global information (Overview)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> [EBUSY] Failed to remove 'C:/Users/guill/AppData/Local/Temp/RtmpY5j44I/Rf37a468a076f2': resource busy or locked</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -238,7 +255,7 @@ taxonomies are
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

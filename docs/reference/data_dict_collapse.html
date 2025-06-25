@@ -27,7 +27,7 @@ This function is the reversed operation of data_dict_expand()"><!-- mathjax --><
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -140,26 +140,29 @@ the <code>variable</code> and <code>name</code> columns, with unique combination
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_MELBOURNE</span></span></span>
-<span class="r-in"><span><span class="fu">data_dict_collapse</span><span class="op">(</span><span class="va">data_dict</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_examples provided by the package</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example`</span></span></span>
+<span class="r-in"><span><span class="va">data_dict_collapsed</span> <span class="op">&lt;-</span> <span class="fu">data_dict_collapse</span><span class="op">(</span><span class="va">data_dict</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">data_dict_collapse</span><span class="op">(</span><span class="va">data_dict_collapsed</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Your data dictionary contains no 'Categories' element.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   index name  `label:en` `description:en` valueType unit  `Categories::label:en`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   index name  `label:en` `description:en` valueType unit  `datacollection::type`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 id    id         id of the parti… text      <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 Gend… Gender     Gender           integer   <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>1 = Male ; \n2 = Fem…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 BMI   BMI        Body Mass Index  decimal   kg/m…  <span style="color: #BB0000;">NA</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 age   age        Age of Particip… integer   years <span style="color: #949494;">"</span>-888 = don't want to…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 smo_… smo_status Whether the par… integer   <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>1 = never smoked ; \…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     6 prg_… prg_curr   Are you current… integer   <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>0 = not currently pr…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: `Categories::missing` &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 part… id of the… id of the parti… text      <span style="color: #BB0000;">NA</span>    automatic             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 gndr  gndr       gender of the p… integer   <span style="color: #BB0000;">NA</span>    declared              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 heig… height     height of the p… integer   cm    declared              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 weig… weight_ms  weight of the p… integer   kg    measured              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 weig… weight_dc  weight of the p… decimal   kg    measured              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     6 dob   dob        date of birth o… date      years declared              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>     7 prg_… prg_ever   whether the par… integer   <span style="color: #BB0000;">NA</span>    declared              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span>     8 empty empty      empty column     integer   <span style="color: #BB0000;">NA</span>    automatic             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span>     9 open… opentext   open text        text      <span style="color: #BB0000;">NA</span>    automatic             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: `datacollection::level` &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Categories::label:en` &lt;chr&gt;, `Categories::missing` &lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"madshapR::class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "data_dict_structure"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -171,7 +174,7 @@ the <code>variable</code> and <code>name</code> columns, with unique combination
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

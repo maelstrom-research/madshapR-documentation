@@ -20,7 +20,7 @@ or data dictionary formats."><!-- mathjax --><script src="https://cdnjs.cloudfla
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -69,7 +69,7 @@ or data dictionary formats.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">data_dict_evaluate</span><span class="op">(</span><span class="va">data_dict</span>, taxonomy <span class="op">=</span> <span class="cn">NULL</span>, as_data_dict_mlstr <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">data_dict_evaluate</span><span class="op">(</span><span class="va">data_dict</span>, taxonomy <span class="op">=</span> <span class="cn">NULL</span>, is_data_dict_mlstr <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -83,7 +83,7 @@ or data dictionary formats.</p>
 schema.</p></dd>
 
 
-<dt>as_data_dict_mlstr</dt>
+<dt>is_data_dict_mlstr</dt>
 <dd><p>Whether the input data dictionary should be coerced
 with specific format restrictions for compatibility with other
 Maelstrom Research software. TRUE by default.</p></dd>
@@ -122,48 +122,47 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`data_dict_TOKYO - errors`</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">data_dict_evaluate</span><span class="op">(</span><span class="va">data_dict</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_examples provided by the package</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example - errors`</span></span></span>
+<span class="r-in"><span><span class="va">eval_data_dict</span> <span class="op">&lt;-</span> <span class="fu">data_dict_evaluate</span><span class="op">(</span><span class="va">data_dict</span>,is_data_dict_mlstr <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">eval_data_dict</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness of variable names</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness and presence of variable names</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated rows</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty columns in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty column in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label(:xx)` column in 'Variables'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess presence and completion of `label(:xx)` column in 'Categories'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label:en` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess presence and completion of `label:en` column in 'Categories'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the logical values of missing column in Categories</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary summary   : tibble [14 × 11] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index               : chr [1:14] "1" "2" "3" "4" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                : chr [1:14] "part_id" "gndr" "height" "weight_ms" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en            : chr [1:14] "id of the participant" "gndr" "height" "weight_ms" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType           : chr [1:14] "text" "boolean" "decimal" NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories::table   : chr [1:14] NA "Male = DEMO ; \nFemale = DEMO ; \n-77 = DEMO" "SKIP PATTERN = DEMO" "-88 = DEMO ; \n-99 = DEMO" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories::label:en: chr [1:14] NA "Male = Male ; \nFemale = Female ; \n-77 = Don’t want to answer" "SKIP PATTERN = SKIP PATTERN" "-88 = Don’t want to answer ; \n-99 = Do not remember" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories::missing : chr [1:14] NA "Male = FALSE ; \nFemale = FALSE ; \n-77 = TRUE" "SKIP PATTERN = TRUE" "-88 = TRUE ; \n-99 = TRUE" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table               : chr [1:14] "DEMO" "DEMO" "DEMO" "DEMO" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ description:en      : chr [1:14] "id of the participant" "gender of the participant" "height of the participant" "weight of the participant - measured" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit                : chr [1:14] NA NA "cm" "kg" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ copy units          : chr [1:14] NA NA "cm" "kg" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary assessment: tibble [18 × 6] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ sheet                     : chr [1:18] "Variables" "Variables" "Variables" "Variables" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ col_name                  : chr [1:18] "copy units" "label:en" "label:en" "name" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name_var                  : chr [1:18] NA "dob" "opentext" "opentext" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Quality assessment comment: chr [1:18] "[INFO] - Possible duplicated columns" "[ERR] - The column `label(:xx)` must exist contain no 'NA' values" "[ERR] - The column `label(:xx)` must exist contain no 'NA' values" "[ERR] - duplicated variable name" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ value                     : chr [1:18] "unit ; copy units" NA NA NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ suggestion                : chr [1:18] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary summary   : tibble [12 × 6] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index                        : chr [1:12] "1" "2" "3" "4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name                : chr [1:12] "part_id" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable label               : chr [1:12] "id of the participant" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary valueType    : chr [1:12] "text" "boolean" "decimal" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories in data dictionary: chr [1:12] NA "[1] Male\n[2] Female\n[-77] Don’t want to answer" "[SKIP PATTERN]" "[-88] Don’t want to answer\n[-99] Do not remember" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Non-valid categories         : chr [1:12] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary assessment: tibble [25 × 7] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index                     : chr [1:25] "2" "3" "4" "5" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name             : chr [1:25] "gndr" "height" "weight_ms" "weight dc" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Column name               : chr [1:25] "valueType" "valueType" "valueType" "name" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary assessment: chr [1:25] "[ERROR] - valueType is not compatible with variable categories." "[ERROR] - valueType is not compatible with variable categories." "[INFO] - valueType is missing (see ??valueType_list for complete list)." "[INFO] - Variable names contain special characters, contain spaces, or begin with a number." ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Sheet                     : chr [1:25] "Variables" "Variables" "Variables" "Variables" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Value                     : chr [1:25] "boolean" "decimal" "(empty)" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Suggested valueType       : chr [1:25] "integer" "text" "text" NA ...</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -175,7 +174,7 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

@@ -19,7 +19,7 @@ for internal processes and programming."><!-- mathjax --><script src="https://cd
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -81,19 +81,19 @@ for internal processes and programming.</p>
 <dd><p>data type as described in Opal</p></dd>
 
 <dt>typeof</dt>
-<dd><p>data type provided by base::typeof</p></dd>
+<dd><p>data type provided by base::typeof(x)</p></dd>
 
 <dt>class</dt>
-<dd><p>data class provided by base::class</p></dd>
+<dd><p>data class provided by attributes(x)</p></dd>
+
+<dt>class</dt>
+<dd><p>data class provided by base::class(x) explicit class</p></dd>
 
 <dt>call</dt>
 <dd><p>function to transpose object according base::do.call function</p></dd>
 
 <dt>toValueType</dt>
 <dd><p>ensemble data type as described in Opal</p></dd>
-
-<dt>toTypeof</dt>
-<dd><p>ensemble data type provided by base::typeof</p></dd>
 
 <dt>genericType</dt>
 <dd><p>ensemble data type which valueType belongs</p></dd>
@@ -125,24 +125,18 @@ coerce the variable to the corresponding data type.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">valueType_list</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">valueType_list</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    valueType  typeof    class     call          toValueType toTypeof genericType</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>         character character as.character… text        charact… character  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> text       character character as.character… text        charact… character  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> integer    integer   integer   as_any_integ… integer     integer  numeric    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> decimal    double    numeric   as.numeric    decimal     double   numeric    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> boolean    logical   logical   as_any_boole… boolean     logical  numeric    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> locale     character character as.character… text        charact… character  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> datetime   double    POSIXct   as.POSIXct    decimal     double   datetime   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> date       double    Date      as_any_date   decimal     double   date       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> binary     character character as.character… text        charact… character  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> point      character character as.character… text        charact… character  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> linestring character character as.character… text        charact… character  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> polygon    character character as.character… text        charact… character  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   valueType typeof    class explicit_class call          toValueType genericType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> <span style="color: #BB0000;">NA</span>        character <span style="color: #BB0000;">NA</span>    character      as.character… text        character  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> text      character <span style="color: #BB0000;">NA</span>    character      as.character… text        character  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> integer   integer   <span style="color: #BB0000;">NA</span>    integer        as_any_integ… integer     numeric    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> decimal   double    <span style="color: #BB0000;">NA</span>    numeric        as.numeric    decimal     numeric    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> boolean   logical   <span style="color: #BB0000;">NA</span>    logical        as_any_boole… boolean     numeric    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> date      double    Date  Date           as_any_date   date        date       </span>
 </code></pre></div>
     </div>
   </div>
@@ -153,7 +147,7 @@ coerce the variable to the corresponding data type.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

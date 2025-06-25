@@ -19,7 +19,7 @@ This is a wrapper function analogous to dplyr::filter()."><!-- mathjax --><scrip
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -123,63 +123,82 @@ the <code>variable</code> and <code>name</code> columns, with unique combination
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Create a list of data dictionaries where the column 'table' is added to </span></span></span>
-<span class="r-in"><span><span class="co"># refer to the associated dataset. The object created is not a </span></span></span>
-<span class="r-in"><span><span class="co"># data dictionary per say, but can be used as a structure which can be </span></span></span>
-<span class="r-in"><span><span class="co"># shaped into a data dictionary.</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_dict_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="va">data_dict_1</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_TOKYO</span> ,</span></span>
-<span class="r-in"><span>  <span class="va">data_dict_2</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_MELBOURNE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">data_dict_list</span><span class="op">)</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dataset_TOKYO"</span>,<span class="st">"dataset_MELBOURNE"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_examples provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># Data dictionary where the column 'table' is added to </span></span></span>
+<span class="r-in"><span><span class="co"># refer to the associated dataset.</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_dict_nest</span> <span class="op">&lt;-</span> <span class="fu"><a href="data_dict_list_nest.html">data_dict_list_nest</a></span><span class="op">(</span><span class="va">data_dict_list</span>, name_group <span class="op">=</span> <span class="st">'table'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> </span></span>
+<span class="r-in"><span>  <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example`</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">x</span>,table <span class="op">=</span> <span class="st">"dataset"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">###### Example 1 search and filter through a column in 'Variables' element</span></span></span>
-<span class="r-in"><span><span class="fu">data_dict_filter</span><span class="op">(</span><span class="va">data_dict_nest</span>,filter_var <span class="op">=</span> <span class="st">"valueType == 'text'"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data_dict_f1</span> <span class="op">&lt;-</span> <span class="fu">data_dict_filter</span><span class="op">(</span><span class="va">data_dict</span>,filter_var <span class="op">=</span> <span class="st">"name == 'gndr'"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data_dict_f1</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">###### Example 2 search and filter through a column in 'Categories' element</span></span></span>
-<span class="r-in"><span><span class="fu">data_dict_filter</span><span class="op">(</span><span class="va">data_dict_nest</span>,filter_cat <span class="op">=</span> <span class="st">"missing == TRUE"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data_dict_f2</span> <span class="op">&lt;-</span> <span class="fu">data_dict_filter</span><span class="op">(</span><span class="va">data_dict</span>,filter_cat <span class="op">=</span> <span class="st">"missing == TRUE"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data_dict_f2</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">###### Example 3 search and filter through* a column in 'Variables' element.</span></span></span>
+<span class="r-in"><span><span class="co">###### Example 3 search and filter through a column across all elements.</span></span></span>
 <span class="r-in"><span><span class="co"># The column must exist in both 'Variables' and 'Categories' and have the</span></span></span>
 <span class="r-in"><span><span class="co"># same meaning</span></span></span>
-<span class="r-in"><span><span class="fu">data_dict_filter</span><span class="op">(</span><span class="va">data_dict_nest</span>,filter_all <span class="op">=</span> <span class="st">"table == 'dataset_TOKYO'"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data_dict_f3</span> <span class="op">&lt;-</span> <span class="fu">data_dict_filter</span><span class="op">(</span><span class="va">data_dict</span>,filter_all <span class="op">=</span> <span class="st">"table == 'dataset'"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data_dict_f3</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   table         index name      `label:en`      `description:en` valueType unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> dataset_TOKYO 1     part_id   id of the part… id of the parti… text      <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> dataset_TOKYO 2     gndr      gndr            gender of the p… text      <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> dataset_TOKYO 3     height    height          height of the p… integer   cm   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> dataset_TOKYO 4     weight_ms weight_ms       weight of the p… integer   kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> dataset_TOKYO 5     weight_dc weight_dc       weight of the p… decimal   kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> dataset_TOKYO 6     dob       dob             date of birth o… date      years</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> dataset_TOKYO 7     prg_ever  prg_ever        whether the par… integer   <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> dataset_TOKYO 8     empty     empty           empty column     integer   <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> dataset_TOKYO 9     opentext  opentext        open text        text      <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Categories</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 11 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    table         variable  name   `label:en`            missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> dataset_TOKYO gndr      Male   Male                  FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> dataset_TOKYO gndr      Female Female                FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> dataset_TOKYO gndr      -77    Don’t want to answer  TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> dataset_TOKYO weight_ms -88    Don’t want to answer  TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> dataset_TOKYO weight_ms -99    Don’t know            TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> dataset_TOKYO prg_ever  0      never pregnant        FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> dataset_TOKYO prg_ever  1      pregnant once or more FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> dataset_TOKYO prg_ever  2      currently pregnant    FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> dataset_TOKYO prg_ever  8      Don’t want to answer  TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> dataset_TOKYO prg_ever  9      Don’t know            TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> dataset_TOKYO prg_ever  -7     not applicable        TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [1 × 9] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                : num 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                 : chr "gndr"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en             : chr "gndr"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ description:en       : chr "gender of the participant"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType            : chr "integer"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit                 : chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::type : chr "declared"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::level: chr "high"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table                : chr "dataset"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [3 × 5] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:3] "gndr" "gndr" "gndr"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:3] "1" "2" "-77"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:3] "Male" "Female" "Don’t want to answer"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : logi [1:3] FALSE FALSE TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table   : chr [1:3] "dataset" "dataset" "dataset"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [9 × 9] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                : num [1:9] 1 2 3 4 5 6 7 8 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                 : chr [1:9] "part_id" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en             : chr [1:9] "id of the participant" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ description:en       : chr [1:9] "id of the participant" "gender of the participant" "height of the participant" "weight of the participant - measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType            : chr [1:9] "text" "integer" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit                 : chr [1:9] NA NA "cm" "kg" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::type : chr [1:9] "automatic" "declared" "declared" "measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::level: chr [1:9] "high" "high" "moderate" "moderate" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table                : chr [1:9] "dataset" "dataset" "dataset" "dataset" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [6 × 5] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:6] "gndr" "weight_ms" "weight_ms" "prg_ever" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:6] "-77" "-88" "-99" "8" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:6] "Don’t want to answer" "Don’t want to answer" "Don’t know" "Don’t want to answer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : logi [1:6] TRUE TRUE TRUE TRUE TRUE TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table   : chr [1:6] "dataset" "dataset" "dataset" "dataset" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [9 × 9] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                : num [1:9] 1 2 3 4 5 6 7 8 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                 : chr [1:9] "part_id" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en             : chr [1:9] "id of the participant" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ description:en       : chr [1:9] "id of the participant" "gender of the participant" "height of the participant" "weight of the participant - measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType            : chr [1:9] "text" "integer" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit                 : chr [1:9] NA NA "cm" "kg" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::type : chr [1:9] "automatic" "declared" "declared" "measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::level: chr [1:9] "high" "high" "moderate" "moderate" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table                : chr [1:9] "dataset" "dataset" "dataset" "dataset" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [11 × 5] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:11] "gndr" "gndr" "gndr" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:11] "1" "2" "-77" "-88" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:11] "Male" "Female" "Don’t want to answer" "Don’t want to answer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : logi [1:11] FALSE FALSE TRUE TRUE TRUE FALSE ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table   : chr [1:11] "dataset" "dataset" "dataset" "dataset" ...</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -191,7 +210,7 @@ the <code>variable</code> and <code>name</code> columns, with unique combination
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

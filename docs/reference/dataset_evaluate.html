@@ -20,7 +20,7 @@ formats."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -72,11 +72,10 @@ formats.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dataset_evaluate</span><span class="op">(</span></span>
 <span>  <span class="va">dataset</span>,</span>
 <span>  data_dict <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  valueType_guess <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  as_data_dict_mlstr <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  is_data_dict_mlstr <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  valueType_guess <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  taxonomy <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  dataset_name <span class="op">=</span> <span class="va">.dataset_name</span>,</span>
-<span>  .dataset_name <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  dataset_name <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -91,15 +90,15 @@ formats.</p>
 dataset. Automatically generated if not provided.</p></dd>
 
 
-<dt>valueType_guess</dt>
-<dd><p>Whether the output should include a more accurate
-valueType that could be applied to the dataset. FALSE by default.</p></dd>
-
-
-<dt>as_data_dict_mlstr</dt>
+<dt>is_data_dict_mlstr</dt>
 <dd><p>Whether the input data dictionary should be coerced
 with specific format restrictions for compatibility with other
 Maelstrom Research software. TRUE by default.</p></dd>
+
+
+<dt>valueType_guess</dt>
+<dd><p>Whether the output should include a more accurate
+valueType that could be applied to the dataset. TRUE by default.</p></dd>
 
 
 <dt>taxonomy</dt>
@@ -110,10 +109,6 @@ schema.</p></dd>
 <dt>dataset_name</dt>
 <dd><p>A character string specifying the name of the dataset
 (used internally in the function <code><a href="dossier_evaluate.html">dossier_evaluate()</a></code>).</p></dd>
-
-
-<dt>.dataset_name</dt>
-<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a></p></dd>
 
 </dl></div>
     <div id="value">
@@ -161,47 +156,110 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">###### Example : Any data frame can be summarized</span></span></span>
-<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_dataset.html">as_dataset</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">`dataset_TOKYO - errors with data`</span>,</span></span>
-<span class="r-in"><span>  col_id <span class="op">=</span> <span class="st">'part_id'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
-<span class="r-in"><span> </span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">dataset_evaluate</span><span class="op">(</span><span class="va">dataset</span>,as_data_dict_mlstr <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">###### Example 1: use madshapR_examples provided by the package</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`dataset_example - errors with data`</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example - errors with data`</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">eval_dataset</span> <span class="op">&lt;-</span> <span class="fu">dataset_evaluate</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">data_dict</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">eval_dataset</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">###### Example 2: Any data frame can be a dataset by definition</span></span></span>
+<span class="r-in"><span><span class="va">eval_iris</span> <span class="op">&lt;-</span> <span class="fu">dataset_evaluate</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">eval_iris</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness of variable names</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness and presence of variable names</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated rows</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty columns in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty column in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label:en` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess presence and completion of `label:en` column in 'Categories'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the logical values of missing column in Categories</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     The data dictionary contains no error/warning.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">dataset</span> (empty dataset) --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">dataset</span> --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of variable names both in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated variable in the dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated participants in the dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all NA(s) of columns in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated participants</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of unique value columns in dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all empty variable in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the Categories comparison in dataset and data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` comparison in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     The dataset contains no error/warning.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary summary: tibble [9 × 4] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index : chr [1:9] "1" "2" "3" "4" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name  : chr [1:9] "part_id" "gndr" "height" "weight_ms" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label : chr [1:9] "part_id" "gndr" "height" "weight_ms" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ typeof: chr [1:9] "character" "character" "double" "double" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary summary: tibble [9 × 6] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index                        : chr [1:9] "1" "2" "3" "4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name                : chr [1:9] "part_id" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable label               : chr [1:9] "id of the participant" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary valueType    : chr [1:9] "text" "boolean" "decimal" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories in data dictionary: chr [1:9] NA "[1] Male\n[2] Female\n[-77] Don’t want to answer" NA "[-88] Don’t want to answer\n[-99] Do not remember" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Non-valid categories         : chr [1:9] NA "\n\n[-77] Don’t want to answer" NA "[-88] Don’t want to answer\n[-99] Do not remember" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Dataset assessment     : tibble [15 × 5] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index              : chr [1:15] "2" "2" "3" "3" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name      : chr [1:15] "gndr" "gndr" "height" "height" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Dataset assessment : chr [1:15] "[INFO] - Variable is defined as categorical in data dictionary but not in dataset." "[ERROR] - valueType in data dictionary is not compatible with dataset values." "[INFO] - Variable has a constant value." "[INFO] - Suggested valueType." ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Value              : chr [1:15] "1 ; 2 ; -77" "boolean" "191" "decimal" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Suggested valueType: chr [1:15] NA "text" NA "integer" ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness and presence of variable names</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated rows</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty column in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess presence and completion of `label` column in 'Categories'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the logical values of missing column in Categories</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     The data dictionary contains no errors/warnings.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">iris</span> --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of variable names both in dataset and data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated variable in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated participants</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of unique value columns in dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all empty variable in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the Categories comparison in dataset and data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` comparison in dataset and data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary summary: tibble [5 × 6] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index                        : chr [1:5] "1" "2" "3" "4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name                : chr [1:5] "Sepal.Length" "Sepal.Width" "Petal.Length" "Petal.Width" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable label               : chr [1:5] "Sepal.Length" "Sepal.Width" "Petal.Length" "Petal.Width" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary valueType    : chr [1:5] "decimal" "decimal" "decimal" "decimal" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories in data dictionary: chr [1:5] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Non-valid categories         : chr [1:5] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Dataset assessment     : tibble [1 × 4] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index             : chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name     : chr "(all)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Dataset assessment: chr "[INFO] - Duplicated rows."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Value             : chr "102 ; 143"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -213,7 +271,7 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

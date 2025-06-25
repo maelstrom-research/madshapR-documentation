@@ -19,7 +19,7 @@ preserve information."><!-- mathjax --><script src="https://cdnjs.cloudflare.com
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -67,13 +67,18 @@ preserve information.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dataset_zap_data_dict</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dataset_zap_data_dict</span><span class="op">(</span><span class="va">dataset</span>, zap_factor <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
 <dd><p>A dataset object.</p></dd>
+
+
+<dt>zap_factor</dt>
+<dd><p>Whether the factor column should be coerced with its
+corresponding valueType. FALSE by default.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -102,23 +107,25 @@ handled automatically by the function.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_examples provided by the package</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">dataset_TOKYO</span></span></span>
-<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_data_dict_mlstr.html">as_data_dict_mlstr</a></span><span class="op">(</span><span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_TOKYO</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`dataset_example`</span></span></span>
+<span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_data_dict_mlstr.html">as_data_dict_mlstr</a></span><span class="op">(</span><span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example`</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span><span class="va">dataset</span>,<span class="va">data_dict</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">dataset_zap_data_dict</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">unlabbeled_dataset</span> <span class="op">&lt;-</span> <span class="fu">dataset_zap_data_dict</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">unlabbeled_dataset</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   part_id gndr   height weight_ms weight_dc dob        prg_ever empty opentext  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ID001   Male      191        63        <span style="color: #BB0000;">NA</span> 3/22/1990        -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    All child…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ID002   Female    176        <span style="color: #BB0000;">NA</span>        65 8/15/2001         0 <span style="color: #BB0000;">NA</span>    grow up, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ID003   Female    154        <span style="color: #BB0000;">NA</span>       121 12/17/1996        2 <span style="color: #BB0000;">NA</span>    years old…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> ID004   Female    167       -<span style="color: #BB0000;">88</span>        <span style="color: #BB0000;">NA</span> 6/13/1990         1 <span style="color: #BB0000;">NA</span>    flower an…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> ID005   Female    185        <span style="color: #BB0000;">NA</span>        45 12/17/1996        8 <span style="color: #BB0000;">NA</span>    rather de…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> ID006   -77       171        57        <span style="color: #BB0000;">NA</span> 3/31/1981        -<span style="color: #BB0000;">7</span> <span style="color: #BB0000;">NA</span>    cried, Oh…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   part_id gndr  height weight_ms weight_dc dob        prg_ever empty opentext   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ID001   1        191 63               <span style="color: #BB0000;">NA</span> 1990-03-22 -7          <span style="color: #BB0000;">NA</span> All childr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ID002   2        176 <span style="color: #BB0000;">NA</span>               65 2001-08-15 0           <span style="color: #BB0000;">NA</span> grow up, a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ID003   2        154 <span style="color: #BB0000;">NA</span>              121 1996-12-17 2           <span style="color: #BB0000;">NA</span> years old …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> ID004   2        167 -88              <span style="color: #BB0000;">NA</span> 1990-06-13 1           <span style="color: #BB0000;">NA</span> flower and…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> ID005   2        185 <span style="color: #BB0000;">NA</span>               45 1996-12-17 8           <span style="color: #BB0000;">NA</span> rather del…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> ID006   -77      171 57               <span style="color: #BB0000;">NA</span> 1981-03-31 -7          <span style="color: #BB0000;">NA</span> cried, Oh,…</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -130,7 +137,7 @@ handled automatically by the function.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

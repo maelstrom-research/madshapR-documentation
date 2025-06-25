@@ -76,6 +76,9 @@
     <loc>/reference/check_name_standards.html</loc>
   </url>
   <url>
+    <loc>/reference/color_palette_maelstrom.html</loc>
+  </url>
+  <url>
     <loc>/reference/col_id.html</loc>
   </url>
   <url>
@@ -133,7 +136,13 @@
     <loc>/reference/data_dict_pivot_wider.html</loc>
   </url>
   <url>
+    <loc>/reference/data_dict_trim_labels.html</loc>
+  </url>
+  <url>
     <loc>/reference/data_dict_ungroup.html</loc>
+  </url>
+  <url>
+    <loc>/reference/data_dict_update.html</loc>
   </url>
   <url>
     <loc>/reference/data_extract.html</loc>
@@ -152,6 +161,12 @@
   </url>
   <url>
     <loc>/reference/drop_category.html</loc>
+  </url>
+  <url>
+    <loc>/reference/first_label_get.html</loc>
+  </url>
+  <url>
+    <loc>/reference/has_categories.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
@@ -184,7 +199,7 @@
     <loc>/reference/madshapR-package.html</loc>
   </url>
   <url>
-    <loc>/reference/madshapR_DEMO.html</loc>
+    <loc>/reference/madshapR_examples.html</loc>
   </url>
   <url>
     <loc>/reference/madshapR_website.html</loc>
@@ -208,7 +223,13 @@
     <loc>/reference/summary_variables_text.html</loc>
   </url>
   <url>
+    <loc>/reference/typeof_convert_to_valueType.html</loc>
+  </url>
+  <url>
     <loc>/reference/valueType_adjust.html</loc>
+  </url>
+  <url>
+    <loc>/reference/valueType_convert_to_typeof.html</loc>
   </url>
   <url>
     <loc>/reference/valueType_guess.html</loc>

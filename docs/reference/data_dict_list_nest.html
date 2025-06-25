@@ -18,7 +18,7 @@ This is a wrapper function analogous to dplyr::bind_rows()."><!-- mathjax --><sc
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
       </span>
     </div>
 
@@ -106,37 +106,48 @@ the <code>variable</code> and <code>name</code> columns, with unique combination
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_examples provided by the package</span></span></span>
 <span class="r-in"><span><span class="co"># Create a list of data dictionaries where the column 'table' is added to </span></span></span>
 <span class="r-in"><span><span class="co"># refer to the associated dataset. The object created is not a </span></span></span>
 <span class="r-in"><span><span class="co"># data dictionary per say, but can be used as a structure which can be </span></span></span>
 <span class="r-in"><span><span class="co"># shaped into a data dictionary.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">data_dict_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="va">data_dict_1</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_TOKYO</span> ,</span></span>
-<span class="r-in"><span>  <span class="va">data_dict_2</span> <span class="op">&lt;-</span> <span class="va">madshapR_DEMO</span><span class="op">$</span><span class="va">data_dict_MELBOURNE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">data_dict_list</span><span class="op">)</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dataset_TOKYO"</span>,<span class="st">"dataset_MELBOURNE"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  data_dict_1 <span class="op">=</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example`</span> ,</span></span>
+<span class="r-in"><span>  data_dict_2 <span class="op">=</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example - collapsed`</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">data_dict_list_nest</span><span class="op">(</span><span class="va">data_dict_list</span>, name_group <span class="op">=</span> <span class="st">'table'</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data_dict_ns</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="fu">data_dict_list_nest</span><span class="op">(</span><span class="va">data_dict_list</span>, name_group <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="data_dict_group_by.html">data_dict_group_by</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data_dict_ns</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [15 × 7] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table         : chr [1:15] "dataset_TOKYO" "dataset_TOKYO" "dataset_TOKYO" "dataset_TOKYO" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index         : chr [1:15] "1" "2" "3" "4" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name          : chr [1:15] "part_id" "gndr" "height" "weight_ms" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en      : chr [1:15] "id of the participant" "gndr" "height" "weight_ms" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ description:en: chr [1:15] "id of the participant" "gender of the participant" "height of the participant" "weight of the participant - measured" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType     : chr [1:15] "text" "text" "integer" "integer" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit          : chr [1:15] NA NA "cm" "kg" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [23 × 5] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table   : chr [1:23] "dataset_TOKYO" "dataset_TOKYO" "dataset_TOKYO" "dataset_TOKYO" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:23] "gndr" "gndr" "gndr" "weight_ms" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:23] "Male" "Female" "-77" "-88" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:23] "Male" "Female" "Don’t want to answer" "Don’t want to answer" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : chr [1:23] "FALSE" "FALSE" "TRUE" "TRUE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : gropd_df [18 × 11] (S3: grouped_df/tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table                : chr [1:18] "data_dict_1" "data_dict_1" "data_dict_1" "data_dict_1" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                : chr [1:18] "1" "2" "3" "4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                 : chr [1:18] "part_id" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en             : chr [1:18] "id of the participant" "gndr" "height" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ description:en       : chr [1:18] "id of the participant" "gender of the participant" "height of the participant" "weight of the participant - measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType            : chr [1:18] "text" "integer" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit                 : chr [1:18] NA NA "cm" "kg" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::type : chr [1:18] "automatic" "declared" "declared" "measured" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ datacollection::level: chr [1:18] "high" "high" "moderate" "moderate" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories::label:en : chr [1:18] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories::missing  : chr [1:18] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "groups")= tibble [2 × 2] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, ".drop")= logi TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: gropd_df [11 × 5] (S3: grouped_df/tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ table   : chr [1:11] "data_dict_1" "data_dict_1" "data_dict_1" "data_dict_1" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:11] "gndr" "gndr" "gndr" "weight_ms" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:11] "1" "2" "-77" "-88" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:11] "Male" "Female" "Don’t want to answer" "Don’t want to answer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : chr [1:11] "FALSE" "FALSE" "TRUE" "TRUE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "groups")= tibble [1 × 2] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, ".drop")= logi TRUE</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -148,7 +159,7 @@ the <code>variable</code> and <code>name</code> columns, with unique combination
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">
