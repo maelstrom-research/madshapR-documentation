@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
@@ -58,29 +58,179 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="development version" id="madshapr-development-version">madshapR (development version)<a class="anchor" aria-label="anchor" href="#madshapr-development-version"></a></h2>
+<h2 class="page-header" data-toc-text="2.0.0" id="madshapr-200-release--2025-06-15">madshapR 2.0.0 (release : 2025-06-15)<a class="anchor" aria-label="anchor" href="#madshapr-200-release--2025-06-15"></a></h2>
+<blockquote>
+<p>Attention: Some changes to functions in the current version of madshapR may require updates of existing code.</p>
+</blockquote>
+<div class="section level3">
+<h3 id="superseded-object-2-0-0">Superseded object.<a class="anchor" aria-label="anchor" href="#superseded-object-2-0-0"></a></h3>
+<table class="table"><thead><tr><th>previous version (1.1.0 and older)</th>
+<th>version 2.0.0</th>
+</tr></thead><tbody><tr><td>madshapR_DEMO</td>
+<td>madshapR_examples</td>
+</tr></tbody></table></div>
+<div class="section level3">
+<h3 id="superseded-parameters-2-0-0">Superseded parameters.<a class="anchor" aria-label="anchor" href="#superseded-parameters-2-0-0"></a></h3>
+<table class="table"><colgroup><col width="50%"><col width="50%"></colgroup><thead><tr><th>previous version (1.1.0 and older)</th>
+<th>current version (2.0.0)</th>
+</tr></thead><tbody><tr><td>dataset_evaluate(<strong>as</strong>_data_dict_mlstr)</td>
+<td>dataset_evaluate(<strong>is</strong>_data_dict_mlstr)</td>
+</tr><tr><td>data_dict_evaluate(<strong>as</strong>_data_dict_mlstr)</td>
+<td>data_dict_evaluate(<strong>is</strong>_data_dict_mlstr)</td>
+</tr><tr><td>dossier_evaluate(<strong>as</strong>_data_dict_mlstr)</td>
+<td>dossier_evaluate(<strong>is</strong>_data_dict_mlstr)</td>
+</tr></tbody></table></div>
+<div class="section level3">
+<h3 id="superseded-function-behaviors-andor-output-structures-2-0-0">Superseded function behaviors and/or output structures.<a class="anchor" aria-label="anchor" href="#superseded-function-behaviors-andor-output-structures-2-0-0"></a></h3>
+<p>In <code><a href="../reference/dataset_evaluate.html">dataset_evaluate()</a></code>, <code><a href="../reference/data_dict_evaluate.html">data_dict_evaluate()</a></code> and <code><a href="../reference/dossier_evaluate.html">dossier_evaluate()</a></code>, the columns generated in the outputs have been renamed as follows :</p>
+<table class="table"><thead><tr><th>previous version (1.1.0 and older)</th>
+<th>current version (2.0.0)</th>
+</tr></thead><tbody><tr><td>index</td>
+<td>Index</td>
+</tr><tr><td>name</td>
+<td>Variable name</td>
+</tr><tr><td>label</td>
+<td>Variable label</td>
+</tr><tr><td>valueType</td>
+<td>Data dictionary valueType</td>
+</tr><tr><td>Categories::label</td>
+<td>Categories in data dictionary</td>
+</tr><tr><td>Categories::missing</td>
+<td>Non-valid categories</td>
+</tr></tbody></table><p>In <code><a href="../reference/dataset_summarize.html">dataset_summarize()</a></code> and <code><a href="../reference/dossier_summarize.html">dossier_summarize()</a></code>, the columns generated in the outputs have been renamed as follows :</p>
+<table class="table"><thead><tr><th>previous version (1.1.0 and older)</th>
+<th>current version (2.0.0)</th>
+</tr></thead><tbody><tr><td>index in data dict.name</td>
+<td>Index</td>
+</tr><tr><td>name</td>
+<td>Variable name</td>
+</tr><tr><td>label</td>
+<td>Variable label</td>
+</tr><tr><td>Estimated dataset valueType</td>
+<td>Suggested valueType</td>
+</tr><tr><td>Actual dataset valueType</td>
+<td>Dataset valueType</td>
+</tr><tr><td>Total number of observations</td>
+<td>Number of rows</td>
+</tr><tr><td>Nb. distinct values</td>
+<td>Number of distinct values</td>
+</tr><tr><td>Nb. valid values</td>
+<td>Number of valid values</td>
+</tr><tr><td>Nb. non-valid values</td>
+<td>Number of non-valid values</td>
+</tr><tr><td>Nb. NA</td>
+<td>Number of empty values</td>
+</tr><tr><td>% total Valid values</td>
+<td>% Valid values</td>
+</tr><tr><td>% Non-valid values</td>
+<td>% Non-valid values</td>
+</tr><tr><td>% NA</td>
+<td>% Empty values</td>
+</tr><tr><td>————————————</td>
+<td>———————————</td>
+</tr></tbody></table></div>
+<div class="section level3">
+<h3 id="bug-fixes-and-improvements-2-0-0">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-2-0-0"></a></h3>
+<ul><li>The package now handles the valueType <strong>datetime</strong>, which formerly was considered either as a <strong>text</strong> or <strong>date</strong>.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/123" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/123</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/112" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/112</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/75" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/75</a></p>
+<ul><li>The valueType object (present in columns in a data dictionary or as an attribute of a variable) had some errors and bugs that have been corrected.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/87" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/87</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/82" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/82</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/81" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/81</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/76" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/76</a></p>
+<ul><li>When a column in a dataset is all NA (empty), the previous version had some issues that have been has been corrected.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/116" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/116</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/115" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/115</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/109" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/109</a></p>
+<ul><li>A bug in <code><a href="../reference/data_dict_pivot_longer.html">data_dict_pivot_longer()</a></code> when ‘Source’ or ‘Target’ column was not present has been corrected.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/86" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/86</a></p>
+<ul><li><p>The SPSS format, which <code>haven</code> package uses to produce labelled variables, define integers different form madshapR, which ultimately . That has been taken in account and corrected.</p></li>
+<li><p>The SPSS format in the <code>haven</code> package used to produce labelled variables defines integers differently from madshapR, which was causing errors. The difference has been taken into account.</p></li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/83" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/83</a></p>
+</div>
+<div class="section level3">
+<h3 id="the-group_by-parameter-has-been-redesigned-2-0-0">The group_by parameter has been redesigned.<a class="anchor" aria-label="anchor" href="#the-group_by-parameter-has-been-redesigned-2-0-0"></a></h3>
+<ul><li><p><code><a href="../reference/dataset_preprocess.html">dataset_preprocess()</a></code> now handles grouped dataset, using parameter “group_by”.</p></li>
+<li><p>Users can now define groups in summaries and visual reports using a variable that is not categorical or has empty values.</p></li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/47" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/47</a></p>
+<ul><li>Previously, the “group_by” argument had some flaws, resulting in bugs that have been corrected.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/114" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/114</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/113" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/113</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/110" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/110</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/105" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/105</a></p>
+</div>
+<div class="section level3">
+<h3 id="enhancements-in-the-assessment-and-summary-reports-2-0-0">Enhancements in the assessment and summary reports!<a class="anchor" aria-label="anchor" href="#enhancements-in-the-assessment-and-summary-reports-2-0-0"></a></h3>
+<ul><li>The assessment and summary reports had some updates, such as renamed columns and bug corrections.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/126" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/126</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/104" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/104</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/98" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/98</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/97" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/97</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/96" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/96</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/95" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/95</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/94" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/94</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/93" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/93</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/92" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/92</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/91" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/91</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/90" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/90</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/89" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/89</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/88" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/88</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/85" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/85</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/80" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/80</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/79" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/79</a></p>
+</div>
+<div class="section level3">
+<h3 id="enhancements-in-the-visual-reports-2-0-0">Enhancements in the visual reports!<a class="anchor" aria-label="anchor" href="#enhancements-in-the-visual-reports-2-0-0"></a></h3>
+<ul><li>The visual reports have been improved, including better visual outputs and color palettes, and new features such as total number of rows next to the bar charts.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/108" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/108</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/107" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/107</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/106" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/106</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/100" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/100</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/84" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/84</a></p>
+<p><a href="https://github.com/maelstrom-research/madshapR/issues/64" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/64</a></p>
+</div>
+<div class="section level3">
+<h3 id="new-functions-2-0-0">New functions<a class="anchor" aria-label="anchor" href="#new-functions-2-0-0"></a></h3>
+<ul><li><p><code><a href="../reference/typeof_convert_to_valueType.html">typeof_convert_to_valueType()</a></code> converts typeof (and class if any) into its corresponding valueType.</p></li>
+<li><p><code><a href="../reference/valueType_convert_to_typeof.html">valueType_convert_to_typeof()</a></code> converts valueType into its corresponding typeof and class in R representation.</p></li>
+<li><p><code><a href="../reference/data_dict_update.html">data_dict_update()</a></code> updates a data dictionary from a dataset.</p></li>
+<li><p><code><a href="../reference/data_dict_trim_labels.html">data_dict_trim_labels()</a></code> adds shortened labels to data dictionary.</p></li>
+<li><p><code><a href="../reference/first_label_get.html">first_label_get()</a></code> gets the first label from a data dictionary.</p></li>
+<li><p><code><a href="../reference/has_categories.html">has_categories()</a></code> tests if a dataset has categorical variables.</p></li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.1.0" id="madshapr-110">madshapR 1.1.0<small>2024-04-23</small><a class="anchor" aria-label="anchor" href="#madshapr-110"></a></h2>
-</div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.1.0" id="madshapr-110-release--2024-04-22">madshapR 1.1.0 (release : 2024-04-22)<small>2024-04-23</small><a class="anchor" aria-label="anchor" href="#madshapr-110-release--2024-04-22"></a></h2>
 <div class="section level3">
 <h3 id="bug-fixes-and-improvements-1-1-0">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-1-1-0"></a></h3>
-<ul><li><p>for assessment, summary and visualization, the character columns in dataset are put to lower to avoid duplicated informations in outputs. <a href="https://github.com/maelstrom-research/madshapR/issues/63" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/63</a></p></li>
-<li><p>bug in the function <code><a href="../reference/variable_visualize.html">variable_visualize()</a></code> when the column was empty after removing internally stopwords. <a href="https://github.com/maelstrom-research/Rmonize/issues/53" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/53</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/49" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/49</a></p></li>
-<li><p>Some elements were missing in the reports in <code><a href="../reference/dataset_evaluate.html">dataset_evaluate()</a></code> <a href="https://github.com/maelstrom-research/madshapR/issues/66" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/66</a></p></li>
-<li><p>Problem with names containing underscores in variables when visualized fixed. <a href="https://github.com/maelstrom-research/madshapR/issues/62" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/62</a></p></li>
-<li><p>Functions involving valueType (such as <code><a href="../reference/data_dict_apply.html">data_dict_apply()</a></code>,<code><a href="../reference/valueType_guess.html">valueType_guess()</a></code> and <code>valueType_adujst()</code>) have been corrected to be more consistent in the usage of these functions. <a href="https://github.com/maelstrom-research/madshapR/issues/61" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/61</a></p></li>
-<li><p>The bug affecting tibbles which contain a variable named “test” has been corrected in the package fabR. <a href="https://github.com/maelstrom-research/madshapR/issues/60" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/60</a></p></li>
-<li><p>functions such as <code>data_dict_summarize()</code> and <code><a href="../reference/dataset_evaluate.html">dataset_evaluate()</a></code> have cells in tibble generated that can have more than accepted characters in a cell in Excel. the function truncates the cells in tibbles to a maximum of 10000 characters. <a href="https://github.com/maelstrom-research/madshapR/issues/59" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/59</a></p></li>
-<li><p>Problem with dataType in the function <code><a href="../reference/dataset_cat_as_labels.html">dataset_cat_as_labels()</a></code> when the values found in the dataset are not in the data dictionary, and the valueType is text, and the dataType is “integer” has been fixed. <a href="https://github.com/maelstrom-research/madshapR/issues/58" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/58</a></p></li>
-<li><p>Functions involving date formatted variables have been corrected in the package fabR. <a href="https://github.com/maelstrom-research/madshapR/issues/57" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/57</a></p></li>
-<li><p>The inconsistent error in <code><a href="../reference/dataset_evaluate.html">dataset_evaluate()</a></code> has been corrected in the package fabR. <a href="https://github.com/maelstrom-research/madshapR/issues/46" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/46</a></p></li>
-</ul></div>
+<ul><li>for assessment, summary and visualization, the character columns in dataset are put to lower to avoid duplicated informations in outputs.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/63" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/63</a></p>
+<ul><li>bug in the function <code><a href="../reference/variable_visualize.html">variable_visualize()</a></code> when the column was empty after removing internally stopwords.</li>
+</ul><p><a href="https://github.com/maelstrom-research/Rmonize/issues/53" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/53</a></p>
+<p><a href="https://github.com/maelstrom-research/Rmonize/issues/49" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/49</a></p>
+<ul><li>Some elements were missing in the reports in <code><a href="../reference/dataset_evaluate.html">dataset_evaluate()</a></code>
+</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/66" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/66</a></p>
+<ul><li>Problem with names containing underscores in variables when visualized fixed.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/62" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/62</a></p>
+<ul><li>Functions involving valueType (such as <code><a href="../reference/data_dict_apply.html">data_dict_apply()</a></code>,<code><a href="../reference/valueType_guess.html">valueType_guess()</a></code> and <code>valueType_adujst()</code>) have been corrected to be more consistent in the usage of these functions.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/61" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/61</a></p>
+<ul><li>The bug affecting tibbles which contain a variable named “test” has been corrected in the package fabR.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/60" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/60</a></p>
+<ul><li>functions such as <code>data_dict_summarize()</code> and <code><a href="../reference/dataset_evaluate.html">dataset_evaluate()</a></code> have cells in tibble generated that can have more than accepted characters in a cell in Excel. the function truncates the cells in tibbles to a maximum of 10000 characters.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/59" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/59</a></p>
+<ul><li>Problem with dataType in the function <code><a href="../reference/dataset_cat_as_labels.html">dataset_cat_as_labels()</a></code> when the values found in the dataset are not in the data dictionary, and the valueType is text, and the dataType is “integer” has been fixed.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/58" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/58</a></p>
+<ul><li>Functions involving date formatted variables have been corrected in the package fabR.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/57" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/57</a></p>
+<ul><li>The inconsistent error in <code><a href="../reference/dataset_evaluate.html">dataset_evaluate()</a></code> has been corrected in the package fabR.</li>
+</ul><p><a href="https://github.com/maelstrom-research/madshapR/issues/46" class="external-link uri">https://github.com/maelstrom-research/madshapR/issues/46</a></p>
+</div>
 <div class="section level3">
 <h3 id="deprecated-functions-1-1-0">deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions-1-1-0"></a></h3>
-<p>To avoid confusion with help(function), the function <code><a href="../reference/deprecated.html">madshapR_help()</a></code> has been renamed <code><a href="../reference/madshapR_website.html">madshapR_website()</a></code>.</p>
+<p>To avoid confusion with help(function), the function <code>madshapR_help()</code> has been renamed <code><a href="../reference/madshapR_website.html">madshapR_website()</a></code>.</p>
 </div>
 <div class="section level3">
 <h3 id="dependency-changes-1-1-0">Dependency changes<a class="anchor" aria-label="anchor" href="#dependency-changes-1-1-0"></a></h3>
@@ -153,7 +303,7 @@
 </div>
 <div class="section level3">
 <h3 id="deprecated-functions-1-0-2">deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions-1-0-2"></a></h3>
-<p>Due to another package development (see <a href="https://guifabre.github.io/fabR-documentation/" class="external-link">fabR</a>), The function <code><a href="../reference/deprecated.html">open_visual_report()</a></code> has been deprecated in favor of <code><a href="../reference/bookdown_open.html">bookdown_open()</a></code> imported from fabR package.</p>
+<p>Due to another package development (see <a href="https://guifabre.github.io/fabR-documentation/" class="external-link">fabR</a>), The function <code>open_visual_report()</code> has been deprecated in favor of <code><a href="../reference/bookdown_open.html">bookdown_open()</a></code> imported from fabR package.</p>
 </div>
 </div>
     <div class="section level2">
@@ -163,7 +313,7 @@
 <div class="section level3">
 <h3 id="helper-functions-1-0-0">Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions-1-0-0"></a></h3>
 <ul><li>
-<code><a href="../reference/deprecated.html">madshapR_help()</a></code> Call the help center for full documentation</li>
+<code>madshapR_help()</code> Call the help center for full documentation</li>
 </ul></div>
 <div class="section level3">
 <h3 id="functions-to-generate-shape-and-format-meta-data-1-0-0">functions to generate, shape and format meta data.<a class="anchor" aria-label="anchor" href="#functions-to-generate-shape-and-format-meta-data-1-0-0"></a></h3>
@@ -215,7 +365,7 @@
 <ul><li>summarize data</li>
 </ul><p><code><a href="../reference/dataset_summarize.html">dataset_summarize()</a></code> <code><a href="../reference/dossier_summarize.html">dossier_summarize()</a></code></p>
 <ul><li>visualize data</li>
-</ul><p><code><a href="../reference/dataset_visualize.html">dataset_visualize()</a></code> <code><a href="../reference/variable_visualize.html">variable_visualize()</a></code> <code><a href="../reference/deprecated.html">open_visual_report()</a></code></p>
+</ul><p><code><a href="../reference/dataset_visualize.html">dataset_visualize()</a></code> <code><a href="../reference/variable_visualize.html">variable_visualize()</a></code> <code>open_visual_report()</code></p>
 </div>
 </div>
   </div>

@@ -5,19 +5,19 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Functions to Support Data Management and Processing using the Maelstrom Research Approach • madshapR</title>
+<title>Functions to Support Data Management and Processing Using the Maelstrom Research Approach • madshapR</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Functions to Support Data Management and Processing using the Maelstrom Research Approach">
+<script src="pkgdown.js"></script><meta property="og:title" content="Functions to Support Data Management and Processing Using the Maelstrom Research Approach">
 <meta property="og:description" content="Functions to support data cleaning, evaluation, and description, 
      developed for integration with Maelstrom Research software tools. madshapR 
      provides functions primarily to evaluate and manipulate datasets and 
      data dictionaries in preparation for data harmonization with the package 
      Rmonize and to facilitate integration and transfer between RStudio servers 
-     and secure Opal environments. mapshapR functions can be used independently
+     and secure Opal environments. madshapR functions can be used independently
      but are optimized in conjunction with ‘Rmonize’ functions for streamlined 
      and coherent harmonization processing.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The madshapR package provides functions for efficient data cleaning, evaluation, and documentation across different datasets. It was developed to support work at Maelstrom Research and includes functions to evaluate and summarize datasets and their associated data dictionaries, identify potential issues in content and structure, and prepare datasets and metadata for further processing. The key outputs provided by the functions are formatted datasets, standardized metadata, and tabular and visual summary reports.</p>
+<p>Functions to support data cleaning, evaluation, and description, developed for integration with Maelstrom Research software tools. ‘madshapR’ provides functions primarily to evaluate and manipulate datasets and data dictionaries in preparation for data harmonization with the package ‘Rmonize’ and to facilitate integration and transfer between RStudio servers and secure Opal environments. ‘madshapR’ functions can be used independently but are optimized in conjunction with ‘Rmonize’ functions for streamlined and coherent harmonization processing.</p>
 </div>
 <div class="section level1">
 <h1 id="get-started">Get started<a class="anchor" aria-label="anchor" href="#get-started"></a>
@@ -99,18 +99,15 @@
 <h2 id="install-the-package">Install the package<a class="anchor" aria-label="anchor" href="#install-the-package"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># To install madshapR:</span></span>
+<code class="sourceCode R"><span><span class="co"># Install madshapR and load the package:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'madshapR'</span><span class="op">)</span></span>
-<span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maelstrom-research/madshapR" class="external-link">madshapR</a></span><span class="op">)</span></span>
+<span></span>
 <span><span class="co"># If you need help with the package, please use:</span></span>
 <span><span class="fu"><a href="reference/madshapR_website.html">madshapR_website</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Downloadable templates are available here</span></span>
-<span><span class="fu">madshapR_templates</span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Demo files are available here, along with an online demonstration process </span></span>
-<span><span class="va">madshapR_DEMO</span></span></code></pre></div>
+<span><span class="co"># Example objects are available here</span></span>
+<span><span class="va">madshapR_examples</span></span></code></pre></div>
 </div>
 </div>
 

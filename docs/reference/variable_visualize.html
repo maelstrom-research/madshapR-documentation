@@ -36,7 +36,7 @@ parameters to operate."><!-- mathjax --><script src="https://cdnjs.cloudflare.co
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
@@ -185,7 +185,7 @@ coerce the variable to the corresponding data type.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span></span>
@@ -198,14 +198,6 @@ coerce the variable to the corresponding data type.</p>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example`</span></span></span>
 <span class="r-in"><span><span class="va">variable_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="dataset_summarize.html">dataset_summarize</a></span><span class="op">(</span><span class="va">dataset</span>,<span class="va">data_dict</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
-<span class="r-in"><span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu">variable_visualize</span><span class="op">(</span></span></span>
-<span class="r-in"><span> <span class="va">dataset</span>,<span class="va">data_dict</span>, col <span class="op">=</span> <span class="st">'prg_ever'</span>,</span></span>
-<span class="r-in"><span> variable_summary <span class="op">=</span>  <span class="va">variable_summary</span>,valueType_guess <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span> </span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">plots</span><span class="op">$</span><span class="va">main_values_1</span><span class="op">)</span></span></span>
-<span class="r-in"><span> </span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness and presence of variable names</span>
@@ -247,7 +239,15 @@ coerce the variable to the corresponding data type.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize information for categorical variables</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize global information (Overview)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu">variable_visualize</span><span class="op">(</span></span></span>
+<span class="r-in"><span> <span class="va">dataset</span>,<span class="va">data_dict</span>, col <span class="op">=</span> <span class="st">'prg_ever'</span>,</span></span>
+<span class="r-in"><span> variable_summary <span class="op">=</span>  <span class="va">variable_summary</span>,valueType_guess <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span> </span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">plots</span><span class="op">$</span><span class="va">main_values_1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-in"><span> </span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
