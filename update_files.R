@@ -4,10 +4,9 @@ library(madshapR)
 # devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))
 # devtools::build_readme()
 # devtools::build_rmd('NEWS.Rmd')
+# devtools::build_rmd('XXX.Rmd')
 fs::dir_delete("docs")
 pkgdown::build_site()
-
-fs::dir_delete("../madshapR-documentation/docs")
 
 # replace ligne 138
 file.edit("docs/index.html")

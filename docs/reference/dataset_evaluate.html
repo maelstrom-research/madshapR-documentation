@@ -20,7 +20,7 @@ formats."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">madshapR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9499</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
@@ -154,7 +154,7 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -163,14 +163,6 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 <span class="r-in"><span><span class="va">data_dict</span> <span class="op">&lt;-</span> <span class="va">madshapR_examples</span><span class="op">$</span><span class="va">`data_dictionary_example - errors with data`</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">eval_dataset</span> <span class="op">&lt;-</span> <span class="fu">dataset_evaluate</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">data_dict</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">eval_dataset</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">###### Example 2: Any data frame can be a dataset by definition</span></span></span>
-<span class="r-in"><span><span class="va">eval_iris</span> <span class="op">&lt;-</span> <span class="fu">dataset_evaluate</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">eval_iris</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness and presence of variable names</span>
@@ -201,6 +193,7 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">eval_dataset</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary summary: tibble [9 × 6] (S3: tbl_df/tbl/data.frame)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index                        : chr [1:9] "1" "2" "3" "4" ...</span>
@@ -215,6 +208,9 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Dataset assessment : chr [1:15] "[INFO] - Variable is defined as categorical in data dictionary but not in dataset." "[ERROR] - valueType in data dictionary is not compatible with dataset values." "[INFO] - Variable has a constant value." "[INFO] - Suggested valueType." ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Value              : chr [1:15] "1 ; 2 ; -77" "boolean" "191" "decimal" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Suggested valueType: chr [1:15] NA "text" NA "integer" ...</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">###### Example 2: Any data frame can be a dataset by definition</span></span></span>
+<span class="r-in"><span><span class="va">eval_iris</span> <span class="op">&lt;-</span> <span class="fu">dataset_evaluate</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness and presence of variable names</span>
@@ -247,6 +243,8 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">eval_iris</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary summary: tibble [5 × 6] (S3: tbl_df/tbl/data.frame)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index                        : chr [1:5] "1" "2" "3" "4" ...</span>
@@ -260,6 +258,8 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name     : chr "(all)"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Dataset assessment: chr "[INFO] - Duplicated rows."</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Value             : chr "102 ; 143"</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
